@@ -60,8 +60,7 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 **Flow Navigation** (Screen to Screen)
 
 * Login Screen
-   => Registration Screen
-   => Calendar
+   => Registration Screen/Calendar
 * Registration Screen
    => Calendar
 * Calendar
