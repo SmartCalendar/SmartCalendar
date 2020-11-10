@@ -44,10 +44,8 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
    * User can login
 * Calendar
    * User can view the calendar for the month
-   * User can create an item on the calendar
 * Stream Screen
    * User can view the agenda of each day
-   * User can create an item on the calendar
 * Detail Screen
    * User can view the details of an item on the calendar
 * Creation Screen
