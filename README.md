@@ -24,7 +24,7 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 
 **Required Must-have Stories**
 
-* User can login/sign up
+* User can login
 * Push notification to remind user of events/reminders/tasks
 * User can see a basic daily, weekly, and monthly calendar view 
 * User can manually input, modify, and delete items on their calendar
@@ -42,8 +42,6 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 
 * Login Screen
    * User can login
-* Registration Screen
-   * User can sign up
 * Calendar
    * User can view the calendar for the month
    * User can create an item on the calendar
@@ -60,8 +58,6 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 **Flow Navigation** (Screen to Screen)
 
 * Login Screen
-   => Registration Screen / Calendar
-* Registration Screen
    => Calendar
 * Calendar
    => Stream Screen / Creation Screen
