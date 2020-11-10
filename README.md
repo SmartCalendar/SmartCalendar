@@ -60,22 +60,17 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 **Flow Navigation** (Screen to Screen)
 
 * Login Screen
-   => Registration Screen/Calendar
+   => Registration Screen / Calendar
 * Registration Screen
    => Calendar
 * Calendar
-   => Stream Screen
-   => Creation Screen
+   => Stream Screen / Creation Screen
 * Stream Screen
-   => Calendar
-   => Creation Screen
-   => Detail Screen
+   => Calendar / Detail Screen / Creation Screen
 * Detail Screen
-   => Stream Screen
-   => Creation Screen
+   => Stream Screen / Creation Screen
 * Creation Screen 
-   => Stream Screen
-   => Detail Screen 
+   => Stream Screen / Detail Screen 
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
