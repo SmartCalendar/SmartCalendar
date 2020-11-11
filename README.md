@@ -59,7 +59,7 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
    => Stream Screen (Monthly) / Stream Screen (Daily) / Detail Screen 
 
 ## Wireframes
-<img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Hand-Sketched%20Wireframes.jpg" width=800>
+<img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Hand-Sketched%20Wireframes.jpg" width=1000>
 
 ### [BONUS] Digital Wireframes & Mockups
 <img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Digital%20Wireframes.png" width=1000>
