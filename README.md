@@ -65,4 +65,4 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 <img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Digital%20Wireframes.png" width=1000>
 
 ### [BONUS] Interactive Prototype
-<img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Interactive%20Prototype.gif" width=432>
+<img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Interactive%20Prototype.gif" width=350>
