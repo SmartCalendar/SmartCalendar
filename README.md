@@ -68,7 +68,7 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Wireframe.jpg" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
