@@ -39,7 +39,7 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 * Stream Screen (Daily)
    * User can view the agenda of a day
 * Detail Screen
-   * User can view the details of or delete an item on the calendar
+   * User can view the details of an item on the calendar or delete it
 * Creation Screen
    * User can create or modify an item on the calendar
    
