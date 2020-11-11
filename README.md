@@ -2,21 +2,12 @@
 
 ## Table of Contents
 1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
+2. [Product Spec](#Product-Spec)
+3. [Wireframes](#Wireframes)
 
 ## Overview
 ### Description
 Smart Calendar is an AI-enpowered calendar app that allows the user to simplify usage by simply taking a picture or a screenshot of a poster or any text to automatically input events, meetings, tasks, etc. into their calendar, providing the user with a new sense of convenience.
-
-### App Evaluation
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
 
 ## Product Spec
 
@@ -37,14 +28,15 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 * User can set the priority of items on thier calendar
 * User can invite others to events or meetings
 * User can link multiple accounts
+* User can switch accounts
 
 ### 2. Screen Archetypes
 
 * Login Screen
    * User can login
-* Calendar
+* Stream Screen (Monthly)
    * User can view the calendar for the month
-* Stream Screen
+* Stream Screen (Daily)
    * User can view the agenda of each day
 * Detail Screen
    * User can view the details of an item on the calendar
@@ -57,27 +49,20 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 
 * Login Screen
    => Calendar
-* Calendar
-   => Stream Screen / Creation Screen
-* Stream Screen
-   => Calendar / Detail Screen / Creation Screen
+* Stream Screen (Monthly)
+   => Stream Screen (Daily) / Detail Screen / Creation Screen
+* Stream Screen (Daily)
+   => Stream Screen (Monthly) / Detail Screen / Creation Screen
 * Detail Screen
-   => Stream Screen / Creation Screen
+   => Stream Screen (Monthly) / Stream Screen (Daily) / Creation Screen
 * Creation Screen 
-   => Stream Screen / Detail Screen 
+   => Stream Screen (Monthly) / Stream Screen (Daily) / Detail Screen 
 
-## Wireframes
-<img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Wireframe.jpg" width=800>
+## Hand-Sketched Wireframes
+<img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Hand-Sketched%20Wireframes.jpg" width=800>
 
 ### [BONUS] Digital Wireframes & Mockups
+<img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Digital%20Wireframes.png" width=800>
 
 ### [BONUS] Interactive Prototype
-
-## Schema 
-[This section will be completed in Unit 9]
-### Models
-[Add table of models]
-### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+<img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Interactive%20Prototype.gif" width=432>
