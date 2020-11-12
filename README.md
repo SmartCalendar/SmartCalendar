@@ -20,7 +20,6 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 * User can see a monthly and daily calendar view 
 * User can manually input, modify, and delete items on their calendar
 * User can use their camera to take a photo of texts to create items on thier calendar 
-* User can access their calendar offline
 
 **Optional Nice-to-have Stories**
 
@@ -29,6 +28,7 @@ Smart Calendar is an AI-enpowered calendar app that allows the user to simplify 
 * User can invite others to events or meetings
 * User can link multiple accounts
 * User can switch accounts
+* User can access their calendar offline
 
 ### 2. Screen Archetypes
 
