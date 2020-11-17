@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333131">
+
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#333131"
+        android:drawableTop="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/btnDelete"
+        android:layout_alignTop="@+id/btnClose"
+        android:layout_alignBottom="@+id/btnClose"
+        android:layout_marginStart="-50dp"
+        android:backgroundTint="#333131"
+        android:drawableTop="@android:drawable/ic_menu_edit" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/btnCreate"
+        android:layout_alignBottom="@+id/btnCreate"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#333131"
+        android:drawableTop="@android:drawable/ic_menu_delete" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnClose"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/btnClose"
+        android:text="Event Title"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:layout_alignStart="@+id/tvTitle"
+        android:text="Date"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/tvDate"
+        android:text="Time"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDate"
+        android:layout_alignStart="@+id/tvDate"
+        android:layout_marginTop="40dp"
+        android:text="Location"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tvNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLocation"
+        android:layout_alignStart="@+id/tvLocation"
+        android:layout_marginTop="50dp"
+        android:text="Notification"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNotification"
+        android:layout_alignStart="@+id/tvNotification"
+        android:layout_marginTop="50dp"
+        android:text="Description"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+</RelativeLayout>

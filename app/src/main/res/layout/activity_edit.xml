@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333131">
+
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#333131"
+        android:drawableTop="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <Button
+        android:id="@+id/btnComplete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnClose"
+        android:layout_alignBottom="@+id/btnCreate"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#32FFFFFF"
+        android:text="Done"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnClose"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/btnClose"
+        android:hint="Add title"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="36sp" />
+
+    <View
+        style="@style/Divider"
+        android:layout_below="@id/etTitle" />
+
+    <EditText
+        android:id="@+id/etStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etTitle"
+        android:layout_alignStart="@+id/etTitle"
+        android:layout_marginTop="20dp"
+        android:hint="Add start date"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/etEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etStartDate"
+        android:layout_alignStart="@+id/etStartDate"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:hint="Add end date"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="22sp" />
+
+    <View
+        style="@style/Divider"
+        android:layout_below="@id/etEndDate"/>
+
+    <EditText
+        android:id="@+id/etStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/etStartDate"
+        android:layout_alignTop="@+id/etStartDate"
+        android:layout_marginStart="170dp"
+        android:hint="Add start time"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/etEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/etStartTime"
+        android:layout_alignTop="@+id/etEndDate"
+        android:layout_marginEnd="30dp"
+        android:hint="Add end time"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/etLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etEndDate"
+        android:layout_alignStart="@+id/etEndDate"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Add location"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="24sp" />
+
+    <View
+        style="@style/Divider"
+        android:layout_below="@id/etLocation" />
+
+    <EditText
+        android:id="@+id/etNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etLocation"
+        android:layout_alignStart="@+id/etLocation"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Add notification"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="24sp" />
+
+    <View
+        style="@style/Divider"
+        android:layout_below="@id/etNotification" />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etNotification"
+        android:layout_alignStart="@+id/etNotification"
+        android:layout_marginTop="15dp"
+        android:hint="Add description"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="24sp" />
+
+</RelativeLayout>
