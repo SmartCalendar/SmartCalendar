@@ -75,7 +75,7 @@
         android:layout_below="@id/etEndDate"/>
 
     <EditText
-        android:id="@+id/etStartTime"
+        android:id="@+id/etDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/etStartDate"
@@ -90,7 +90,7 @@
         android:id="@+id/etEndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/etStartTime"
+        android:layout_alignStart="@+id/etDate"
         android:layout_alignTop="@+id/etEndDate"
         android:layout_marginEnd="30dp"
         android:hint="Add end time"
