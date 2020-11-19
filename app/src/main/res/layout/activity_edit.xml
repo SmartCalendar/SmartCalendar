@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     android:background="#333131">
 
+    <style android:name="Divider">
+        <item android:name="android:layout_width">match_parent</item>
+        <item android:name="android:layout_height">1dp</item>
+        <item android:name="android:background">?android:attr/listDivider</item>
+    </style>
+
 
     <Button
         android:id="@+id/btnClose"
@@ -42,7 +48,7 @@
         android:textSize="36sp" />
 
     <View
-        style="@style/Divider"
+        style="Divider"
         android:layout_below="@id/etTitle" />
 
     <EditText
@@ -71,7 +77,7 @@
         android:textSize="22sp" />
 
     <View
-        style="@style/Divider"
+        style="Divider"
         android:layout_below="@id/etEndDate"/>
 
     <EditText
@@ -112,7 +118,7 @@
         android:textSize="24sp" />
 
     <View
-        style="@style/Divider"
+        style="Divider"
         android:layout_below="@id/etLocation" />
 
     <EditText
@@ -129,7 +135,7 @@
         android:textSize="24sp" />
 
     <View
-        style="@style/Divider"
+        style="divider"
         android:layout_below="@id/etNotification" />
 
     <EditText
