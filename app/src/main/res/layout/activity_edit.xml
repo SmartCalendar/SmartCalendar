@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
     android:background="#333131">
 
-    <style android:name="Divider">
-        <item android:name="android:layout_width">match_parent</item>
-        <item android:name="android:layout_height">1dp</item>
-        <item android:name="android:background">?android:attr/listDivider</item>
-    </style>
-
 
     <Button
         android:id="@+id/btnClose"
@@ -48,7 +42,7 @@
         android:textSize="36sp" />
 
     <View
-        style="Divider"
+        style="@style/Divider"
         android:layout_below="@id/etTitle" />
 
     <EditText
@@ -57,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etTitle"
         android:layout_alignStart="@+id/etTitle"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:hint="Add start date"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
@@ -77,16 +71,16 @@
         android:textSize="22sp" />
 
     <View
-        style="Divider"
+        style="@style/Divider"
         android:layout_below="@id/etEndDate"/>
 
     <EditText
         android:id="@+id/etStartTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/etStartDate"
         android:layout_alignTop="@+id/etStartDate"
-        android:layout_marginStart="170dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
         android:hint="Add start time"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
@@ -111,14 +105,13 @@
         android:layout_below="@id/etEndDate"
         android:layout_alignStart="@+id/etEndDate"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"
         android:hint="Add location"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
         android:textSize="24sp" />
 
     <View
-        style="Divider"
+        style="@style/Divider"
         android:layout_below="@id/etLocation" />
 
     <EditText
@@ -128,14 +121,13 @@
         android:layout_below="@+id/etLocation"
         android:layout_alignStart="@+id/etLocation"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"
         android:hint="Add notification"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
         android:textSize="24sp" />
 
     <View
-        style="divider"
+        style="@style/Divider"
         android:layout_below="@id/etNotification" />
 
     <EditText
@@ -145,7 +137,7 @@
         android:layout_below="@+id/etNotification"
         android:layout_alignStart="@+id/etNotification"
         android:layout_marginTop="15dp"
-        android:hint="Add description"
+        android:hint="Add Description"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
         android:textSize="24sp" />
