@@ -86,64 +86,64 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 <ol>
 <li> Login Activity</li>
-     <ul><li>=>objectID / Image</li>
-     <li>=>Login Authorization</li>
-     <li>=>Login Authentication</li>
-       <ol><li>=>Signed out</li></ol></ul>
+     <ul><li>objectID / Image</li>
+     <li>Login Authorization</li>
+     <li>Login Authentication</li>
+       <ol><li>Signed out</li></ol></ul>
 
 <li> Calendar</li>
-     <ul><li>=>objectId Year</li>
-     <li>=>objectId Month</li>
-     <li>=>objectId MonthView</li>
-       <ol><li>=>objectId Days of Week</li>
-       <li>=>objectId Day Focus</li></ol>
-     <li>=>objectId DayView</li>
-     <li>=>recyclerView</li>
-       <ol><li>=>Events</li></ol></ul>
+     <ul><li>objectId Year</li>
+     <li>objectId Month</li>
+     <li>objectId MonthView</li>
+       <ol><li>objectId Days of Week</li>
+       <li>objectId Day Focus</li></ol>
+     <li>objectId DayView</li>
+     <li>recyclerView</li>
+       <ol><li>Events</li></ol></ul>
 
 <li> Day View</li>
-     <ul><li>=>objectIDd Date</li>
-       <ol><li>=>objectId Month</li>
-       <li>=>objectId Date</li>
-       <li>=>objectId Day</li></ol>
-     <li>=>recyclerView</li>
-       <ol><li>=>objectId Post</li>
-         <ol><li>=>objectId Title</li></ol></ol></ul>
+     <ul><li>objectIDd Date</li>
+       <ol><li>objectId Month</li>
+       <li>objectId Date</li>
+       <li>objectId Day</li></ol>
+     <li>recyclerView</li>
+       <ol><li>objectId Post</li>
+         <ol><li>objectId Title</li></ol></ol></ul>
 
 <li> ActivityDetails</li>
-     <ul><li>=>objectId MenuBackArrow</li>
-     <li>=>objectId Edit/PencilIcon</li>
-     <li>=>objectId Delete/TrashIcon</li>
-     <li>=>objectId Title</li>
-     <li>=>objectId dateTime</li>
-       <ol><li>=>objectId Month</li>
-       <li>=>objectId Date</li>
-       <li>=>objectId Day</li></ol>
-     <li>=>objectId Location</li>
-       <ol><li>=>objectId Pin</li>
-       <li>=>objectId Location</li>
-       <li>=>objectId Address</li></ol>
-     <li>=>objectId Notification</li>
-       <ol><li>=>objectId Reminder/BellIcon</li>
-       <li>=>objectId ReminderOccurence</li></ol>
-     <li>=>objectId Decription</li>
-       <ol><li>=>objectId Notes/MenuIcon</li>
-       <li>=>objectId Notes</li></ol></ul>
+     <ul><li>objectId MenuBackArrow</li>
+     <li>objectId Edit/PencilIcon</li>
+     <li>objectId Delete/TrashIcon</li>
+     <li>objectId Title</li>
+     <li>objectId dateTime</li>
+       <ol><li>objectId Month</li>
+       <li>objectId Date</li>
+       <li>objectId Day</li></ol>
+     <li>objectId Location</li>
+       <ol><li>objectId Pin</li>
+       <li>objectId Location</li>
+       <li>objectId Address</li></ol>
+     <li>objectId Notification</li>
+       <ol><li>objectId Reminder/BellIcon</li>
+       <li>objectId ReminderOccurence</li></ol>
+     <li>objectId Decription</li>
+       <ol><li>objectId Notes/MenuIcon</li>
+       <li>objectId Notes</li></ol></ul>
 
 <li> ActivityEdit</li>
-     <ul><li>=>objectId Close/XIcon</li>
-     <li>=>objectId Done/CheckIcon</li>
-     <li>=>objectId Divider</li>
-     <li>=>objectId clockIcon</li>
-     <li>=>objectId addStartDate</li>
-     <li>=>objectId addStartTime</li>
-     <li>=>objectId addEndDate</li>
-     <li>=>objectId addEndTime</li>
-     <li>=>objectId Divider</li>
-     <li>=>objectId addLocation</li>
-     <li>=>objectId Divider</li>
-     <li>=>objectId addNotification</li>
-     <li>=>objectId Divider</li>
-     <li>=>objectId addDescription</li></ul>
+     <ul><li>objectId Close/XIcon</li>
+     <li>objectId Done/CheckIcon</li>
+     <li>objectId Divider</li>
+     <li>objectId clockIcon</li>
+     <li>objectId addStartDate</li>
+     <li>objectId addStartTime</li>
+     <li>objectId addEndDate</li>
+     <li>objectId addEndTime</li>
+     <li>objectId Divider</li>
+     <li>objectId addLocation</li>
+     <li>objectId Divider</li>
+     <li>objectId addNotification</li>
+     <li>objectId Divider</li>
+     <li>objectId addDescription</li></ul>
 </ol>
 .
