@@ -89,26 +89,26 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <ul><li>=>objectID / Image</li>
      <li>=>Login Authorization</li>
      <li>=>Login Authentication</li>
-       <li>=>Signed out</li></ul>
+       <ol><li>=>Signed out</li></ol></ul>
 
 <li> Calendar</li>
      <ul><li>=>objectId Year</li>
      <li>=>objectId Month</li>
      <li>=>objectId MonthView</li>
-       <li>&nbsp;&nbsp;=>objectId Days of Week</li>
-       <li>&nbsp;&nbsp;=>objectId Day Focus</li>
+       <ol><li>=>objectId Days of Week</li>
+       <li>=>objectId Day Focus</li></ol>
      <li>=>objectId DayView</li>
      <li>=>recyclerView</li>
-       <li>&nbsp;&nbsp;=>Events</li></ul>
+       <ol><li>=>Events</li></ol></ul>
 
 <li> Day View</li>
      <ul><li>=>objectIDd Date</li>
-       <li>&nbsp;&nbsp;=>objectId Month</li>
-       <li>&nbsp;&nbsp;=>objectId Date</li>
-       <li>&nbsp;&nbsp;=>objectId Day</li>
+       <ol><li>=>objectId Month</li>
+       <li>=>objectId Date</li>
+       <li>=>objectId Day</li></ol>
      <li>=>recyclerView</li>
-       <li>&nbsp;&nbsp;=>objectId Post</li>
-         <li>&nbsp;&nbsp;&nbsp;&nbsp;=>objectId Title</li></ul>
+       <ol><li>=>objectId Post</li>
+         <ol><li>=>objectId Title</li></ol></ol></ul>
 
 <li> ActivityDetails</li>
      <ul><li>=>objectId MenuBackArrow</li>
@@ -116,19 +116,19 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <li>=>objectId Delete/TrashIcon</li>
      <li>=>objectId Title</li>
      <li>=>objectId dateTime</li>
-       <li>&nbsp;&nbsp;=>objectId Month</li>
-       <li>&nbsp;&nbsp;=>objectId Date</li>
-       <li>&nbsp;&nbsp;=>objectId Day</li>
+       <ol><li>=>objectId Month</li>
+       <li>=>objectId Date</li>
+       <li>=>objectId Day</li></ol>
      <li>=>objectId Location</li>
-       <li>&nbsp;&nbsp;=>objectId Pin</li>
-       <li>&nbsp;&nbsp;=>objectId Location</li>
-       <li>&nbsp;&nbsp;=>objectId Address</li>
+       <ol><li>=>objectId Pin</li>
+       <li>=>objectId Location</li>
+       <li>=>objectId Address</li></ol>
      <li>=>objectId Notification</li>
-       <li>&nbsp;&nbsp;=>objectId Reminder/BellIcon</li>
-       <li>&nbsp;&nbsp;=>objectId ReminderOccurence</li>
+       <ol><li>=>objectId Reminder/BellIcon</li>
+       <li>=>objectId ReminderOccurence</li></ol>
      <li>=>objectId Decription</li>
-       <li>&nbsp;&nbsp;=>objectId Notes/MenuIcon</li>
-       <li>&nbsp;&nbsp;=>objectId Notes</li></ul>
+       <ol><li>=>objectId Notes/MenuIcon</li>
+       <li>=>objectId Notes</li></ol></ul>
 
 <li> ActivityEdit</li>
      <ul><li>=>objectId Close/XIcon</li>
