@@ -92,17 +92,6 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <li>Login Authentication</li>
        <ol><li>Signed out</li></ol></ul>
 
-<li> Calendar</li>
-     <ul><li>Year</li>
-     <li>Month</li>
-     <li>MonthView</li>
-       <ol><li>Days of Week</li>
-       <li>Day Focus</li></ol>
-     <li>DayView</li>
-     <li>recyclerView</li>
-       <ol><li>Events</li>
-         <ol><li>Title</li>
-         <ol><li>Time</li></ol></ul>
 
 <li> Day View</li>
      <ul><li>MenuBackArrow</li>
@@ -163,18 +152,6 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 	<tr><td> </td> <td>Login Authentication</td> <td>API call</td> <td>authenticate user with Google</td> </tr>
 	<tr><td> </td> <td>Login Authorization/td> <td>API call</td> <td>user authorized app for use with Google</td> </tr>
   <tr><td> </td> <td>Signed out</td> <td>File</td> <td>has the User signed out</td> </tr>
-	
-<tr><td>Calendar</td> <td> </td> <td> </td> <td> </td> </tr>
-	<tr><td> </td> <td>Year</td> <td>Date Time</td> <td>Calls Year</td></tr>
-	<tr><td> </td> <td>Month</td> <td>Date Time<</td> <td>Calls Month</td></tr>
-	<tr><td> </td> <td>MonthView</td> <td>Calendar Item</td> <td>displays selected month Calendar</td></tr>
-	<tr><td> </td> <td>Days of Week</td> <td>String</td> <td>Days of week</td></tr>
-	<tr><td> </td> <td>Focus</td> <td>Background Highlight</td> <td>Highlighted if event exists that day</td> </tr>
-	<tr><td> </td> <td>DayView</td> <td>Text</td> <td>Selected Date in text / Today by default</td> </tr>
-	<tr><td> </td> <td>recyclerView</td> <td>recyclerView</td> <td>Lists event for selected day in chronological order</td> </tr>
-	<tr><td> </td> <td>Events</td> <td>DateTime</td> <td>date when meme was last updated</td> </tr>
-  <tr><td> </td> <td>Title</td> <td>Test</td> <td>Title of Event</td> </tr>
-  <tr><td> </td> <td>Time</td> <td>DateTime</td> <td>Time of Event</td> </tr>
 	
 <tr><td>Day View</td> <td> </td> <td> </td> <td> </td> </tr>
 	<tr><td> </td> <td>Menu Back Arrow</td> <td>Menu Item</td> <td>sends user back to Calendar</td> </tr>
@@ -250,34 +227,6 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 	<tr><td> </td>	
 	<td>(Delete/DELETE)</td>
 	<td>Signed out</td></tr>
-  <tr><th>-Calendar</th><th> </th><th> </th></tr>
-	<tr><td> </td>
-	<td>(Update/PUT)</td>
-	<td>Year</td></tr>
-	<tr><td> </td>	
-	<td>(Update/PUT)</td>
-	<td>Month</td></tr>
-	<tr><td> </td>
-	<td>(Update/PUT)</td>
-	<td>Days of Week</td></tr>
-	<tr><td> </td>
-	<td>(Update/PUT)</td>
-	<td>Day Focus</td></tr>
-	<tr><td> </td>	
-	<td>(Update/PUT)</td>
-	<td>Day View</td></tr>
-	<tr><td> </td>	
-	<td>(Update/PUT)</td>
-	<td>recyclerView</td></tr>
-	<tr><td> </td>	
-	<td>(Read/GET)</td>
-	<td>Events</td></tr>
-	<tr><td> </td>	
-	<td>(Update/PUT)</td>
-	<td>Events Title</td></tr>
-	<tr><td> </td>	
-	<td>(Update/PUT)</td>
-	<td>Events Times</td></tr>
   <tr><th>-Day View</th><th> </th><th> </th></tr>
 	<tr><td> </td>
 	<td>(Update/PUT)</td>
