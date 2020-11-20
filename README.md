@@ -95,20 +95,20 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <ul><li>=>objectId Year</li>
      <li>=>objectId Month</li>
      <li>=>objectId MonthView</li>
-       <li>=>objectId Days of Week</li>
-       <li>=>objectId Day Focus</li>
+       <li>&nbsp;&nbsp;=>objectId Days of Week</li>
+       <li>&nbsp;&nbsp;=>objectId Day Focus</li>
      <li>=>objectId DayView</li>
      <li>=>recyclerView</li>
-       <li>=>Events</li></ul>
+       <li>&nbsp;&nbsp;=>Events</li></ul>
 
 <li> Day View</li>
      <ul><li>=>objectIDd Date</li>
-       <li>=>objectId Month</li>
-       <li>=>objectId Date</li>
-       <li>=>objectId Day</li>
+       <li>&nbsp;&nbsp;=>objectId Month</li>
+       <li>&nbsp;&nbsp;=>objectId Date</li>
+       <li>&nbsp;&nbsp;=>objectId Day</li>
      <li>=>recyclerView</li>
-       <li>=>objectId Post</li>
-         <li>=>objectId Title</li></ul>
+       <li>&nbsp;&nbsp;=>objectId Post</li>
+         <li>&nbsp;&nbsp;&nbsp;&nbsp;=>objectId Title</li></ul>
 
 <li> ActivityDetails</li>
      <ul><li>=>objectId MenuBackArrow</li>
@@ -116,19 +116,19 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <li>=>objectId Delete/TrashIcon</li>
      <li>=>objectId Title</li>
      <li>=>objectId dateTime</li>
-       <li>=>objectId Month</li>
-       <li>=>objectId Date</li>
-       <li>=>objectId Day</li>
+       <li>&nbsp;&nbsp;=>objectId Month</li>
+       <li>&nbsp;&nbsp;=>objectId Date</li>
+       <li>&nbsp;&nbsp;=>objectId Day</li>
      <li>=>objectId Location</li>
-       <li>=>objectId Pin</li>
-       <li>=>objectId Location</li>
-       <li>=>objectId Address</li>
+       <li>&nbsp;&nbsp;=>objectId Pin</li>
+       <li>&nbsp;&nbsp;=>objectId Location</li>
+       <li>&nbsp;&nbsp;=>objectId Address</li>
      <li>=>objectId Notification</li>
-       <li>=>objectId Reminder/BellIcon</li>
-       <li>=>objectId ReminderOccurence</li>
+       <li>&nbsp;&nbsp;=>objectId Reminder/BellIcon</li>
+       <li>&nbsp;&nbsp;=>objectId ReminderOccurence</li>
      <li>=>objectId Decription</li>
-       <li>=>objectId Notes/MenuIcon</li>
-       <li>=>objectId Notes</li></ul>
+       <li>&nbsp;&nbsp;=>objectId Notes/MenuIcon</li>
+       <li>&nbsp;&nbsp;=>objectId Notes</li></ul>
 
 <li> ActivityEdit</li>
      <ul><li>=>objectId Close/XIcon</li>
