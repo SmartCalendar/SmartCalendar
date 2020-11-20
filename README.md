@@ -89,7 +89,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <ul><li>=>objectID / Image</li>
      <li>=>Login Authorization</li>
      <li>=>Login Authentication</li>
-     <li>=>Signed out</li>
+       <li>=>Signed out</li></ul>
 
 <li> Calendar</li>
      <ul><li>=>objectId Year</li>
