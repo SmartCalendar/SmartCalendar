@@ -74,3 +74,72 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 ### [BONUS] Interactive Prototype
 <img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Interactive%20Prototype.gif" width=350>
+
+## Smart Calendar - Scheme Design
+1. Login Activity
+2. Calendar
+3. Day View
+4. ActivityDetails
+5. ActivityEdit
+
+1. Login Activity
+=>objectID / Image
+=>Login Authorization
+=>Login Authentication
+=>Signed out
+
+2. Calendar
+=>objectId Year
+=>objectId Month
+=>objectId MonthView
+  =>objectId Days of Week
+  =>objectId Day Focus
+=>objectId DayView
+=>recyclerView
+  =>Events
+
+3. Day View
+=>objectIDd Date
+  =>objectId Month
+  =>objectId Date
+  =>objectId Day
+=>recyclerView
+  =>objectId Post
+    =>objectId Title
+
+4. ActivityDetails
+=>objectId MenuBackArrow
+=>objectId Edit/PencilIcon
+=>objectId Delete/TrashIcon
+=>objectId Title
+=>objectId dateTime
+  =>objectId Month
+  =>objectId Date
+  =>objectId Day
+=>objectId Location
+  =>objectId Pin
+  =>objectId Location
+  =>objectId Address
+=>objectId Notification
+  =>objectId Reminder/BellIcon
+  =>objectId ReminderOccurence
+=>objectId Decription
+  =>objectId Notes/MenuIcon
+  =>objectId Notes
+
+5. ActivityEdit
+=>objectId Close/XIcon
+=>objectId Done/CheckIcon
+=>objectId Divider
+=>objectId clockIcon
+=>objectId addStartDate
+=>objectId addStartTime
+=>objectId addEndDate
+=>objectId addEndTime
+=>objectId Divider
+=>objectId addLocation
+=>objectId Divider
+=>objectId addNotification
+=>objectId Divider
+=>objectId addDescription
+
