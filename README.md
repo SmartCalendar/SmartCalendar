@@ -86,64 +86,132 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 <ol>
 <li> Login Activity</li>
-     <ul><li>objectID / Image</li>
+     <ul><li>Image</li>
      <li>Login Authorization</li>
      <li>Login Authentication</li>
        <ol><li>Signed out</li></ol></ul>
 
 <li> Calendar</li>
-     <ul><li>objectId Year</li>
-     <li>objectId Month</li>
-     <li>objectId MonthView</li>
-       <ol><li>objectId Days of Week</li>
-       <li>objectId Day Focus</li></ol>
-     <li>objectId DayView</li>
+     <ul><li>Year</li>
+     <li>Month</li>
+     <li>MonthView</li>
+       <ol><li>Days of Week</li>
+       <li>Day Focus</li></ol>
+     <li>DayView</li>
      <li>recyclerView</li>
-       <ol><li>Events</li></ol></ul>
+       <ol><li>Events</li>
+         <ol><li>Title</li>
+         <ol><li>Time</li></ol></ul>
 
 <li> Day View</li>
-     <ul><li>objectIDd Date</li>
-       <ol><li>objectId Month</li>
-       <li>objectId Date</li>
-       <li>objectId Day</li></ol>
+     <ul><li>MenuBackArrow</li>
+       <ol><li>Month</li>
+       <li>Date</li>
+       <li>Day</li></ol>
      <li>recyclerView</li>
-       <ol><li>objectId Post</li>
-         <ol><li>objectId Title</li></ol></ol></ul>
+       <ol><li>Post</li>
+         <ol><li>Title</li></ol></ol></ul>
 
 <li> ActivityDetails</li>
-     <ul><li>objectId MenuBackArrow</li>
-     <li>objectId Edit/PencilIcon</li>
-     <li>objectId Delete/TrashIcon</li>
-     <li>objectId Title</li>
-     <li>objectId dateTime</li>
-       <ol><li>objectId Month</li>
-       <li>objectId Date</li>
-       <li>objectId Day</li></ol>
-     <li>objectId Location</li>
-       <ol><li>objectId Pin</li>
-       <li>objectId Location</li>
-       <li>objectId Address</li></ol>
-     <li>objectId Notification</li>
-       <ol><li>objectId Reminder/BellIcon</li>
-       <li>objectId ReminderOccurence</li></ol>
-     <li>objectId Decription</li>
-       <ol><li>objectId Notes/MenuIcon</li>
-       <li>objectId Notes</li></ol></ul>
+     <ul><li>MenuBackArrow</li>
+     <li>Edit/PencilIcon</li>
+     <li>Delete/TrashIcon</li>
+     <li>Title</li>
+     <li>dateTime</li>
+       <ol><li>Month</li>
+       <li>Date</li>
+       <li>Day</li></ol>
+     <li>Location</li>
+       <ol><li>Pin</li>
+       <li>Location</li>
+       <li>Address</li></ol>
+     <li>Notification</li>
+       <ol><li>Reminder/BellIcon</li>
+       <li>ReminderOccurence</li></ol>
+     <li>Decription</li>
+       <ol><li>Notes/MenuIcon</li>
+       <li>Notes</li></ol></ul>
 
 <li> ActivityEdit</li>
-     <ul><li>objectId Close/XIcon</li>
-     <li>objectId Done/CheckIcon</li>
-     <li>objectId Divider</li>
-     <li>objectId clockIcon</li>
-     <li>objectId addStartDate</li>
-     <li>objectId addStartTime</li>
-     <li>objectId addEndDate</li>
-     <li>objectId addEndTime</li>
-     <li>objectId Divider</li>
-     <li>objectId addLocation</li>
-     <li>objectId Divider</li>
-     <li>objectId addNotification</li>
-     <li>objectId Divider</li>
-     <li>objectId addDescription</li></ul>
+     <ul><li>Close/XIcon</li>
+     <li>Done/CheckIcon</li>
+     <li>Divider</li>
+     <li>clockIcon</li>
+     <li>addStartDate</li>
+     <li>addStartTime</li>
+     <li>addEndDate</li>
+     <li>addEndTime</li>
+     <li>Divider</li>
+     <li>addLocation</li>
+     <li>Divider</li>
+     <li>addNotification</li>
+     <li>Divider</li>
+     <li>addDescription</li></ul>
 </ol>
-.
+
+## Data Model 
+
+<table>
+	<tr><td> </td> <td>Property</td><td>Type</td><td>Description</td></tr>
+<tr><td>Login Activity</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>objectId</td> <td>File</td> <td>pointer to calendar image</td> </tr>
+	<tr><td> </td> <td>Login Authentication</td> <td>API call</td> <td>authenticate user with Google</td> </tr>
+	<tr><td> </td> <td>Login Authorization/td> <td>API call</td> <td>user authorized app for use with Google</td> </tr>
+  <tr><td> </td> <td>Signed out</td> <td>File</td> <td>has the User signed out</td> </tr>
+	
+<tr><td>Calendar</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Year</td> <td>Date Time</td> <td>Calls Year</td></tr>
+	<tr><td> </td> <td>Month</td> <td>Date Time<</td> <td>Calls Month</td></tr>
+	<tr><td> </td> <td>MonthView</td> <td>Calendar Item</td> <td>displays selected month Calendar</td></tr>
+	<tr><td> </td> <td>Days of Week</td> <td>String</td> <td>Days of week</td></tr>
+	<tr><td> </td> <td>Focus</td> <td>Background Highlight</td> <td>Highlighted if event exists that day</td> </tr>
+	<tr><td> </td> <td>DayView</td> <td>Text</td> <td>Selected Date in text / Today by default</td> </tr>
+	<tr><td> </td> <td>recyclerView</td> <td>recyclerView</td> <td>Lists event for selected day in chronological order</td> </tr>
+	<tr><td> </td> <td>Events</td> <td>DateTime</td> <td>date when meme was last updated</td> </tr>
+  <tr><td> </td> <td>Title</td> <td>Test</td> <td>Title of Event</td> </tr>
+  <tr><td> </td> <td>Time</td> <td>DateTime</td> <td>Time of Event</td> </tr>
+	
+<tr><td>Day View</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Menu Back Arrow</td> <td>Menu Item</td> <td>sends user back to Calendar</td> </tr>
+	<tr><td> </td> <td>Month</td> <td>DateTime</td> <td>Call to Event Month</td> </tr>
+	<tr><td> </td> <td>Date</td> <td>DateTime</td> <td>Call to Event Day</td> </tr>
+	<tr><td> </td> <td>Day</td> <td>DateTime</td> <td>Call to Event Day</td> </tr>
+  <tr><td> </td> <td>recyclerView</td> <td>recyclerView</td> <td>Lists event for selected day in chronological order</td> </tr>
+  <tr><td> </td> <td>Post</td> <td>Highlight</td> <td>Shading of Event</td> </tr>
+  <tr><td> </td> <td>Title</td> <td>Text</td> <td>Title of Event</td> </tr>
+
+<tr><td>ActivityDetails</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Menu Back Arrow</td> <td>Menu Item</td> <td>sends user back to Calendar</td> </tr>
+	<tr><td> </td> <td>Menu Edit</td> <td>Image</td> <td>Pencil Icon -leads to Activity Edit</td> </tr>
+	<tr><td> </td> <td>Menu Delete</td> <td>Image</td> <td>Pencil Icon -leads to Activity Delete</td> </tr>
+  <tr><td> </td> <td>Title</td> <td>String</td> <td>Event Title</td> </tr>
+  <tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, to - from Time</td> </tr>
+  <tr><td> </td> <td>Pin Icon</td> <td>Icon</td> <td>Pin Image</td> </tr>
+  <tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
+  <tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
+  <tr><td> </td> <td>Bell Icon</td> <td>Icon</td> <td>Bell Image</td> </tr>
+  <tr><td> </td> <td>ReminderOccurence</td> <td>String</td> <td>Event Reminder</td> </tr>
+  <tr><td> </td> <td>Menu Icon</td> <td>Icon</td> <td>Menu Image</td> </tr>
+  <tr><td> </td> <td>Reminder</td> <td>String</td> <td>Notes</td> </tr>  
+	
+<tr><td>ActivityEdit</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Menu Close</td> <td>Icon</td> <td>Closes Edit Activity</td> </tr>
+	<tr><td> </td> <td>Title</td> <td>String</td> <td>Event Title</td> </tr>
+	<tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  <tr><td> </td> <td>Clock Icon</td> <td>Icon</td> <td>Clock Image</td> </tr>
+  <tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, from Time</td> </tr>
+  <tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, to Time</td> </tr>
+  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  <tr><td> </td> <td>Pin Icon</td> <td>Icon</td> <td>Pin Image</td> </tr>
+  <tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
+  <tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
+  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  <tr><td> </td> <td>Bell Icon</td> <td>Icon</td> <td>Bell Image</td> </tr>
+  <tr><td> </td> <td>ReminderOccurence</td> <td>String</td> <td>Event Reminder</td> </tr>
+  <tr><td> </td> <td>addNotification</td> <td>String</td> <td>add another Notification</td> </tr>
+  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  <tr><td> </td> <td>Menu Icon</td> <td>Icon</td> <td>Menu Image</td> </tr>
+  <tr><td> </td> <td>Note</td> <td>String</td> <td>Notes Text</td> </tr>
+  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>  
+
+</table>
