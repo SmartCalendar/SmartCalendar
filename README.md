@@ -77,21 +77,21 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 ## Smart Calendar - Scheme Design
 <ol>
-<li>1. Login Activity</li>
-<li>2. Calendar</li>
-<li>3. Day View</li>
-<li>4. ActivityDetails</li>
-<li>5. ActivityEdit</li>
+<li> Login Activity</li>
+<li> Calendar</li>
+<li> Day View</li>
+<li> ActivityDetails</li>
+<li> ActivityEdit</li>
 </ol>
 
 <ol>
-<li>1. Login Activity</li>
+<li> Login Activity</li>
      <ul><li>=>objectID / Image</li>
      <li>=>Login Authorization</li>
      <li>=>Login Authentication</li>
      <li>=>Signed out</li>
 
-<li>2. Calendar</li>
+<li> Calendar</li>
      <ul><li>=>objectId Year</li>
      <li>=>objectId Month</li>
      <li>=>objectId MonthView</li>
@@ -101,7 +101,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <li>=>recyclerView</li>
        <li>=>Events</li></ul>
 
-<li>3. Day View</li>
+<li> Day View</li>
      <ul><li>=>objectIDd Date</li>
        <li>=>objectId Month</li>
        <li>=>objectId Date</li>
@@ -110,7 +110,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
        <li>=>objectId Post</li>
          <li>=>objectId Title</li></ul>
 
-<li>4. ActivityDetails</li>
+<li> ActivityDetails</li>
      <ul><li>=>objectId MenuBackArrow</li>
      <li>=>objectId Edit/PencilIcon</li>
      <li>=>objectId Delete/TrashIcon</li>
@@ -130,7 +130,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
        <li>=>objectId Notes/MenuIcon</li>
        <li>=>objectId Notes</li></ul>
 
-<li>5. ActivityEdit</li>
+<li> ActivityEdit</li>
      <ul><li>=>objectId Close/XIcon</li>
      <li>=>objectId Done/CheckIcon</li>
      <li>=>objectId Divider</li>
