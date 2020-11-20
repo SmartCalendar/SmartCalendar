@@ -264,8 +264,10 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 	<tr><td> </td>	
 	<td>(Read/GET)</td>
 	<td>Events</td></tr>
+	<tr><td> </td>	
 	<td>(Update/PUT)</td>
 	<td>Events Title</td></tr>
+	<tr><td> </td>	
 	<td>(Update/PUT)</td>
 	<td>Events Times</td></tr>
   <tr><th>-Day View</th><th> </th><th> </th></tr>
@@ -284,6 +286,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 	<tr><td> </td>
 	<td>(Read/GET)</td>
 	<td>Event</td></tr>
+	<tr><td> </td>	
 	<td>(Update/PUT)</td>
 	<td>Event Title</td></tr>
   <tr><th>-ActivityDetails</th><th> </th><th> </th></tr>
@@ -311,7 +314,6 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 	<tr><td> </td>
 	<td>(Delete/DELETE)</td>
 	<td>Delete Event</td></tr>
-	<tr><td> </td>
   <tr><th>-ActivityEdit</th><th> </th><th> </th></tr>
   	<tr><td> </td>
 	<td>(Read/GET)</td>
@@ -349,5 +351,5 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 	<tr><td> </td>
 	<td>(Create/POST)</td>
 	<td>Confirm Event Changes</td></tr>
-	<tr><td> </td>
+
 </table>
