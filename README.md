@@ -215,3 +215,13 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
   <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>  
 
 </table>
+
+
+<table>
+	<tr><th>Network Requests</th> <td> </td> <td> </td> </tr>
+	<tr><td>CRUD</td> <td> HTTP VERB </td> <td> Example </td> </tr>
+	<tr><td>Create</td> <td> POST </td> <td> Creating a new event </td> </tr>
+	<tr><td>Read</td> <td> GET </td> <td> Reading from Google API </td> </tr>
+	<tr><td>Update</td> <td> PUT </td> <td> Changing a user’s calendar Event</td> </tr>
+	<tr><td>Delete</td> <td> DELETE </td> <td> Deleting an event </td> </tr>
+</table>
