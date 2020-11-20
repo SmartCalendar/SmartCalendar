@@ -225,3 +225,129 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 	<tr><td>Update</td> <td> PUT </td> <td> Changing a user’s calendar Event</td> </tr>
 	<tr><td>Delete</td> <td> DELETE </td> <td> Deleting an event </td> </tr>
 </table>
+
+## Network Requests 
+
+<table>
+<tr><th>-Login Activity</th><th> </th><th> </th></tr>
+  <tr><td> </td>
+        <td>(Read/GET)</td>
+	<td>Google API</td></tr>
+	<tr><td> </td>	
+	<td>(Create/POST)</td>
+	<td>Google User Authentication</td></tr>
+	<tr><td> </td>	
+	<td>(Update/PUT)</td>
+	<td>Google User Authorization</td></tr>
+	<tr><td> </td>	
+	<td>(Delete/DELETE)</td>
+	<td>Signed out</td></tr>
+  <tr><th>-Calendar</th><th> </th><th> </th></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Year</td></tr>
+	<tr><td> </td>	
+	<td>(Update/PUT)</td>
+	<td>Month</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Days of Week</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Day Focus</td></tr>
+	<tr><td> </td>	
+	<td>(Update/PUT)</td>
+	<td>Day View</td></tr>
+	<tr><td> </td>	
+	<td>(Update/PUT)</td>
+	<td>recyclerView</td></tr>
+	<tr><td> </td>	
+	<td>(Read/GET)</td>
+	<td>Events</td></tr>
+	<td>(Update/PUT)</td>
+	<td>Events Title</td></tr>
+	<td>(Update/PUT)</td>
+	<td>Events Times</td></tr>
+  <tr><th>-Day View</th><th> </th><th> </th></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Month</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Date</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Day</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>recyclerView</td></tr>
+	<tr><td> </td>
+	<td>(Read/GET)</td>
+	<td>Event</td></tr>
+	<td>(Update/PUT)</td>
+	<td>Event Title</td></tr>
+  <tr><th>-ActivityDetails</th><th> </th><th> </th></tr>
+  	<tr><td> </td>
+	<td>(Read/GET)</td>
+	<td>Event</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Title</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Date</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Location</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Reminder</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Notes</td></tr>
+	<tr><td> </td>
+	<td>(Create/POST)</td>
+	<td>Create a new Event</td></tr>
+	<tr><td> </td>
+	<td>(Delete/DELETE)</td>
+	<td>Delete Event</td></tr>
+	<tr><td> </td>
+  <tr><th>-ActivityEdit</th><th> </th><th> </th></tr>
+  	<tr><td> </td>
+	<td>(Read/GET)</td>
+	<td>Event</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Title</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Start Date</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Start Time</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>End Date</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>End Time</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Location</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Address</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Reminder</td></tr>
+	<tr><td> </td>
+	<td>(Create/Post)</td>
+	<td>Add Notification</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Notes</td></tr>
+	<tr><td> </td>
+	<td>(Create/POST)</td>
+	<td>Confirm Event Changes</td></tr>
+	<tr><td> </td>
+</table>
