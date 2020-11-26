@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333131">
+
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#333131"
+        android:drawableTop="@android:drawable/ic_menu_close_clear_cancel" />
+
+
+
+    <EditText
+        android:id="@+id/etMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnClose"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/btnClose"
+        android:hint="Month"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="22sp" />
+
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnClose"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/etMonth"
+        android:hint="Date"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/editWeekDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnClose"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/etDate"
+        android:hint="Weekday"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF"
+        android:textSize="22sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDayPlanner"
+        android:layout_width="match_parent"
+        android:layout_height="526dp"
+        android:layout_below="@+id/divider"
+        android:layout_alignBottom="@+id/etDate"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#46FFFFFF" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/etMonth"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
+
+
+</RelativeLayout>
