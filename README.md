@@ -81,6 +81,9 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 ### [BONUS] Interactive Prototype
 <img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Interactive%20Prototype.gif" width=350>
 
+### Floating Action Menu
+<img src="https://github.com/SmartCalendar/SmartCalendar/blob/main/floatingActionMenu.gif" width=350>
+
 ## Smart Calendar - Scheme Design
 <ol>
 <li> Login Activity</li>
