@@ -21,49 +21,55 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 ### 1. User Stories (Required and Optional)
 
+** Wire Framing **
+- [x] Wire Framing
+
+** Data Modeling**
+- [x] Data Model / Wireframe - completed via Imgur
+
 **Required Must-have Stories**
 
-* User can login
-* Push notification to remind user of events/tasks
-* User can see a daily and monthly calendar view 
-* User can manually input, modify, and delete items on their calendar
-* User can use their camera to take a photo of texts to create items on thier calendar 
+* [ ] User can login
+* [ ] Push notification to remind user of events/tasks
+* [ ] User can see a daily and monthly calendar view 
+* [ ] User can manually input, modify, and delete items on their calendar
+* [ ] User can use their camera to take a photo of texts to create items on thier calendar 
 
 **Optional Nice-to-have Stories**
 
-* User can color code items on their calendar
-* User can set the priority of items on thier calendar
-* User can invite others to events or meetings
-* User can link multiple accounts
-* User can switch accounts
-* User can access their calendar offline
+* [ ] User can color code items on their calendar
+* [ ] User can set the priority of items on thier calendar
+* [ ] User can invite others to events or meetings
+* [ ] User can link multiple accounts
+* [ ] User can switch accounts
+* [ ] User can access their calendar offline
 
 ### 2. Screen Archetypes
 
-* Login Screen
-   * User can login
-* Stream Screen (Monthly)
-   * User can view the calendar for the month
-* Stream Screen (Daily)
-   * User can view the agenda of a day
-* Detail Screen
-   * User can view the details of an item on the calendar or delete it
-* Creation Screen
-   * User can create or modify an item on the calendar
+* [x] Login Screen
+   * [ ] User can login
+* [ ] Stream Screen (Monthly)
+   * [ ] User can view the calendar for the month
+* [ ] Stream Screen (Daily)
+   * [ ] User can view the agenda of a day
+* [x] Detail Screen
+   * [ ] User can view the details of an item on the calendar or delete it
+* [x] Creation Screen
+   * [ ] User can create or modify an item on the calendar
    
 ### 3. Navigation
 
 **Flow Navigation** (Screen to Screen)
 
-* Login Screen
+* [x] Login Screen
    => Calendar
-* Stream Screen (Monthly)
+* [ ] Stream Screen (Monthly)
    => Stream Screen (Daily) / Detail Screen / Creation Screen
-* Stream Screen (Daily)
+* [ ] Stream Screen (Daily)
    => Stream Screen (Monthly) / Detail Screen / Creation Screen
-* Detail Screen
+* [x] Detail Screen
    => Stream Screen (Monthly) / Stream Screen (Daily) / Creation Screen
-* Creation Screen 
+* [x] Creation Screen 
    => Stream Screen (Monthly) / Stream Screen (Daily) / Detail Screen 
 
 ## Wireframes
