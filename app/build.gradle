@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.example.smartcalendar"
@@ -34,6 +34,7 @@ dependencies {
 
     implementation 'com.squareup.picasso:picasso:2.71828'
     testImplementation 'junit:junit:4.12'
+    implementation 'com.applandeo:material-calendar-view:1.4.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "androidx.appcompat:appcompat:${appCompatVersion}"
