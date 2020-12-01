@@ -21,49 +21,55 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 ### 1. User Stories (Required and Optional)
 
+** Wire Framing **
+- [x] Wire Framing
+
+** Data Modeling**
+- [x] Data Model / Wireframe - completed via Imgur
+
 **Required Must-have Stories**
 
-* User can login
-* Push notification to remind user of events/tasks
-* User can see a daily and monthly calendar view 
-* User can manually input, modify, and delete items on their calendar
-* User can use their camera to take a photo of texts to create items on thier calendar 
+* [ ] User can login
+* [ ] Push notification to remind user of events/tasks
+* [ ] User can see a daily and monthly calendar view 
+* [ ] User can manually input, modify, and delete items on their calendar
+* [ ] User can use their camera to take a photo of texts to create items on thier calendar 
 
 **Optional Nice-to-have Stories**
 
-* User can color code items on their calendar
-* User can set the priority of items on thier calendar
-* User can invite others to events or meetings
-* User can link multiple accounts
-* User can switch accounts
-* User can access their calendar offline
+* [ ] User can color code items on their calendar
+* [ ] User can set the priority of items on thier calendar
+* [ ] User can invite others to events or meetings
+* [ ] User can link multiple accounts
+* [ ] User can switch accounts
+* [ ] User can access their calendar offline
 
 ### 2. Screen Archetypes
 
-* Login Screen
-   * User can login
-* Stream Screen (Monthly)
-   * User can view the calendar for the month
-* Stream Screen (Daily)
-   * User can view the agenda of a day
-* Detail Screen
-   * User can view the details of an item on the calendar or delete it
-* Creation Screen
-   * User can create or modify an item on the calendar
+* [x] Login Screen
+   * [ ] User can login
+* [ ] Stream Screen (Monthly)
+   * [ ] User can view the calendar for the month
+* [ ] Stream Screen (Daily)
+   * [ ] User can view the agenda of a day
+* [x] Detail Screen
+   * [ ] User can view the details of an item on the calendar or delete it
+* [x] Creation Screen
+   * [ ] User can create or modify an item on the calendar
    
 ### 3. Navigation
 
 **Flow Navigation** (Screen to Screen)
 
-* Login Screen
+* [x] Login Screen
    => Calendar
-* Stream Screen (Monthly)
+* [ ] Stream Screen (Monthly)
    => Stream Screen (Daily) / Detail Screen / Creation Screen
-* Stream Screen (Daily)
+* [ ] Stream Screen (Daily)
    => Stream Screen (Monthly) / Detail Screen / Creation Screen
-* Detail Screen
+* [x] Detail Screen
    => Stream Screen (Monthly) / Stream Screen (Daily) / Creation Screen
-* Creation Screen 
+* [x] Creation Screen 
    => Stream Screen (Monthly) / Stream Screen (Daily) / Detail Screen 
 
 ## Wireframes
@@ -74,3 +80,242 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 ### [BONUS] Interactive Prototype
 <img src="https://github.com/YilikaLoufoua/SmartCalendar/blob/main/Interactive%20Prototype.gif" width=350>
+
+### Floating Action Menu
+<img src="https://github.com/SmartCalendar/SmartCalendar/blob/main/floatingActionMenu.gif" width=350>
+
+## Smart Calendar - Scheme Design
+<ol>
+<li> Login Activity</li>
+<li> Calendar</li>
+<li> Day View</li>
+<li> ActivityDetails</li>
+<li> ActivityEdit</li>
+<li> ImageActivity</li>
+</ol>
+
+<ol>
+<li> Login Activity</li>
+     <ul><li>Image</li>
+     <li>Login Authorization</li>
+     <li>Login Authentication</li>
+       <ol><li>Signed out</li></ol></ul>
+
+
+<li> Day View</li>
+     <ul><li>MenuBackArrow</li>
+       <ol><li>Month</li>
+       <li>Date</li>
+       <li>Day</li></ol>
+     <li>recyclerView</li>
+       <ol><li>Post</li>
+         <ol><li>Title</li></ol></ol></ul>
+
+<li> ActivityDetails</li>
+     <ul><li>MenuBackArrow</li>
+     <li>Edit/PencilIcon</li>
+     <li>Delete/TrashIcon</li>
+     <li>Title</li>
+     <li>dateTime</li>
+       <ol><li>Month</li>
+       <li>Date</li>
+       <li>Day</li></ol>
+     <li>Location</li>
+       <ol><li>Pin</li>
+       <li>Location</li>
+       <li>Address</li></ol>
+     <li>Notification</li>
+       <ol><li>Reminder/BellIcon</li>
+       <li>ReminderOccurence</li></ol>
+     <li>Decription</li>
+       <ol><li>Notes/MenuIcon</li>
+       <li>Notes</li></ol></ul>
+
+<li> ActivityEdit</li>
+     <ul><li>Close/XIcon</li>
+     <li>Done/CheckIcon</li>
+     <li>Divider</li>
+     <li>clockIcon</li>
+     <li>addStartDate</li>
+     <li>addStartTime</li>
+     <li>addEndDate</li>
+     <li>addEndTime</li>
+     <li>Divider</li>
+     <li>addLocation</li>
+     <li>Divider</li>
+     <li>addNotification</li>
+     <li>Divider</li>
+     <li>addDescription</li></ul>
+</ol>
+
+<li> ImageActivity</li>
+	<ul><li>Image</li>
+	<li>Extracted Text</li>
+
+## Data Model 
+
+<table>
+	<tr><td> </td> <td>Property</td><td>Type</td><td>Description</td></tr>
+<tr><td>Login Activity</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>objectId</td> <td>File</td> <td>pointer to calendar image</td> </tr>
+	<tr><td> </td> <td>Login Authentication</td> <td>API call</td> <td>authenticate user with Google</td> </tr>
+	<tr><td> </td> <td>Login Authorization/td> <td>API call</td> <td>user authorized app for use with Google</td> </tr>
+  <tr><td> </td> <td>Signed out</td> <td>File</td> <td>has the User signed out</td> </tr>
+	
+<tr><td>Day View</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Menu Back Arrow</td> <td>Menu Item</td> <td>sends user back to Calendar</td> </tr>
+	<tr><td> </td> <td>Month</td> <td>DateTime</td> <td>Call to Event Month</td> </tr>
+	<tr><td> </td> <td>Date</td> <td>DateTime</td> <td>Call to Event Day</td> </tr>
+	<tr><td> </td> <td>Day</td> <td>DateTime</td> <td>Call to Event Day</td> </tr>
+  <tr><td> </td> <td>recyclerView</td> <td>recyclerView</td> <td>Lists event for selected day in chronological order</td> </tr>
+  <tr><td> </td> <td>Post</td> <td>Highlight</td> <td>Shading of Event</td> </tr>
+  <tr><td> </td> <td>Title</td> <td>Text</td> <td>Title of Event</td> </tr>
+
+<tr><td>ActivityDetails</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Menu Back Arrow</td> <td>Menu Item</td> <td>sends user back to Calendar</td> </tr>
+	<tr><td> </td> <td>Menu Edit</td> <td>Image</td> <td>Pencil Icon -leads to Activity Edit</td> </tr>
+	<tr><td> </td> <td>Menu Delete</td> <td>Image</td> <td>Pencil Icon -leads to Activity Delete</td> </tr>
+  <tr><td> </td> <td>Title</td> <td>String</td> <td>Event Title</td> </tr>
+  <tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, to - from Time</td> </tr>
+  <tr><td> </td> <td>Pin Icon</td> <td>Icon</td> <td>Pin Image</td> </tr>
+  <tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
+  <tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
+  <tr><td> </td> <td>Bell Icon</td> <td>Icon</td> <td>Bell Image</td> </tr>
+  <tr><td> </td> <td>ReminderOccurence</td> <td>String</td> <td>Event Reminder</td> </tr>
+  <tr><td> </td> <td>Menu Icon</td> <td>Icon</td> <td>Menu Image</td> </tr>
+  <tr><td> </td> <td>Reminder</td> <td>String</td> <td>Notes</td> </tr>  
+	
+<tr><td>ActivityEdit</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Menu Close</td> <td>Icon</td> <td>Closes Edit Activity</td> </tr>
+	<tr><td> </td> <td>Title</td> <td>String</td> <td>Event Title</td> </tr>
+	<tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  <tr><td> </td> <td>Clock Icon</td> <td>Icon</td> <td>Clock Image</td> </tr>
+  <tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, from Time</td> </tr>
+  <tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, to Time</td> </tr>
+  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  <tr><td> </td> <td>Pin Icon</td> <td>Icon</td> <td>Pin Image</td> </tr>
+  <tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
+  <tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
+  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  <tr><td> </td> <td>Bell Icon</td> <td>Icon</td> <td>Bell Image</td> </tr>
+  <tr><td> </td> <td>ReminderOccurence</td> <td>String</td> <td>Event Reminder</td> </tr>
+  <tr><td> </td> <td>addNotification</td> <td>String</td> <td>add another Notification</td> </tr>
+  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  <tr><td> </td> <td>Menu Icon</td> <td>Icon</td> <td>Menu Image</td> </tr>
+  <tr><td> </td> <td>Note</td> <td>String</td> <td>Notes Text</td> </tr>
+  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>  
+  
+<tr><td>ImageActivity</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Image</td> <td>Media Object</td> <td>Image taken by User</td> </tr>
+	<tr><td> </td> <td>Extracted Test</td> <td>String</td> <td>Text extracted from image</td> </tr>
+
+</table>
+
+<table>
+	<tr><th>Network Requests</th> <td> </td> <td> </td> </tr>
+	<tr><td>CRUD</td> <td> HTTP VERB </td> <td> Example </td> </tr>
+	<tr><td>Create</td> <td> POST </td> <td> Creating a new event </td> </tr>
+	<tr><td>Read</td> <td> GET </td> <td> Reading from Google API </td> </tr>
+	<tr><td>Update</td> <td> PUT </td> <td> Changing a user’s calendar Event</td> </tr>
+	<tr><td>Delete</td> <td> DELETE </td> <td> Deleting an event </td> </tr>
+</table>
+
+## Network Requests 
+
+<table>
+<tr><th>-Login Activity</th><th> </th><th> </th></tr>
+  <tr><td> </td>
+        <td>(Read/GET)</td>
+	<td>Google API</td></tr>
+	<tr><td> </td>	
+	<td>(Create/POST)</td>
+	<td>Google User Authentication</td></tr>
+	<tr><td> </td>	
+	<td>(Update/PUT)</td>
+	<td>Google User Authorization</td></tr>
+	<tr><td> </td>	
+	<td>(Delete/DELETE)</td>
+	<td>Signed out</td></tr>
+  <tr><th>-Day View</th><th> </th><th> </th></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Month</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Date</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Day</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>recyclerView</td></tr>
+	<tr><td> </td>
+	<td>(Read/GET)</td>
+	<td>Event</td></tr>
+	<tr><td> </td>	
+	<td>(Update/PUT)</td>
+	<td>Event Title</td></tr>
+  <tr><th>-ActivityDetails</th><th> </th><th> </th></tr>
+  	<tr><td> </td>
+	<td>(Read/GET)</td>
+	<td>Event</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Title</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Date</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Location</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Reminder</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Notes</td></tr>
+	<tr><td> </td>
+	<td>(Create/POST)</td>
+	<td>Create a new Event</td></tr>
+	<tr><td> </td>
+	<td>(Delete/DELETE)</td>
+	<td>Delete Event</td></tr>
+  <tr><th>-ActivityEdit</th><th> </th><th> </th></tr>
+  	<tr><td> </td>
+	<td>(Read/GET)</td>
+	<td>Event</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Title</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Start Date</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Start Time</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>End Date</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>End Time</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Location</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Address</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Reminder</td></tr>
+	<tr><td> </td>
+	<td>(Create/Post)</td>
+	<td>Add Notification</td></tr>
+	<tr><td> </td>
+	<td>(Update/PUT)</td>
+	<td>Notes</td></tr>
+	<tr><td> </td>
+	<td>(Create/POST)</td>
+	<td>Confirm Event Changes</td></tr>
+
+</table>
