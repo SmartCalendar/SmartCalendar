@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:card_view="http://schemas.android.com/tools"
+<FrameLayout xmlns:card_view="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fabFrame"
     android:layout_width="match_parent"
@@ -7,20 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#333131"
     >
-
-    <TextView
-        android:id="@+id/Event_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="107dp"
-        android:layout_toStartOf="@+id/fab_event"
-        android:background="#7850BF"
-        android:padding="8dp"
-        android:text="Add Event"
-        android:visibility="invisible"
-        android:textColor="#ffffff" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_event"
@@ -40,21 +26,6 @@
         app:pressedTranslationZ="12dp"
         app:srcCompat="@drawable/ic_baseline_event_24"
         />
-
-    <TextView
-        android:id="@+id/Camera_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/Event_text"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="34dp"
-        android:background="#7850BF"
-        android:padding="8dp"
-        android:visibility="invisible"
-        android:text="Camera"
-
-        android:textColor="#ffffff" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_camera"
@@ -93,4 +64,4 @@
 
 
 
-</RelativeLayout>
+</FrameLayout>
