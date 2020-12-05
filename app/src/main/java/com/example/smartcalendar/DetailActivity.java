@@ -1,5 +1,4 @@
 package com.example.smartcalendar;
 
-public class DetailActivity {
-
+public class DetailActivity
 }
