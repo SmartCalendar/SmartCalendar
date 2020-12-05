@@ -1,21 +1,49 @@
 package com.example.smartcalendar;
 
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smartcalendar.models.DailyAgenda;
 import com.example.smartcalendar.models.Item;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.Text;
+import com.google.mlkit.vision.text.TextRecognition;
+import com.google.mlkit.vision.text.TextRecognizer;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DailyActivity extends AppCompatActivity {
@@ -23,9 +51,13 @@ public class DailyActivity extends AppCompatActivity {
     private FloatingActionButton fab_main, fab_camera, fab_event;
     private Animation fab_open, fab_close, fab_clock, fab_anticlock;
     Boolean isOpen = false;
+    public static final String TAG = "dailyactivity";
+    ImageView imageView;
 
     TextView tvYear;
     TextView tvMonth;
+
+    private Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +80,7 @@ public class DailyActivity extends AppCompatActivity {
         fab_main = findViewById(R.id.fab_main);
         fab_camera = findViewById(R.id.fab_camera);
         fab_event = findViewById(R.id.fab_event);
+
 
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
@@ -86,21 +119,143 @@ public class DailyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getApplicationContext(), "Take picture", Toast.LENGTH_SHORT).show();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.CAMERA)
+                            == PackageManager.PERMISSION_DENIED ||
+                            checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                                    == PackageManager.PERMISSION_DENIED
+                    ) {
+                        // Permission was not granted
+                        // Ask for runtime permission
+                        String[] permissions = new String[2];
+                        permissions[0] = Manifest.permission.CAMERA;
+                        permissions[1] = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
+                        requestPermissions(
+                                permissions,
+                                101
+                        );
+
+                    } else {
+                        // Permission already granted
+                        openCamera();
+                    }
+
+                } else {
+                    // System OS < Marshmallow
+                    openCamera();
+                }
 
             }
         });
 
+
+        // TODO: Link this to open up the EditActivity
         fab_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Toast.makeText(getApplicationContext(), "Add event", Toast.LENGTH_SHORT).show();
-
             }
         });
 
     }
+
+    private void openCamera() {
+
+        Intent camintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        // Ensure that there's a camera activity to handle the intent
+        if (camintent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+                Log.e(TAG, "Error occured creating the file");
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "com.example.android.fileprovider",
+                        photoFile);
+                camintent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(camintent, 101);
+            }
+        }
+
+    }
+
+    private File createImageFile() throws IOException {
+        String currentPhotoPath;
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+//        Uri image2 = data.getData();
+            try {
+            InputImage image = InputImage.fromFilePath(this, imageUri);
+
+            TextRecognizer recognizer = TextRecognition.getClient();
+
+            Task<Text> result =
+                    recognizer.process(image)
+                            .addOnSuccessListener(new OnSuccessListener<Text>() {
+                                @Override
+                                public void onSuccess(Text visionText) {
+                                    // Task completed successfully. {Text} Object is passed to success listener.
+                                    // {Text} object contains full text recognized in the image & 0 or more {TextBlock} objects.
+                                    // {TextBlock} represents a rectangular block of text which has 0 or more {Line} objects.
+                                    // Each {Line} object contains 0 or more {Element} objects which represent words and word-like entities such as dates and numbers
+                                    // We might be interested in parsing {Element}s. For now we do a triple nested for loop for each {TextBlock}, {Line}, {Element}
+
+                                    String resultText = visionText.getText();
+
+                                }
+                            })
+                            .addOnFailureListener(
+                                    new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            // Task failed with an exception
+                                            // Toast.makeText(getApplicationContext(), "on failure", Toast.LENGTH_SHORT).show();
+                                            Log.i("CameraX", "Text Recognition failed. Error: " + e);
+                                        }
+                                    })
+                            // TODO: Make sure this is working!!!!
+                            // check for errors in this OnCompleteListener implementation (im scared)
+                            .addOnCompleteListener(new OnCompleteListener<Text>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Text> task) {
+
+                                }
+                            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+    }
+
 
     private List<DailyAgenda> getAgendaList() {
         List<DailyAgenda> agendaList = new ArrayList<>();

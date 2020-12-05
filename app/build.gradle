@@ -42,4 +42,6 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${appCompatVersion}"
     implementation "com.google.android.material:material:${designSupportVersion}"
 
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.1'
+
 }
