@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="5dp"
         android:fontFamily="@font/alef"
         android:text="November"
         android:textColor="#5A62AE"
@@ -33,7 +33,7 @@
         android:layout_marginBottom="32dp"
         android:fontFamily="@font/amaranth"
         android:text="2020"
-        android:textColor="#B25A62AE"
+        android:textColor="#E65A62AE"
         android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -29,9 +29,10 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 **Required Must-have Stories**
 
-* [ ] User can login
+* [x] User can login
 * [ ] Push notification to remind user of events/tasks
-* [ ] User can see a daily and monthly calendar view 
+* [ ] User can see a daily calendar view
+* [x] User can see a monthly calendar view 
 * [ ] User can manually input, modify, and delete items on their calendar
 * [ ] User can use their camera to take a photo of texts to create items on thier calendar 
 
@@ -48,8 +49,8 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 * [x] Login Screen
    * [ ] User can login
-* [ ] Stream Screen (Monthly)
-   * [ ] User can view the calendar for the month
+* [x] Stream Screen (Monthly)
+   * [x] User can view the calendar for the month
 * [ ] Stream Screen (Daily)
    * [ ] User can view the agenda of a day
 * [x] Detail Screen
@@ -63,7 +64,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 * [x] Login Screen
    => Calendar
-* [ ] Stream Screen (Monthly)
+* [x] Stream Screen (Monthly)
    => Stream Screen (Daily) / Detail Screen / Creation Screen
 * [ ] Stream Screen (Daily)
    => Stream Screen (Monthly) / Detail Screen / Creation Screen
@@ -83,6 +84,12 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 ### Floating Action Menu
 <img src="https://github.com/SmartCalendar/SmartCalendar/blob/main/floatingActionMenu.gif" width=350>
+
+### Logging in with Federated Login - Google API
+<img src="https://github.com/SmartCalendar/SmartCalendar/blob/main/loginAPI.gif" width=350>
+
+### Monthly View Built out
+<img src="https://github.com/SmartCalendar/SmartCalendar/blob/main/monthlyView.gif" width=350>
 
 ## Smart Calendar - Scheme Design
 <ol>
