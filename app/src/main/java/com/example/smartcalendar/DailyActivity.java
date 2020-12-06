@@ -5,14 +5,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.core.graphics.BitmapCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
@@ -39,12 +42,18 @@ import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static android.graphics.Bitmap.CompressFormat.JPEG;
+import static android.os.Environment.getExternalStoragePublicDirectory;
 
 public class DailyActivity extends AppCompatActivity {
 
@@ -160,8 +169,9 @@ public class DailyActivity extends AppCompatActivity {
             }
         });
 
-    }
 
+    }
+    File photoFile;
     private void openCamera() {
 
         Intent camintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -169,7 +179,7 @@ public class DailyActivity extends AppCompatActivity {
         // Ensure that there's a camera activity to handle the intent
         if (camintent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
-            File photoFile = null;
+            photoFile = null;
             try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
@@ -187,9 +197,9 @@ public class DailyActivity extends AppCompatActivity {
         }
 
     }
-
+    String currentPhotoPath;
     private File createImageFile() throws IOException {
-        String currentPhotoPath;
+//        String currentPhotoPath;
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -209,49 +219,49 @@ public class DailyActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-//        Uri image2 = data.getData();
-            try {
-            InputImage image = InputImage.fromFilePath(this, imageUri);
-
-            TextRecognizer recognizer = TextRecognition.getClient();
-
-            Task<Text> result =
-                    recognizer.process(image)
-                            .addOnSuccessListener(new OnSuccessListener<Text>() {
-                                @Override
-                                public void onSuccess(Text visionText) {
-                                    // Task completed successfully. {Text} Object is passed to success listener.
-                                    // {Text} object contains full text recognized in the image & 0 or more {TextBlock} objects.
-                                    // {TextBlock} represents a rectangular block of text which has 0 or more {Line} objects.
-                                    // Each {Line} object contains 0 or more {Element} objects which represent words and word-like entities such as dates and numbers
-                                    // We might be interested in parsing {Element}s. For now we do a triple nested for loop for each {TextBlock}, {Line}, {Element}
-
-                                    String resultText = visionText.getText();
-
-                                }
-                            })
-                            .addOnFailureListener(
-                                    new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            // Task failed with an exception
-                                            // Toast.makeText(getApplicationContext(), "on failure", Toast.LENGTH_SHORT).show();
-                                            Log.i("CameraX", "Text Recognition failed. Error: " + e);
-                                        }
-                                    })
-                            // TODO: Make sure this is working!!!!
-                            // check for errors in this OnCompleteListener implementation (im scared)
-                            .addOnCompleteListener(new OnCompleteListener<Text>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Text> task) {
-
-                                }
-                            });
+        InputImage imageProxy2=null;
+        Uri takenPhotoUri = Uri.fromFile(new File(currentPhotoPath));
+        try {
+            imageProxy2 = InputImage.fromFilePath(this, takenPhotoUri);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
+        TextRecognizer recognizer = TextRecognition.getClient();
+
+        Task<Text> result =
+                recognizer.process(imageProxy2)
+                        .addOnSuccessListener(new OnSuccessListener<Text>() {
+                            @Override
+                            public void onSuccess(Text visionText) {
+                                // Each {Line} object contains 0 or more {Element} objects which represent words and word-like entities such as dates and numbers
+                                // We might be interested in parsing {Element}s. For now we do a triple nested for loop for each {TextBlock}, {Line}, {Element}
+
+                                // Extract text is stored in variable "resultText"
+                                String resultText = visionText.getText();
+                                Toast.makeText(getApplicationContext(), resultText, Toast.LENGTH_SHORT).show();
+                                Log.e(TAG, "Text Recognizer: "+ resultText);
+
+                            }
+                        })
+                        .addOnFailureListener(
+                                new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Task failed with an exception
+                                        // Toast.makeText(getApplicationContext(), "on failure", Toast.LENGTH_SHORT).show();
+                                        Log.i("CameraX", "Text Recognition failed. Error: " + e);
+                                    }
+                                })
+                        // TODO: Make sure this is working!!!!
+                        // check for errors in this OnCompleteListener implementation (im scared)
+                        .addOnCompleteListener(new OnCompleteListener<Text>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Text> task) {
+
+                            }
+                        });
 
 
     }
