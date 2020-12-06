@@ -16,7 +16,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Rect;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
@@ -50,19 +49,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import static android.graphics.Bitmap.CompressFormat.JPEG;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 
-public class DailyActivity extends AppCompatActivity {
+
+public class DailyViewActivity extends AppCompatActivity {
 
     private FloatingActionButton fab_main, fab_camera, fab_event;
-    private Animation fab_open, fab_close, fab_clock, fab_anticlock;
+    private Animation fab_open, fab_close, fab_clock, fab_anti_clock;
     Boolean isOpen = false;
-    public static final String TAG = "dailyactivity";
+    public static final String TAG = "DailyActivity";
+    String currentPhotoPath;
+
     ImageView imageView;
 
     TextView tvYear;
@@ -96,7 +97,7 @@ public class DailyActivity extends AppCompatActivity {
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_clock = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_clock);
-        fab_anticlock = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_anticlock);
+        fab_anti_clock = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_anticlock);
 
         fab_main.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +107,7 @@ public class DailyActivity extends AppCompatActivity {
 
                     fab_camera.startAnimation(fab_close);
                     fab_event.startAnimation(fab_close);
-                    fab_main.startAnimation(fab_anticlock);
+                    fab_main.startAnimation(fab_anti_clock);
                     fab_camera.setClickable(false);
                     fab_event.setClickable(false);
                     isOpen = false;
@@ -123,11 +124,12 @@ public class DailyActivity extends AppCompatActivity {
         });
 
         // camera button click listener
+        // TODO: 1. Setup implicit intent to access camera and take a photograph.
+        // TODO:        Startactivity for result? How to navigate from here? Should there be a camera layout screen or jump straight to device camera?
         // TODO: 2. TextRecognition processor on high quality image then -> auto-fill event details with Natty parser and other support libs
         fab_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (checkSelfPermission(Manifest.permission.CAMERA)
@@ -159,7 +161,6 @@ public class DailyActivity extends AppCompatActivity {
             }
         });
 
-
         // TODO: Link this to open up the EditActivity
         fab_event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,10 +169,8 @@ public class DailyActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Add event", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
-    File photoFile; // declaring global variable to later get path for file
+
     private void openCamera() {
 
         Intent camintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -179,7 +178,7 @@ public class DailyActivity extends AppCompatActivity {
         // Ensure that there's a camera activity to handle the intent
         if (camintent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
-            photoFile = null;
+            File photoFile = null;
             try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
@@ -195,11 +194,9 @@ public class DailyActivity extends AppCompatActivity {
                 startActivityForResult(camintent, 101);
             }
         }
-
     }
-    String currentPhotoPath;
+
     private File createImageFile() throws IOException {
-//        String currentPhotoPath;
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -227,7 +224,6 @@ public class DailyActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         TextRecognizer recognizer = TextRecognition.getClient();
 
         Task<Text> result =
@@ -242,46 +238,6 @@ public class DailyActivity extends AppCompatActivity {
                                 String resultText = visionText.getText();
                                 Toast.makeText(getApplicationContext(), resultText, Toast.LENGTH_SHORT).show();
                                 Log.e(TAG, "Text Recognizer: "+ resultText);
-
-                                // Attempt to proxy font size with box frame heights
-                                ArrayList<String> frametexts = new ArrayList<String>();
-                                ArrayList<Float> frameheights = new ArrayList<Float>();
-                                List<Text.TextBlock> blocks = visionText.getTextBlocks();
-                                for (Text.TextBlock block : visionText.getTextBlocks()) {
-                                    for (Text.Line line : block.getLines()) {
-                                        Rect frame = line.getBoundingBox();
-                                        float fontsize = frame.bottom - frame.top;
-                                        String sampletext = line.getText();
-//                                        int fontsize = frame.height();
-                                        frameheights.add(fontsize);
-                                        frametexts.add(sampletext);
-                                    }
-                                }
-
-                                for (int i=0; i<frameheights.size(); i++) {
-//                                    Log.e(TAG, "Frame height: " + frameheights.get(i));
-                                }
-//                                Log.e(TAG, "ArrayList Size: " + frameheights.size());
-
-                                // print the text in the line with max height. maybe print 2nd max if its nearby.(use heuristic here?)
-                                // once ArrayList is filled, go back find the max, print that line
-                                Float maxVal = Collections.max(frameheights);
-                                Integer maxIdx = frameheights.indexOf(maxVal);
-                                // 15% difference for the 2nd or 3rd line that title test takes up
-                                double bottomdouble = (maxVal-maxVal*.15);
-                                float maxValbottom = (float) bottomdouble;
-
-                                // get index of each frameheight > maxValBottom (15% cutoff), print in a tag with the text also
-                                // TODO: set log for outlier (font size 800 in food fair & cultural night)
-                                ArrayList<Integer> frameheightidxs = new ArrayList<Integer>();
-                                for (int i=0; i<frameheights.size(); i++) {
-                                    if (frameheights.get(i) >= maxValbottom ) {
-                                        frameheightidxs.add(i);
-//                                        Log.e(TAG, "Font height >: "+ maxValbottom + " text is: " + frametexts.get(i));
-                                    }
-                                }
-
-//                                Log.e(TAG, "Biggest font text: " + frametexts.get(maxIdx));
 
                             }
                         })
@@ -302,10 +258,7 @@ public class DailyActivity extends AppCompatActivity {
 
                             }
                         });
-
-
     }
-
 
     private List<DailyAgenda> getAgendaList() {
         List<DailyAgenda> agendaList = new ArrayList<>();
@@ -325,5 +278,4 @@ public class DailyActivity extends AppCompatActivity {
 
         return itemsList;
     }
-
 }

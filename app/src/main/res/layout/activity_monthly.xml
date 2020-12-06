@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333131">
+
+    <TextView
+        android:id="@+id/tvYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvMonth"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/amaranth"
+        android:text="2020"
+        android:textColor="#E65A62AE"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/alef"
+        android:text="November"
+        android:textColor="#5A62AE"
+        android:textSize="36sp"
+        tools:text="November" />
+
+    <TextView
+        android:id="@+id/tvDayOfWeek1"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMonth"
+        android:layout_alignStart="@+id/tvMonth"
+        android:layout_marginTop="15dp"
+        android:text="S"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDayOfWeek2"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvDayOfWeek1"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/tvDayOfWeek1"
+        android:text="M"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDayOfWeek3"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvDayOfWeek2"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/tvDayOfWeek2"
+        android:text="T"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDayOfWeek4"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvDayOfWeek3"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/tvDayOfWeek3"
+        android:text="W"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDayOfWeek5"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvDayOfWeek4"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/tvDayOfWeek4"
+        android:text="T"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDayOfWeek6"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvDayOfWeek5"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/tvDayOfWeek5"
+        android:text="F"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDayOfWeek7"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvDayOfWeek6"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/tvDayOfWeek6"
+        android:text="S"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDay1"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDayOfWeek1"
+        android:layout_alignStart="@+id/tvMonth"
+        android:layout_marginTop="20dp"
+        android:text="1"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay2"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek2"
+        android:layout_alignTop="@+id/tvDay1"
+        android:text="2"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay3"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek3"
+        android:layout_alignTop="@+id/tvDay2"
+        android:text="3"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay4"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDayOfWeek4"
+        android:layout_alignStart="@+id/tvDayOfWeek4"
+        android:layout_marginTop="20dp"
+        android:text="4"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay5"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek5"
+        android:layout_alignTop="@+id/tvDay1"
+        android:text="5"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay6"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek6"
+        android:layout_alignTop="@+id/tvDay1"
+        android:text="6"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay7"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek7"
+        android:layout_alignTop="@+id/tvDay1"
+        android:text="7"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay8"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDay1"
+        android:layout_alignStart="@+id/tvMonth"
+        android:layout_marginTop="25dp"
+        android:text="8"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay9"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek2"
+        android:layout_alignTop="@+id/tvDay8"
+        android:text="9"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay10"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek3"
+        android:layout_alignTop="@+id/tvDay8"
+        android:text="10"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay11"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDayOfWeek4"
+        android:layout_alignStart="@+id/tvDayOfWeek4"
+        android:layout_alignTop="@+id/tvDay8"
+        android:text="11"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay12"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek5"
+        android:layout_alignTop="@+id/tvDay8"
+        android:text="12"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay13"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek6"
+        android:layout_alignTop="@+id/tvDay8"
+        android:text="13"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay14"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek7"
+        android:layout_alignTop="@+id/tvDay8"
+        android:text="14"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay15"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDay8"
+        android:layout_alignStart="@+id/tvMonth"
+        android:layout_marginTop="25dp"
+        android:text="15"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay16"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek2"
+        android:layout_alignTop="@+id/tvDay15"
+        android:text="16"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay17"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek3"
+        android:layout_alignTop="@+id/tvDay15"
+        android:text="17"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay18"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek4"
+        android:layout_alignTop="@+id/tvDay15"
+        android:text="18"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay19"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek5"
+        android:layout_alignTop="@+id/tvDay15"
+        android:text="19"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay20"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek6"
+        android:layout_alignTop="@+id/tvDay15"
+        android:text="20"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay21"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek7"
+        android:layout_alignTop="@+id/tvDay15"
+        android:text="21"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay22"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDay15"
+        android:layout_alignStart="@+id/tvMonth"
+        android:layout_marginTop="25dp"
+        android:text="22"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay23"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek2"
+        android:layout_alignTop="@+id/tvDay22"
+        android:text="23"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay24"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek3"
+        android:layout_alignTop="@+id/tvDay22"
+        android:text="24"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay25"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDayOfWeek4"
+        android:layout_alignStart="@+id/tvDayOfWeek4"
+        android:layout_alignTop="@+id/tvDay22"
+        android:text="25"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay26"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek5"
+        android:layout_alignTop="@+id/tvDay22"
+        android:text="26"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay27"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek6"
+        android:layout_alignTop="@+id/tvDay22"
+        android:text="27"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay28"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek7"
+        android:layout_alignTop="@+id/tvDay22"
+        android:text="28"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay29"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDay22"
+        android:layout_alignStart="@+id/tvMonth"
+        android:layout_marginTop="25dp"
+        android:text="29"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay30"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek2"
+        android:layout_alignTop="@+id/tvDay29"
+        android:text="30"
+        android:textAlignment="center"
+        android:textColor="#80FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay31"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek3"
+        android:layout_alignTop="@+id/tvDay29"
+        android:text="1"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay32"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDayOfWeek4"
+        android:layout_alignStart="@+id/tvDayOfWeek4"
+        android:layout_alignTop="@+id/tvDay29"
+        android:text="2"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay33"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek5"
+        android:layout_alignTop="@+id/tvDay29"
+        android:text="3"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay34"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek6"
+        android:layout_alignTop="@+id/tvDay29"
+        android:text="4"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDay35"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvDayOfWeek7"
+        android:layout_alignTop="@+id/tvDay29"
+        android:text="5"
+        android:textAlignment="center"
+        android:textColor="#4DFFFFFF"
+        android:textSize="18sp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="@id/fab_main"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/fab_main"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="24dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:backgroundTint="#7850BF"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/ic_baseline_event_24"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/fab_event"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="166dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
+        app:backgroundTint="#7850BF"
+        app:pressedTranslationZ="12dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="25dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:backgroundTint="#7850BF"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
+        app:backgroundTint="#7850BF"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
+
+</RelativeLayout>

@@ -41,7 +41,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "androidx.appcompat:appcompat:${appCompatVersion}"
     implementation "com.google.android.material:material:${designSupportVersion}"
-
+    // https://mvnrepository.com/artifact/com.joestelmach/natty
+    implementation group: 'com.joestelmach', name: 'natty', version: '0.6'
     implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.1'
-
 }
+

@@ -1,7 +1,5 @@
 package com.example.smartcalendar;
 
-import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcalendar.models.DailyAgenda;
-import com.example.smartcalendar.models.Item;
 import com.example.smartcalendar.models.ItemsAdapter;
 
 import java.util.List;
