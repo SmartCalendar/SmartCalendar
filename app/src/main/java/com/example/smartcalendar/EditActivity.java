@@ -1,45 +1,83 @@
 package com.example.smartcalendar;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.codepath.asynchttpclient.AsyncHttpClient;
-import com.codepath.asynchttpclient.RequestParams;
-import com.codepath.asynchttpclient.callback.TextHttpResponseHandler;
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.DateTime;
+import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.services.calendar.Calendar;
+import com.google.api.services.calendar.CalendarScopes;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.Events;
 
-import java.util.Calendar;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.security.GeneralSecurityException;
+import java.util.Collections;
+import java.util.List;
 
 import okhttp3.Headers;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class EditActivity extends AppCompatActivity {
+
     {
-        /*final String GOOGLE_CALENDAR_URL = "https://www.googleapis.com/calendar/v3/calendars/calendarId/events/";
-        final String TAG = "EditActivity";// Initialize Calendar service with valid OAuth credentials
-        Calendar service = new Calendar.Builder(httpTransport, jsonFactory, credentials)
-                .setApplicationName("applicationName").build();
+        private static final String APPLICATION_NAME = "smart-calendar";
+        private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+        private static final String TOKENS_DIRECTORY_PATH = "tokens";
 
 // Quick-add an event
         String eventText = "Appointment at Somewhere on June 3rd 10am-10:25am";
         Event createdEvent =
                 service.events().quickAdd('primary').setText(eventText).execute();
 
-        System.out.println(createdEvent.getId());*/
-        /*AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        params.put("calendarId", );
-        params.put("eventId", "1");
-        client.get(GOOGLE_CALENDAR_URL, params, new TextHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Headers headers, String response) {
-                        // called when response HTTP status is "200 OK"
-                    }
+        /**
+         * Global instance of the scopes required by this quickstart.
+         * If modifying these scopes, delete your previously saved tokens/ folder.
+         */
+        private static final List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR_READONLY);
+        private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
-                    @Override
-                    public void onFailure(int statusCode, Headers headers, String errorResponse, Throwable t) {
-                        // called when response HTTP status is "4XX" (eg. 401, 403, 404)
-                    }
+
+
+        public static void eventGet(String... args) throws IOException, GeneralSecurityException {
+        // Build a new authorized API client service.
+        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+        Calendar service = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+
+        // List the next 10 events from the primary calendar.
+        DateTime now = new DateTime(System.currentTimeMillis());
+        Events events = service.events().list("primary")
+                .setMaxResults(10)
+                .setTimeMin(now)
+                .setOrderBy("startTime")
+                .setSingleEvents(true)
+                .execute();
+        List<Event> items = events.getItems();
+        if (items.isEmpty()) {
+        } else {
+            for (Event event : items) {
+                DateTime start = event.getStart().getDateTime();
+                if (start == null) {
+                    start = event.getStart().getDate();
                 }
-        );
+            }
+        }
 
-    }*/
-
+    }
 }
