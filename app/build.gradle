@@ -37,6 +37,8 @@ dependencies {
 
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
+    implementation 'com.applandeo:material-calendar-view:1.4.0' // applandeo/Material-Calendar-View
+
     implementation 'com.squareup.picasso:picasso:2.71828'
     testImplementation 'junit:junit:4.12'
     implementation 'com.applandeo:material-calendar-view:1.4.0'
@@ -44,5 +46,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "androidx.appcompat:appcompat:${appCompatVersion}"
     implementation "com.google.android.material:material:${designSupportVersion}"
+
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.1'
 
 }

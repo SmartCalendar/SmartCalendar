@@ -16,7 +16,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:textColor="#CCFFFFFF"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         tools:text="Lunch with Bryan" />
 
@@ -27,7 +27,7 @@
         android:layout_below="@+id/tvTitle"
         android:layout_alignStart="@+id/tvTitle"
         android:textColor="#CCFFFFFF"
-        android:textSize="20sp"
+        android:textSize="18sp"
         tools:text="12 - 1 PM" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_alignStart="@+id/tvTitle"
         android:layout_marginBottom="10dp"
         android:textColor="#CCFFFFFF"
-        android:textSize="20sp"
+        android:textSize="18sp"
         tools:text="In-N-Out Burger" />
 </RelativeLayout>
 
