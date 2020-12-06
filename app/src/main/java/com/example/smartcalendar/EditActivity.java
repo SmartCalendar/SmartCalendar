@@ -1,8 +1,5 @@
 package com.example.smartcalendar;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -29,31 +26,43 @@ import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
 
-import okhttp3.Headers;
-
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class EditActivity extends AppCompatActivity {
+    private static final String APPLICATION_NAME = "SmartCalendar";
+    private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    private static final String TOKENS_DIRECTORY_PATH = "tokens";
 
-    {
-        private static final String APPLICATION_NAME = "smart-calendar";
-        private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-        private static final String TOKENS_DIRECTORY_PATH = "tokens";
+    /**
+     * Global instance of the scopes required by this quickstart.
+     * If modifying these scopes, delete your previously saved tokens/ folder.
+     */
+    private static final List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR_READONLY);
+    private static final String CREDENTIALS_FILE_PATH = "/smartcalendar-295323-e4c75f7f350f.json";
 
-// Quick-add an event
-        String eventText = "Appointment at Somewhere on June 3rd 10am-10:25am";
-        Event createdEvent =
-                service.events().quickAdd('primary').setText(eventText).execute();
+    /**
+     * Creates an authorized Credential object.
+     * @param HTTP_TRANSPORT The network HTTP Transport.
+     * @return An authorized Credential object.
+     * @throws IOException If the credentials.json file cannot be found.
+     */
+    private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+        // Load client secrets.
+        InputStream in = EditActivity.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+        if (in == null) {
+            throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
+        }
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
-        /**
-         * Global instance of the scopes required by this quickstart.
-         * If modifying these scopes, delete your previously saved tokens/ folder.
-         */
-        private static final List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR_READONLY);
-        private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
+        // Build flow and trigger user authorization request.
+        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+                HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
+                .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+                .setAccessType("offline")
+                .build();
+        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
+        return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+    }
 
-
-
-        public static void eventGet(String... args) throws IOException, GeneralSecurityException {
+    public static void main(String... args) throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         Calendar service = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
@@ -70,14 +79,16 @@ public class EditActivity extends AppCompatActivity {
                 .execute();
         List<Event> items = events.getItems();
         if (items.isEmpty()) {
+            System.out.println("No upcoming events found.");
         } else {
+            System.out.println("Upcoming events");
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();
                 if (start == null) {
                     start = event.getStart().getDate();
                 }
+                System.out.printf("%s (%s)\n", event.getSummary(), start);
             }
         }
-
     }
 }
