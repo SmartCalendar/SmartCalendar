@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
@@ -49,6 +50,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -61,7 +63,7 @@ public class DailyViewActivity extends AppCompatActivity {
     private FloatingActionButton fab_main, fab_camera, fab_event;
     private Animation fab_open, fab_close, fab_clock, fab_anti_clock;
     Boolean isOpen = false;
-    public static final String TAG = "DailyActivity";
+    public static final String TAG = "DailyViewActivity";
     String currentPhotoPath;
 
     ImageView imageView;
@@ -124,8 +126,6 @@ public class DailyViewActivity extends AppCompatActivity {
         });
 
         // camera button click listener
-        // TODO: 1. Setup implicit intent to access camera and take a photograph.
-        // TODO:        Startactivity for result? How to navigate from here? Should there be a camera layout screen or jump straight to device camera?
         // TODO: 2. TextRecognition processor on high quality image then -> auto-fill event details with Natty parser and other support libs
         fab_camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +170,9 @@ public class DailyViewActivity extends AppCompatActivity {
             }
         });
     }
+
+    File photoFile; // declaring global variable to later get path for file
+
 
     private void openCamera() {
 
@@ -238,6 +241,46 @@ public class DailyViewActivity extends AppCompatActivity {
                                 String resultText = visionText.getText();
                                 Toast.makeText(getApplicationContext(), resultText, Toast.LENGTH_SHORT).show();
                                 Log.e(TAG, "Text Recognizer: "+ resultText);
+
+                                // Attempt to proxy font size with box frame heights
+                                ArrayList<String> frametexts = new ArrayList<String>();
+                                ArrayList<Float> frameheights = new ArrayList<Float>();
+                                List<Text.TextBlock> blocks = visionText.getTextBlocks();
+                                for (Text.TextBlock block : visionText.getTextBlocks()) {
+                                    for (Text.Line line : block.getLines()) {
+                                        Rect frame = line.getBoundingBox();
+                                        float fontsize = frame.bottom - frame.top;
+                                        String sampletext = line.getText();
+//                                        int fontsize = frame.height();
+                                        frameheights.add(fontsize);
+                                        frametexts.add(sampletext);
+                                    }
+                                }
+
+                                for (int i=0; i<frameheights.size(); i++) {
+//                                    Log.e(TAG, "Frame height: " + frameheights.get(i));
+                                }
+//                                Log.e(TAG, "ArrayList Size: " + frameheights.size());
+
+                                // print the text in the line with max height. maybe print 2nd max if its nearby.(use heuristic here?)
+                                // once ArrayList is filled, go back find the max, print that line
+                                Float maxVal = Collections.max(frameheights);
+                                Integer maxIdx = frameheights.indexOf(maxVal);
+                                // 15% difference for the 2nd or 3rd line that title test takes up
+                                double bottomdouble = (maxVal-maxVal*.15);
+                                float maxValbottom = (float) bottomdouble;
+
+                                // get index of each frameheight > maxValBottom (15% cutoff), print in a tag with the text also
+                                // TODO: set log for outlier (font size 800 in food fair & cultural night)
+                                ArrayList<Integer> frameheightidxs = new ArrayList<Integer>();
+                                for (int i=0; i<frameheights.size(); i++) {
+                                    if (frameheights.get(i) >= maxValbottom ) {
+                                        frameheightidxs.add(i);
+                                        Log.e(TAG, "Font height >: "+ maxValbottom + " text is: " + frametexts.get(i));
+                                    }
+                                }
+
+                                Log.e(TAG, "Biggest font text: " + frametexts.get(maxIdx));
 
                             }
                         })
