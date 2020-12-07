@@ -42,6 +42,8 @@ import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
+import com.joestelmach.natty.DateGroup;
+import com.joestelmach.natty.Parser;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -50,6 +52,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -59,6 +62,10 @@ import static android.os.Environment.getExternalStoragePublicDirectory;
 
 
 public class DailyViewActivity extends AppCompatActivity {
+
+    Parser parser = new Parser();
+    String [] weekDays = {" ", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    String[] monthNames = {"Jan", "Feb", "March", "April", "May", "June", "July","Aug", "Sep", "Oct", "Nov", "Dec"};
 
     private FloatingActionButton fab_main, fab_camera, fab_event;
     private Animation fab_open, fab_close, fab_clock, fab_anti_clock;
@@ -215,10 +222,13 @@ public class DailyViewActivity extends AppCompatActivity {
         return image;
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        // retrive Image Uri then turn it into InputImage object for input into Mlkit text recgonizer process
         InputImage imageProxy2=null;
         Uri takenPhotoUri = Uri.fromFile(new File(currentPhotoPath));
         try {
@@ -235,10 +245,12 @@ public class DailyViewActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Text visionText) {
                                 // Each {Line} object contains 0 or more {Element} objects which represent words and word-like entities such as dates and numbers
-                                // We might be interested in parsing {Element}s. For now we do a triple nested for loop for each {TextBlock}, {Line}, {Element}
+                                // We might be interested in parsing {Element}s
 
                                 // Extract text is stored in variable "resultText"
                                 String resultText = visionText.getText();
+
+                                // can delete the Toast. Log is just for testing.
                                 Toast.makeText(getApplicationContext(), resultText, Toast.LENGTH_SHORT).show();
                                 Log.e(TAG, "Text Recognizer: "+ resultText);
 
@@ -257,8 +269,9 @@ public class DailyViewActivity extends AppCompatActivity {
                                     }
                                 }
 
+                                // get frame height for each line. can discard this later, just printing it for testing purposes
                                 for (int i=0; i<frameheights.size(); i++) {
-//                                    Log.e(TAG, "Frame height: " + frameheights.get(i));
+                                    Log.e(TAG, "Frame height: " + frameheights.get(i));
                                 }
 //                                Log.e(TAG, "ArrayList Size: " + frameheights.size());
 
@@ -271,16 +284,32 @@ public class DailyViewActivity extends AppCompatActivity {
                                 float maxValbottom = (float) bottomdouble;
 
                                 // get index of each frameheight > maxValBottom (15% cutoff), print in a tag with the text also
-                                // TODO: set log for outlier (font size 800 in food fair & cultural night)
+                                // TODO: set log for outlier (font size 800 in food fair & cultural night). How to handle these cases?
+                                // a for loop to print the biggest text with frame height(fontsize) > max-max*.15
                                 ArrayList<Integer> frameheightidxs = new ArrayList<Integer>();
                                 for (int i=0; i<frameheights.size(); i++) {
-                                    if (frameheights.get(i) >= maxValbottom ) {
+                                    if (frameheights.get(i) >= maxValbottom && !frametexts.get(maxIdx).equals(frametexts.get(i))) {
                                         frameheightidxs.add(i);
-                                        Log.e(TAG, "Font height >: "+ maxValbottom + " text is: " + frametexts.get(i));
+                                        Log.e(TAG, "Font height >: "+ maxValbottom + " Spillover text is: " + frametexts.get(i));
                                     }
                                 }
 
                                 Log.e(TAG, "Biggest font text: " + frametexts.get(maxIdx));
+                                // TODO: get into Natty. Parse Dates, store values, open up EditActivity, pre-load the values
+                                // {Weekday}, {MMM} {DD} | {XX:XX} PM
+                                List <DateGroup> groups = parser.parse(resultText);
+                                Calendar smartcal = Calendar.getInstance();
+                                for(DateGroup group : groups) {
+                                    List<Date> dates = group.getDates();
+                                    Log.e(TAG, "Date: " + dates.get(0));
+                                    smartcal.setTime(dates.get(0));
+
+                                    Log.e(TAG, "Weekday: " + weekDays[smartcal.get(Calendar.DAY_OF_WEEK)]);
+                                    Log.e(TAG, "Month: " + monthNames[smartcal.get(Calendar.MONTH)]);
+
+                                }
+
+
 
                             }
                         })
@@ -293,8 +322,7 @@ public class DailyViewActivity extends AppCompatActivity {
                                         Log.i("CameraX", "Text Recognition failed. Error: " + e);
                                     }
                                 })
-                        // TODO: Make sure this is working!!!!
-                        // check for errors in this OnCompleteListener implementation (im scared)
+                        // TODO: If using CameraX, make sure to close this. Not sure what to do here, for now I will leave it alone
                         .addOnCompleteListener(new OnCompleteListener<Text>() {
                             @Override
                             public void onComplete(@NonNull Task<Text> task) {
