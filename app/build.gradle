@@ -24,11 +24,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'com.codepath.libraries:asynchttpclient:2.0.0'
+    implementation 'com.google.api-client:google-api-client:1.23.0'
+    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
+    implementation 'com.google.apis:google-api-services-calendar:v3-rev305-1.23.0'
+
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    implementation "com.parse.bolts:bolts-android:1.4.0"  // line 30 from video instagram Ep 7 1:08
+    implementation "com.github.parse-community.Parse-SDK-Android:parse:1.18.5"
 
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 

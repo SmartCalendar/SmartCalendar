@@ -59,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
                     public void onResult(@NonNull Status status) {
                         if(status.isSuccess())
                             gotoMainActivity();
+
                         else
                             Toast.makeText(ProfileActivity.this , "Log Out Failed!", Toast.LENGTH_SHORT).show();
                     }
