@@ -28,7 +28,7 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".DailyViewActivity" />
         <activity android:name=".MonthlyViewActivity" />
-
+        <activity android:name=".EditActivity"/>
         <activity android:name=".MainActivity"/>
 
         <meta-data
