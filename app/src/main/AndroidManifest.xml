@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileActivity"/>
+        <activity android:name=".EditActivity"/>
         <activity android:name=".DailyViewActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

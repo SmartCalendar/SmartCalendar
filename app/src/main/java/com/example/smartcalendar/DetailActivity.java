@@ -13,6 +13,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvNotification;
     TextView tvDescription;
 
+    // TODO: Re-use a lot of the code from EditActivity for displaying the details in certain formats (Date, Time, Notification?)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

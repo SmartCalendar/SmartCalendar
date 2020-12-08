@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-import androidx.core.graphics.BitmapCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -56,9 +55,12 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static android.graphics.Bitmap.CompressFormat.JPEG;
 import static android.os.Environment.getExternalStoragePublicDirectory;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
 
 
 public class DailyViewActivity extends AppCompatActivity {
@@ -222,6 +224,17 @@ public class DailyViewActivity extends AppCompatActivity {
         return image;
     }
 
+    // launch edit activity after processing the extracted text
+    public void launchEditActivity(String title, Date rawdate) {
+        Intent autofill = new Intent(DailyViewActivity.this, EditActivity.class);
+
+        autofill.putExtra("Complete Title", title);
+        autofill.putExtra("Complete Date Object", rawdate);
+        autofill.putExtra("Sender is DailyView", "True");
+
+        startActivity(autofill);
+
+    }
 
 
     @Override
@@ -257,7 +270,10 @@ public class DailyViewActivity extends AppCompatActivity {
                                 // Attempt to proxy font size with box frame heights
                                 ArrayList<String> frametexts = new ArrayList<String>();
                                 ArrayList<Float> frameheights = new ArrayList<Float>();
+                                StringBuilder nattytext = new StringBuilder();
+
                                 List<Text.TextBlock> blocks = visionText.getTextBlocks();
+
                                 for (Text.TextBlock block : visionText.getTextBlocks()) {
                                     for (Text.Line line : block.getLines()) {
                                         Rect frame = line.getBoundingBox();
@@ -266,8 +282,36 @@ public class DailyViewActivity extends AppCompatActivity {
 //                                        int fontsize = frame.height();
                                         frameheights.add(fontsize);
                                         frametexts.add(sampletext);
+
+                                        // natty parser gets messed up with unrelated text. this will search for lines of text with numbers, then only call parser on those lines
+                                        Pattern pattern = Pattern.compile("[0-9]");
+                                        Matcher matcher = pattern.matcher(sampletext);
+                                        boolean matchFound = matcher.find();
+                                        if(matchFound) {
+                                            List <DateGroup> groups2 = parser.parse(sampletext);
+                                            nattytext.append(sampletext);
+                                            nattytext.append(" ");
+                                        }
                                     }
                                 }
+
+                                // {Weekday}, {MMM} {DD} | {XX:XX} PM
+                                // only use parser on lines where elements match regex pattern of numbers? numbers mean dates and or times
+                                String finalnattytext = nattytext.toString();
+                                List <DateGroup> groups2 = parser.parse(finalnattytext);
+                                Calendar smartcal2 = Calendar.getInstance();
+                                Date rawdateobj = new Date();
+                                for(DateGroup group : groups2) {
+                                    List<Date> dates = group.getDates();
+                                    rawdateobj = dates.get(0);
+                                    Log.e(TAG, "Date: " + dates.get(0));
+                                    smartcal2.setTime(dates.get(0));
+
+                                    Log.e(TAG, "Weekday: " + weekDays[smartcal2.get(Calendar.DAY_OF_WEEK)]);
+                                    Log.e(TAG, "Month: " + monthNames[smartcal2.get(Calendar.MONTH)]);
+                                }
+                                Log.e(TAG, "The concatenated string with numbers only: " + finalnattytext);
+
 
                                 // get frame height for each line. can discard this later, just printing it for testing purposes
                                 for (int i=0; i<frameheights.size(); i++) {
@@ -286,30 +330,25 @@ public class DailyViewActivity extends AppCompatActivity {
                                 // get index of each frameheight > maxValBottom (15% cutoff), print in a tag with the text also
                                 // TODO: set log for outlier (font size 800 in food fair & cultural night). How to handle these cases?
                                 // a for loop to print the biggest text with frame height(fontsize) > max-max*.15
+                                StringBuilder titletexts = new StringBuilder();
+                                titletexts.append(frametexts.get(maxIdx));
+                                titletexts.append(" ");
+
                                 ArrayList<Integer> frameheightidxs = new ArrayList<Integer>();
                                 for (int i=0; i<frameheights.size(); i++) {
                                     if (frameheights.get(i) >= maxValbottom && !frametexts.get(maxIdx).equals(frametexts.get(i))) {
                                         frameheightidxs.add(i);
                                         Log.e(TAG, "Font height >: "+ maxValbottom + " Spillover text is: " + frametexts.get(i));
+                                        titletexts.append(frametexts.get(i));
+                                        titletexts.append(" ");
                                     }
                                 }
 
+                                String titletex = titletexts.toString();
                                 Log.e(TAG, "Biggest font text: " + frametexts.get(maxIdx));
-                                // TODO: get into Natty. Parse Dates, store values, open up EditActivity, pre-load the values
-                                // {Weekday}, {MMM} {DD} | {XX:XX} PM
-                                List <DateGroup> groups = parser.parse(resultText);
-                                Calendar smartcal = Calendar.getInstance();
-                                for(DateGroup group : groups) {
-                                    List<Date> dates = group.getDates();
-                                    Log.e(TAG, "Date: " + dates.get(0));
-                                    smartcal.setTime(dates.get(0));
+                                Log.e(TAG, "Complete title: " + titletex);
 
-                                    Log.e(TAG, "Weekday: " + weekDays[smartcal.get(Calendar.DAY_OF_WEEK)]);
-                                    Log.e(TAG, "Month: " + monthNames[smartcal.get(Calendar.MONTH)]);
-
-                                }
-
-
+                                launchEditActivity(titletex, rawdateobj);
 
                             }
                         })
