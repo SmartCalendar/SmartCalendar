@@ -176,6 +176,9 @@ public class DailyViewActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Toast.makeText(getApplicationContext(), "Add event", Toast.LENGTH_SHORT).show();
+                Intent newactive = new Intent(DailyViewActivity.this, EditActivity.class);
+
+                startActivity(newactive);
             }
         });
     }
@@ -264,7 +267,6 @@ public class DailyViewActivity extends AppCompatActivity {
                                 String resultText = visionText.getText();
 
                                 // can delete the Toast. Log is just for testing.
-                                Toast.makeText(getApplicationContext(), resultText, Toast.LENGTH_SHORT).show();
                                 Log.e(TAG, "Text Recognizer: "+ resultText);
 
                                 // Attempt to proxy font size with box frame heights
