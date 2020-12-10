@@ -34,7 +34,7 @@
         android:layout_marginStart="-10dp"
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@+id/btnClose"
-        android:hint="Add title"
+        android:hint="Add Title"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
         android:textSize="24sp" />
@@ -106,7 +106,7 @@
         android:layout_below="@id/etEndDate"
         android:layout_alignStart="@+id/etEndDate"
         android:layout_marginTop="15dp"
-        android:hint="Add location"
+        android:hint="Add Location"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
         android:textSize="24sp" />
@@ -122,7 +122,7 @@
         android:layout_below="@+id/etLocation"
         android:layout_alignStart="@+id/etLocation"
         android:layout_marginTop="15dp"
-        android:hint="Add notification"
+        android:hint="Add Notification"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
         android:textSize="24sp" />
