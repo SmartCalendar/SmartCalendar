@@ -37,7 +37,7 @@
         android:hint="Add title"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
-        android:textSize="36sp" />
+        android:textSize="24sp" />
 
     <View
         style="@style/Divider"
@@ -54,7 +54,7 @@
         android:hint="Add start date"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
-        android:textSize="22sp" />
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/etEndDate"
@@ -67,35 +67,37 @@
         android:hint="Add end date"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
-        android:textSize="22sp" />
+        android:textSize="16sp" />
 
     <View
         style="@style/Divider"
         android:layout_below="@id/etEndDate"/>
 
     <EditText
-        android:id="@+id/etDate"
+        android:id="@+id/etStartTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/etStartDate"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
         android:layout_marginEnd="30dp"
+        android:layout_toEndOf="@+id/etStartDate"
         android:hint="Add start time"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
-        android:textSize="22sp" />
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/etEndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/etDate"
+        android:layout_alignStart="@+id/etStartTime"
         android:layout_alignTop="@+id/etEndDate"
         android:layout_marginEnd="30dp"
         android:hint="Add end time"
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
-        android:textSize="22sp" />
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/etLocation"
@@ -140,5 +142,12 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#46FFFFFF"
         android:textSize="24sp" />
+
+    <FrameLayout
+        android:id="@+id/notif_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
 
 </RelativeLayout>

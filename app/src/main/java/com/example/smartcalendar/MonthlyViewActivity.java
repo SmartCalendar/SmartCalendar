@@ -39,11 +39,11 @@ public class MonthlyViewActivity  extends AppCompatActivity {
     public static final String TAG = "DetailActivity";
 
     TextView tvDay01, tvDay02, tvDay03, tvDay04, tvDay05, tvDay06, tvDay07,
-             tvDay08, tvDay09, tvDay10, tvDay11, tvDay12, tvDay13, tvDay14,
-             tvDay15, tvDay16, tvDay17, tvDay18, tvDay19, tvDay20, tvDay21,
-             tvDay22, tvDay23, tvDay24, tvDay25, tvDay26, tvDay27, tvDay28,
-             tvDay29, tvDay30, tvDay31, tvDay32, tvDay33, tvDay34, tvDay35,
-             tvDay36, tvDay37, tvDay38, tvDay39, tvDay40, tvDay41, tvDay42;
+            tvDay08, tvDay09, tvDay10, tvDay11, tvDay12, tvDay13, tvDay14,
+            tvDay15, tvDay16, tvDay17, tvDay18, tvDay19, tvDay20, tvDay21,
+            tvDay22, tvDay23, tvDay24, tvDay25, tvDay26, tvDay27, tvDay28,
+            tvDay29, tvDay30, tvDay31, tvDay32, tvDay33, tvDay34, tvDay35,
+            tvDay36, tvDay37, tvDay38, tvDay39, tvDay40, tvDay41, tvDay42;
 
 //    ArrayList<TextView> tvDayList = new ArrayList<TextView>();
 

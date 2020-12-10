@@ -22,7 +22,7 @@
         android:elevation="16dp"
         android:focusable="true"
         android:visibility="invisible"
-        app:backgroundTint="#7850BF"
+        app:backgroundTint="#6200EE"
         app:pressedTranslationZ="12dp"
         app:srcCompat="@drawable/ic_baseline_event_24"
         />
@@ -40,7 +40,7 @@
         android:clickable="true"
         android:elevation="16dp"
         android:focusable="true"
-        app:backgroundTint="#7850BF"
+        app:backgroundTint="#6200EE"
         app:pressedTranslationZ="12dp"
         android:visibility="invisible"
         app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
@@ -54,11 +54,11 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="25dp"
         android:background="?android:attr/selectableItemBackground"
-        android:backgroundTint="#7850BF"
+        android:backgroundTint="#6200EE"
         android:clickable="true"
         android:elevation="16dp"
         android:focusable="true"
-        app:backgroundTint="#7850BF"
+        app:backgroundTint="#6200EE"
         app:pressedTranslationZ="12dp"
         app:srcCompat="@drawable/ic_baseline_add_24" />
 

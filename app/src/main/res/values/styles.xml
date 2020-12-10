@@ -15,4 +15,11 @@
         <item name="android:background">#50FFFFFF</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
 </resources>
