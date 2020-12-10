@@ -2,26 +2,26 @@ package com.example.smartcalendar;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 
-public class EditActivity extends AppCompatActivity implements View.OnClickListener {
+public class EditActivity extends AppCompatActivity implements View.OnClickListener, Notif_Fragment.DialogListener {
 
 
     String [] weekDays = {" ", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
@@ -60,6 +60,8 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         btnClose = findViewById(R.id.btnClose);
         btnComplete = findViewById(R.id.btnComplete);
 
+        tvNotification = findViewById(R.id.etNotification);
+        tvDescription = findViewById(R.id.etDescription);
 
         // should we leave this as null? Try both ways first. Null makes it so user can input some incorrect format.
         tvStartDate.setInputType(InputType.TYPE_NULL);
@@ -68,7 +70,8 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         tvEndDate.setFocusable(false);
         tvStartTime.setFocusable(false);
         tvEndTime.setFocusable(false);
-
+        tvNotification.setFocusable(false);
+        tvNotification.setInputType(InputType.TYPE_NULL);
         tvStartTime.setInputType(InputType.TYPE_NULL);
         tvEndTime.setInputType(InputType.TYPE_NULL);
 
@@ -92,7 +95,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         tvEndDate.setOnClickListener(this);
         tvStartTime.setOnClickListener(this);
         tvEndTime.setOnClickListener(this);
-
+        tvNotification.setOnClickListener(this);
 
 
         // end of OnCreate
@@ -173,17 +176,20 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                 timepicker.show();
                 break;
 
-
-            // TODO: How to handle {"Add Notifications"}? Google this
             // TODO: Add cases for the {x} in upper left, and the {Done} in the upper right. Done saves Event object and sends ObjectID to Parse backend. x cancels the activity & goes back?
                 // TODO: Figure out how to save a Date Format to be sent in the Parse Event
 
+            case R.id.etNotification:
 
+                showNotifDialog();
+
+                break;
 
             default:
                 break;
         }
     }
+
 
     // method to parse Calendar INTs returned from the get methods into a more aesthetic time format {HH:MM AM/PM}
     public static String CustomTimeParser(int inputhour, int inputminute) {
@@ -202,6 +208,23 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         // use formattedTime in setText
         return formattedTime;
 
+    }
+
+    private void showNotifDialog() {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        DialogFragment dialogFragment = new Notif_Fragment();
+        dialogFragment.show(ft, "dialog");
+    }
+
+    @Override
+    public void onFinishEditDialog(String inputText) {
+        // TODO: Later use to setup notifications on the phone (note-to-self look at old chrome tabs)
+        tvNotification.setText(inputText + " mins before");
     }
 
     // notes from Ankit on setting abstract method for initiating the EditActivity instance that other activities can use and pass custom parameters into

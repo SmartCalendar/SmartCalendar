@@ -143,4 +143,11 @@
         android:textColorHint="#46FFFFFF"
         android:textSize="24sp" />
 
+    <FrameLayout
+        android:id="@+id/notif_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+
 </RelativeLayout>
