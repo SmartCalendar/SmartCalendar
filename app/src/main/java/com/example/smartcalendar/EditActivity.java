@@ -21,7 +21,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class EditActivity extends AppCompatActivity implements View.OnClickListener, Notif_Fragment.DialogListener {
+public class EditActivity extends AppCompatActivity implements View.OnClickListener, NotificationFragment.DialogListener {
 
 
     String [] weekDays = {" ", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
@@ -77,18 +77,18 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
         // if this activity was launched from DailyViewActivity (specifically the launchEditActivity(titletex, rawdateobj) function)
         // later try to convert this into Enums so the other activities that launch into EditActivity can distinguish where it came from
-        if (getIntent().getStringExtra("Sender is DailyView").equals("True")) {
-
-            String receivedmovie = getIntent().getStringExtra("Complete Title");
-            Date receiveddate = (Date) getIntent().getSerializableExtra("Complete Date Object");
-            Calendar smartcal3 = Calendar.getInstance();
-            smartcal3.setTime(receiveddate);
-
-            tvStartDate.setText(weekDays[smartcal3.get(Calendar.DAY_OF_WEEK)] + "," + monthNames[smartcal3.get(Calendar.MONTH)] + " " + smartcal3.get(Calendar.DAY_OF_MONTH));
-            tvTitle.setText(receivedmovie);
-            tvStartTime.setText(CustomTimeParser(smartcal3.get(Calendar.HOUR_OF_DAY), smartcal3.get(Calendar.MINUTE)));
-
-        }
+//        if (getIntent().getStringExtra("Sender is DailyView").equals("True")) {
+//
+//            String receivedmovie = getIntent().getStringExtra("Complete Title");
+//            Date receiveddate = (Date) getIntent().getSerializableExtra("Complete Date Object");
+//            Calendar smartcal3 = Calendar.getInstance();
+//            smartcal3.setTime(receiveddate);
+//
+//            tvStartDate.setText(weekDays[smartcal3.get(Calendar.DAY_OF_WEEK)] + "," + monthNames[smartcal3.get(Calendar.MONTH)] + " " + smartcal3.get(Calendar.DAY_OF_MONTH));
+//            tvTitle.setText(receivedmovie);
+//            tvStartTime.setText(CustomTimeParser(smartcal3.get(Calendar.HOUR_OF_DAY), smartcal3.get(Calendar.MINUTE)));
+//
+//        }
 
         // Dates will open up Android Datepicker. Times will open up Android Timepicker
         tvStartDate.setOnClickListener(this);
@@ -217,14 +217,14 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             ft.remove(prev);
         }
         ft.addToBackStack(null);
-        DialogFragment dialogFragment = new Notif_Fragment();
+        DialogFragment dialogFragment = new NotificationFragment();
         dialogFragment.show(ft, "dialog");
     }
 
     @Override
     public void onFinishEditDialog(String inputText) {
         // TODO: Later use to setup notifications on the phone (note-to-self look at old chrome tabs)
-        tvNotification.setText(inputText + " mins before");
+        tvNotification.setText(inputText + " minutes before");
     }
 
     // notes from Ankit on setting abstract method for initiating the EditActivity instance that other activities can use and pass custom parameters into

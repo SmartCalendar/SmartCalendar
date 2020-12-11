@@ -16,4 +16,5 @@
     <string name="sign_out">Sign Out</string>
     <string name="username">userName</string>
     <string name="password">password</string>
+    <string name="sign_up">Sign up</string>
 </resources>

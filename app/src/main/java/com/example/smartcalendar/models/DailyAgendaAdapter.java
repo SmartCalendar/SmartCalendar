@@ -1,4 +1,4 @@
-package com.example.smartcalendar;
+package com.example.smartcalendar.models;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartcalendar.models.DailyAgenda;
-import com.example.smartcalendar.models.ItemsAdapter;
+import com.example.smartcalendar.R;
 
 import java.util.List;
 
 public class DailyAgendaAdapter extends RecyclerView.Adapter<DailyAgendaAdapter.ViewHolder>{
 
     private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
+    EventsAdapter eventsAdapter;
     private List<DailyAgenda> agendaList;
 
     public DailyAgendaAdapter(List<DailyAgenda> agendaList) {
@@ -33,14 +33,16 @@ public class DailyAgendaAdapter extends RecyclerView.Adapter<DailyAgendaAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DailyAgenda dailyAgenda = agendaList.get(position);
-        holder.tvDate.setText(dailyAgenda.getDate());
+        holder.tvDate.setText(String.valueOf(dailyAgenda.getDate()));
         holder.tvDayOfWeek.setText(dailyAgenda.getDayOfWeek());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(ViewHolder.rvAgenda.getContext(), LinearLayoutManager.VERTICAL, false);
-        layoutManager.setInitialPrefetchItemCount(dailyAgenda.getItemsList().size());
 
-        ItemsAdapter itemsAdapter = new ItemsAdapter(dailyAgenda.getItemsList());
-        ViewHolder.rvAgenda.setAdapter(itemsAdapter);
+        layoutManager.setInitialPrefetchItemCount(dailyAgenda.getEventsList().size());
+
+        eventsAdapter = new EventsAdapter(dailyAgenda.getEventsList());
+
+        ViewHolder.rvAgenda.setAdapter(eventsAdapter);
 
         ViewHolder.rvAgenda.setLayoutManager(layoutManager);
 
@@ -50,16 +52,6 @@ public class DailyAgendaAdapter extends RecyclerView.Adapter<DailyAgendaAdapter.
     @Override
     public int getItemCount() {
         return agendaList.size();
-    }
-
-    public void clear() {
-        agendaList.clear();
-        notifyDataSetChanged();
-    }
-
-    public void addAll(List<DailyAgenda> dailyAgendasList) {
-        agendaList.addAll(dailyAgendasList);
-        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

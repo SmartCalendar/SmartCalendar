@@ -3,6 +3,7 @@ package com.example.smartcalendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,7 +32,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smartcalendar.models.DailyAgenda;
-import com.example.smartcalendar.models.Item;
+import com.example.smartcalendar.models.DailyAgendaAdapter;
+import com.example.smartcalendar.models.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -43,6 +45,9 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.joestelmach.natty.DateGroup;
 import com.joestelmach.natty.Parser;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -50,6 +55,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -75,35 +82,43 @@ public class DailyViewActivity extends AppCompatActivity {
     public static final String TAG = "DailyViewActivity";
     String currentPhotoPath;
 
-    ImageView imageView;
+    DailyAgendaAdapter dailyAgendaAdapter;
+    List<DailyAgenda> agendaList;
+    RecyclerView rvAgenda;
 
-    TextView tvYear;
-    TextView tvMonth;
+    int month;
+    int date;
 
-    private Uri imageUri;
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily);
 
-        RecyclerView rvAgenda = findViewById(R.id.rvDailyView);
+        rvAgenda = findViewById(R.id.rvDailyView);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
-        DailyAgendaAdapter adapter = new DailyAgendaAdapter(getAgendaList());
+        dailyAgendaAdapter = new DailyAgendaAdapter(getAgendaList());
 
         rvAgenda.setLayoutManager(layoutManager);
 
-        rvAgenda.setAdapter(adapter);
+        rvAgenda.setAdapter(dailyAgendaAdapter);
 
+        rvAgenda.smoothScrollToPosition(date);
+
+        createFloatingActionButton();
+
+//        queryEvents();
+    }
+
+    private void createFloatingActionButton() {
         // Floating_action_button views and animations
-        // layout_fab_submenu changed from RelativeLayout to Framelayout, couldn't do <include with activity_daily so just manually copied over layout elements
+        // layout_fab_submenu changed from RelativeLayout to FrameLayout, couldn't do <include with activity_daily so just manually copied over layout elements
         // TODO: Fix the color themes for the layouts and have it more polished.
         fab_main = findViewById(R.id.fab_main);
         fab_camera = findViewById(R.id.fab_camera);
         fab_event = findViewById(R.id.fab_event);
-
 
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
@@ -135,17 +150,20 @@ public class DailyViewActivity extends AppCompatActivity {
         });
 
         // camera button click listener
+        // TODO: 1. Setup implicit intent to access camera and take a photograph.
+        // TODO:        Startactivity for result? How to navigate from here? Should there be a camera layout screen or jump straight to device camera?
         // TODO: 2. TextRecognition processor on high quality image then -> auto-fill event details with Natty parser and other support libs
         fab_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (checkSelfPermission(Manifest.permission.CAMERA)
                             == PackageManager.PERMISSION_DENIED ||
                             checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                                    == PackageManager.PERMISSION_DENIED
-                    ) {
+                                    == PackageManager.PERMISSION_DENIED)
+                    {
                         // Permission was not granted
                         // Ask for runtime permission
                         String[] permissions = new String[2];
@@ -156,36 +174,63 @@ public class DailyViewActivity extends AppCompatActivity {
                                 permissions,
                                 101
                         );
-
                     } else {
                         // Permission already granted
                         openCamera();
                     }
-
                 } else {
                     // System OS < Marshmallow
                     openCamera();
                 }
-
             }
         });
-
         // TODO: Link this to open up the EditActivity
         fab_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Toast.makeText(getApplicationContext(), "Add event", Toast.LENGTH_SHORT).show();
-                Intent newactive = new Intent(DailyViewActivity.this, EditActivity.class);
-                newactive.putExtra("Sender is DailyView", "False");
-
-                startActivity(newactive);
             }
         });
     }
 
-    File photoFile; // declaring global variable to later get path for file
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private List<DailyAgenda> getAgendaList() {
 
+        Intent intent = getIntent();
+        month = intent.getIntExtra("month", 12);
+        date = intent.getIntExtra("date", 12);
+
+        agendaList = new ArrayList<>();
+
+        int year = 2020;
+
+        for (int i = 1; i < LocalDate.of(year, month, date).lengthOfMonth()+1; i++) {
+            LocalDate day = LocalDate.of(year, month, i);
+            String dayOfWeek = day.getDayOfWeek().toString().substring(0, 1) + day.getDayOfWeek().toString().substring(1, 3).toLowerCase();
+            agendaList.add(new DailyAgenda(i, dayOfWeek, new ArrayList<Event>()));
+        }
+
+        return agendaList;
+    }
+
+//    private void queryEvents() {
+//        ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
+//        query.include(Event.KEY_USER);
+//        query.findInBackground(new FindCallback<Event>() {
+//            @Override
+//            public void done(List<Event> events, ParseException e) {
+//                if (e != null) {
+//                    return;
+//                }
+//                for (Event event: events) {
+//                    Log.i("DailyViewActivity", "Event: " + event.getTitle() + ", date: " + event.getDate().getDate());
+//                    // TODO: populate events
+//                }
+//            }
+//        });
+//    }
+
+    File photoFile; // declaring global variable to later get path for file
 
     private void openCamera() {
 
@@ -239,7 +284,6 @@ public class DailyViewActivity extends AppCompatActivity {
         startActivity(autofill);
 
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -371,24 +415,5 @@ public class DailyViewActivity extends AppCompatActivity {
 
                             }
                         });
-    }
-
-    private List<DailyAgenda> getAgendaList() {
-        List<DailyAgenda> agendaList = new ArrayList<>();
-
-        agendaList.add(new DailyAgenda("11", "Tue", getItemsList()));
-        agendaList.add(new DailyAgenda("12", "Wed", getItemsList()));
-        agendaList.add(new DailyAgenda("13", "Thu", getItemsList()));
-
-        return agendaList;
-    }
-
-    private List<Item> getItemsList() {
-        List<Item> itemsList = new ArrayList<>();
-
-        itemsList.add(new Item("Work", "9 AM - 5 PM", "Texas Christian University"));
-        itemsList.add(new Item("Lunch with Bryan", "12 - 1 PM", "In-N-Out Burger"));
-
-        return itemsList;
     }
 }

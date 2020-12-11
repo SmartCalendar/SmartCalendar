@@ -9,37 +9,31 @@
     android:background="#333131"
     >
 
-    <View
-        style="@style/Divider"
-        android:id="@+id/divider6"
-        android:layout_width="match_parent"
-        android:layout_height="3dp" />
-
     <TextView
         android:id="@+id/min5"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="5 mins before"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="5 minutes before"
         android:textSize="20dp"
-        android:textColor="#46FFFFFF"
-        />
+        android:textColor="#80FFFFFF" />
 
     <View
         style="@style/Divider"
         android:id="@+id/divider2"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-
-        />
+        android:layout_height="3dp" />
 
     <TextView
         android:id="@+id/min10"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="10 mins before"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="10 minutes before"
         android:textSize="20dp"
-        android:textColor="#46FFFFFF"
-        />
+        android:textColor="#80FFFFFF" />
 
     <View
         style="@style/Divider"
@@ -51,9 +45,11 @@
         android:id="@+id/min30"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="30 mins before"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="30 minutes before"
         android:textSize="20dp"
-        android:textColor="#46FFFFFF"/>
+        android:textColor="#80FFFFFF"/>
 
     <View
         style="@style/Divider"
@@ -62,22 +58,17 @@
         android:layout_height="3dp" />
 
     <EditText
-        android:id="@+id/mincustom"
+        android:id="@+id/minCustom"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:hint="Custom mins before"
-        android:textSize="15dp"
-        android:textColorHint="#46FFFFFF"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textColorHint="#80FFFFFF"
         android:textColor="#FFFFFF"/>
 
-    <View
-        style="@style/Divider"
-        android:id="@+id/divider5"
-        android:layout_width="match_parent"
-        android:layout_height="3dp" />
-
     <Button
-        android:id="@+id/donebtn"
+        android:id="@+id/doneBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Done" />

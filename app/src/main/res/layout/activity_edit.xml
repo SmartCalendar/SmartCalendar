@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,12 +32,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnClose"
-        android:layout_marginStart="-10dp"
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@+id/btnClose"
-        android:hint="Add Title"
+        android:hint="Add title"
         android:textColor="#FFFFFF"
-        android:textColorHint="#46FFFFFF"
+        android:textColorHint="#80FFFFFF"
         android:textSize="24sp" />
 
     <View
@@ -46,28 +46,26 @@
 
     <EditText
         android:id="@+id/etStartDate"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etTitle"
         android:layout_alignStart="@+id/etTitle"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:hint="Add start date"
         android:textColor="#FFFFFF"
-        android:textColorHint="#46FFFFFF"
-        android:textSize="16sp" />
+        android:textColorHint="#80FFFFFF"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/etEndDate"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etStartDate"
         android:layout_alignStart="@+id/etStartDate"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
         android:hint="Add end date"
         android:textColor="#FFFFFF"
-        android:textColorHint="#46FFFFFF"
-        android:textSize="16sp" />
+        android:textColorHint="#80FFFFFF"
+        android:textSize="18sp" />
 
     <View
         style="@style/Divider"
@@ -78,14 +76,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/etStartDate"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="25dp"
         android:layout_marginEnd="30dp"
         android:layout_toEndOf="@+id/etStartDate"
         android:hint="Add start time"
         android:textColor="#FFFFFF"
-        android:textColorHint="#46FFFFFF"
-        android:textSize="16sp" />
+        android:textColorHint="#80FFFFFF"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/etEndTime"
@@ -96,8 +92,8 @@
         android:layout_marginEnd="30dp"
         android:hint="Add end time"
         android:textColor="#FFFFFF"
-        android:textColorHint="#46FFFFFF"
-        android:textSize="16sp" />
+        android:textColorHint="#80FFFFFF"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/etLocation"
@@ -106,10 +102,10 @@
         android:layout_below="@id/etEndDate"
         android:layout_alignStart="@+id/etEndDate"
         android:layout_marginTop="15dp"
-        android:hint="Add Location"
+        android:hint="Add location"
         android:textColor="#FFFFFF"
-        android:textColorHint="#46FFFFFF"
-        android:textSize="24sp" />
+        android:textColorHint="#80FFFFFF"
+        android:textSize="20sp" />
 
     <View
         style="@style/Divider"
@@ -122,10 +118,10 @@
         android:layout_below="@+id/etLocation"
         android:layout_alignStart="@+id/etLocation"
         android:layout_marginTop="15dp"
-        android:hint="Add Notification"
+        android:hint="Add notification"
         android:textColor="#FFFFFF"
-        android:textColorHint="#46FFFFFF"
-        android:textSize="24sp" />
+        android:textColorHint="#80FFFFFF"
+        android:textSize="20sp" />
 
     <View
         style="@style/Divider"
@@ -138,10 +134,52 @@
         android:layout_below="@+id/etNotification"
         android:layout_alignStart="@+id/etNotification"
         android:layout_marginTop="15dp"
-        android:hint="Add Description"
+        android:hint="Add description"
         android:textColor="#FFFFFF"
-        android:textColorHint="#46FFFFFF"
-        android:textSize="24sp" />
+        android:textColorHint="#80FFFFFF"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/icTime"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/btnClose"
+        android:layout_alignTop="@+id/etStartDate"
+        android:layout_marginTop="5dp"
+        android:foregroundTint="#673AB7"
+        app:srcCompat="@drawable/ic_time"
+        app:tint="#B6B3B3" />
+
+    <ImageView
+        android:id="@+id/icLocation"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/btnClose"
+        android:layout_alignTop="@+id/etLocation"
+        android:layout_marginTop="2dp"
+        android:foregroundTint="#673AB7"
+        app:srcCompat="@drawable/ic_location"
+        app:tint="#B6B3B3" />
+
+    <ImageView
+        android:id="@+id/icNotification"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/btnClose"
+        android:layout_alignTop="@+id/etNotification"
+        android:foregroundTint="#673AB7"
+        app:srcCompat="@drawable/ic_notification"
+        app:tint="#B6B3B3" />
+
+    <ImageView
+        android:id="@+id/icDescription"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/btnClose"
+        android:layout_alignTop="@+id/etDescription"
+        android:foregroundTint="#673AB7"
+        app:srcCompat="@drawable/ic_description"
+        app:tint="#B6B3B3" />
 
     <FrameLayout
         android:id="@+id/notif_menu"
