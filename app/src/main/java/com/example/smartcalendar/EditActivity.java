@@ -340,6 +340,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         alarmManager.set(AlarmManager.RTC_WAKEUP, eventTime, pendingIntent);
     }
 
+    // intents with unique identifies needed so there are different broadcast IDs or else they would be replaced
     public void set_custom_notification(int mins) {
         Calendar customtimecal = Calendar.getInstance();
         set_calendar(customtimecal, chosenstart_year, chosenstart_monthOfYear, chosenstart_dayOfMonth, chosenstart_hour, chosenstart_minute,00 );
@@ -351,12 +352,13 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent intentalarm2 = new Intent(this, ReminderBroadcast.class);
         notification_intent_databuilder(intentalarm2);
+        final int unqid = (int) System.currentTimeMillis();
         PendingIntent pendingIntent2 = PendingIntent.getBroadcast(EditActivity.this, 0, intentalarm2, 0);
-
+        PendingIntent pendingIntent3 = PendingIntent.getBroadcast(EditActivity.this, unqid, intentalarm2, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, reminderTime, pendingIntent2);
-//        alarmManager.set(AlarmManager.RTC_WAKEUP, eventTime, pendingIntent2);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, eventTime, pendingIntent3);
     }
 
     public void set_calendar(Calendar cal, int chosenstart_year, int startmonth, int startdayOfMonth, int startchosenhour, int startchosenminute, int startchosensecond) {

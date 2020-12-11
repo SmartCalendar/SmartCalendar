@@ -189,6 +189,11 @@ public class DailyViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Add event", Toast.LENGTH_SHORT).show();
+
+                Intent newactive = new Intent(DailyViewActivity.this, EditActivity.class);
+                newactive.putExtra("Sender is DailyView", "False");
+
+                startActivity(newactive);
             }
         });
     }
