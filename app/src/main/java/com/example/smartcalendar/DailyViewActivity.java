@@ -84,6 +84,7 @@ public class DailyViewActivity extends AppCompatActivity {
 
     DailyAgendaAdapter dailyAgendaAdapter;
     List<DailyAgenda> agendaList;
+    ArrayList<Event> eventsList;
     RecyclerView rvAgenda;
 
     int month;
@@ -95,6 +96,12 @@ public class DailyViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily);
 
+        Intent intent = getIntent();
+        month = intent.getIntExtra("month", 12);
+        date = intent.getIntExtra("date", 12);
+        eventsList = intent.getParcelableArrayListExtra("eventsList");
+        Log.i("DailyViewActivity", "First Event: " + eventsList.get(0).getTitle());
+
         rvAgenda = findViewById(R.id.rvDailyView);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -105,12 +112,52 @@ public class DailyViewActivity extends AppCompatActivity {
 
         rvAgenda.setAdapter(dailyAgendaAdapter);
 
-        rvAgenda.smoothScrollToPosition(date);
+        scrollToSelectedDate();
 
         createFloatingActionButton();
-
-//        queryEvents();
     }
+
+    private void scrollToSelectedDate() {
+        if (date == 1) {
+            rvAgenda.smoothScrollToPosition(date);
+        }
+        if (date == 2) {
+            rvAgenda.smoothScrollToPosition(date+1);
+        }
+        if (date == 3) {
+            rvAgenda.smoothScrollToPosition(date+2);
+        } else {
+            rvAgenda.smoothScrollToPosition(date+3);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private List<DailyAgenda> getAgendaList() {
+        agendaList = new ArrayList<>();
+        int year = 2020;
+
+        for (int i = 1; i < LocalDate.of(year, month, date).lengthOfMonth()+1; i++) {
+            LocalDate day = LocalDate.of(year, month, i);
+            String dayOfWeek = day.getDayOfWeek().toString().substring(0, 1) + day.getDayOfWeek().toString().substring(1, 3).toLowerCase();
+            Log.i("DailyViewActivity", "Populating date: " + i);
+            agendaList.add(new DailyAgenda(i, dayOfWeek, getEventsList(i)));
+        }
+        return agendaList;
+    }
+
+    private ArrayList<Event> getEventsList(int date) {
+        ArrayList<Event> list = new ArrayList<>();
+        for (int i = 0; i < eventsList.size(); i++) {
+            if (eventsList.get(i).getDate().getDate() == date) {
+                Log.i("DailyViewActivity", "Event title: " + eventsList.get(i).getTitle() +  "date: " + eventsList.get(i).getDate().getDate());
+                Log.i("DailyViewActivity", "Date: " + date);
+                list.add(eventsList.get(i));
+            }
+        }
+        return list;
+    }
+
+    File photoFile; // declaring global variable to later get path for file
 
     private void createFloatingActionButton() {
         // Floating_action_button views and animations
@@ -198,45 +245,6 @@ public class DailyViewActivity extends AppCompatActivity {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private List<DailyAgenda> getAgendaList() {
-
-        Intent intent = getIntent();
-        month = intent.getIntExtra("month", 12);
-        date = intent.getIntExtra("date", 12);
-
-        agendaList = new ArrayList<>();
-
-        int year = 2020;
-
-        for (int i = 1; i < LocalDate.of(year, month, date).lengthOfMonth()+1; i++) {
-            LocalDate day = LocalDate.of(year, month, i);
-            String dayOfWeek = day.getDayOfWeek().toString().substring(0, 1) + day.getDayOfWeek().toString().substring(1, 3).toLowerCase();
-            agendaList.add(new DailyAgenda(i, dayOfWeek, new ArrayList<Event>()));
-        }
-
-        return agendaList;
-    }
-
-//    private void queryEvents() {
-//        ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
-//        query.include(Event.KEY_USER);
-//        query.findInBackground(new FindCallback<Event>() {
-//            @Override
-//            public void done(List<Event> events, ParseException e) {
-//                if (e != null) {
-//                    return;
-//                }
-//                for (Event event: events) {
-//                    Log.i("DailyViewActivity", "Event: " + event.getTitle() + ", date: " + event.getDate().getDate());
-//                    // TODO: populate events
-//                }
-//            }
-//        });
-//    }
-
-    File photoFile; // declaring global variable to later get path for file
-
     private void openCamera() {
 
         Intent camintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -287,7 +295,6 @@ public class DailyViewActivity extends AppCompatActivity {
         autofill.putExtra("Sender is DailyView", "True");
 
         startActivity(autofill);
-
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -50,29 +51,21 @@ public class MonthlyViewActivity  extends AppCompatActivity {
     private TextView[] textViews = new TextView[42];
 
     int month, date;
-
-    TextView tvDay1, tvDay2, tvDay3, tvDay4, tvDay5, tvDay6, tvDay7,
-            tvDay8, tvDay9, tvDay10, tvDay11, tvDay12, tvDay13, tvDay14,
-            tvDay15, tvDay16, tvDay17, tvDay18, tvDay19, tvDay20, tvDay21,
-            tvDay22, tvDay23, tvDay24, tvDay25, tvDay26, tvDay27, tvDay28,
-            tvDay29, tvDay30, tvDay31, tvDay32, tvDay33, tvDay34, tvDay35,
-            tvDay36, tvDay37, tvDay38, tvDay39, tvDay40, tvDay41, tvDay42;
-
     TextView tvMonth;
+
+    ArrayList<Event> eventsList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
+        eventsList = new ArrayList<>();
 
         initializeViews();
         createFloatingActionButton();
         // 0 is January. 11 is December
         initializemonthview(10);
         queryEvents();
-        // code snippet to highlight date
-//        tvDay01.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5A62AE")));
-//        tvDay01.setBackgroundResource(R.drawable.background_color_circle_selector);
-//        tvDay01.setTextColor(Color.parseColor("#FFFFFF"));
     }
 
     private void initializeViews() {
@@ -226,12 +219,14 @@ public class MonthlyViewActivity  extends AppCompatActivity {
                     return;
                 }
                 for (Event event: events) {
-                    Log.i("MonthlyViewActivity", "Event: " + event.getTitle() + ", date: " + event.getDate().getDate());
+                    Log.i("MonthlyViewActivity", "Adding Event: " + event.getTitle());
                     int date = event.getDate().getDate();
                     textViews[date-1].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5A62AE")));
                     textViews[date-1].setBackgroundResource(R.drawable.background_color_circle_selector);
                     textViews[date-1].setTextColor(Color.parseColor("#FFFFFF"));
                 }
+                eventsList.addAll(events);
+                Log.i("MonthlyViewActivity", "First Event: " + eventsList.get(0).getTitle());
             }
         });
     }
@@ -245,6 +240,8 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), DailyViewActivity.class);
         i.putExtra("month", month);
         i.putExtra("date", date);
+        i.putParcelableArrayListExtra("eventsList", eventsList);
+        Log.i("MonthlyViewActivity", "Date clicked: " + date);
         startActivity(i);
     }
 
