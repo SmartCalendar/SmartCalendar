@@ -34,6 +34,7 @@ import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -65,6 +66,8 @@ public class MonthlyViewActivity  extends AppCompatActivity {
 
         initializeViews();
         createFloatingActionButton();
+        // 0 is January. 11 is December
+        initializemonthview(10);
         queryEvents();
         // code snippet to highlight date
 //        tvDay01.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5A62AE")));
@@ -76,10 +79,13 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         int temp;
         id = new ArrayList<String>();
 
+        // id has a ArrayList of strings that are ["tvDay1", "tvDay2"...."tvDay42"]
         for(int i=0; i<42; i++){
             id.add("tvDay" + String.valueOf(i+1));
         }
 
+        // temp retrieves each element("tvDay1") from ArrayList ID (above).
+        // textViews is an Array of size 42 containing TextView objects. Initializes all the textviews
         for(int i=0; i<42; i++){
             temp = getResources().getIdentifier(id.get(i), "id", getPackageName());
             textViews[i] = (TextView)findViewById(temp);
@@ -87,6 +93,47 @@ public class MonthlyViewActivity  extends AppCompatActivity {
 
         tvMonth = findViewById(R.id.tvMonth);
     }
+
+    // 0 is January, 11 is December. int month input ranges from 0 to 11.
+    String[] monthNames = {"January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"};
+    String [] weekDays = {" ", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    // textviews {tvDayOfWeek1}=Sunday, {tvDayOfWeek2}=Monday, {tvDayOfWeek7}=Saturday
+    // in the future, clicklistener will recall this initializemonthview function with old input +- 1 depending on the direction. also account for changing the year?
+    Calendar monthviewcal = Calendar.getInstance();
+    private void initializemonthview(int month) {
+        // What day of the week does the 1st of the month input start?
+        monthviewcal.set(Calendar.MONTH, month);
+        monthviewcal.set(Calendar.DAY_OF_MONTH, 1);// Calendar has month input and 1st day.
+        monthviewcal.set(Calendar.YEAR, 2020);
+        tvMonth.setText(monthNames[month]);
+        int weekdayint = monthviewcal.get(Calendar.DAY_OF_WEEK); // values range from 1=Sunday to 7=Saturday. For December the weekdayint=3, so tvDayOfWeek3 is the start.
+        int maxdays = monthviewcal.getActualMaximum(Calendar.DAY_OF_MONTH); // December this value would be 31
+
+        // December it will loop from i=3 to i<34 or i=33. tvDay1 to tvDay33 is filled.
+        // textViews index ranges from 0 to 41. size is 42.
+        Log.e(TAG, "Week day integer: " + weekdayint);
+        Log.e(TAG, "Max days in november " + maxdays);
+        Log.e(TAG, "Date " + monthviewcal.getTime());
+        for (int i=weekdayint-1, j = 1; i<maxdays+weekdayint-1; i++, j++) {
+            textViews[i].setText(String.valueOf(j));
+        }
+
+        // forward loop after end of month. start from tvday34 to 42. this will break for leap years.
+        for (int i=maxdays+weekdayint-1, j=1; i<=41; i++, j++) {
+            textViews[i].setText(String.valueOf(j));
+        }
+
+        // backward loop before the month. probably will break when changing years.
+        Calendar previousmonth = Calendar.getInstance();
+        previousmonth.set(Calendar.MONTH, month-1);
+        int prevlastday = previousmonth.getActualMaximum(Calendar.DAY_OF_MONTH); // December example -> It will check to see 30 days in november. iterate from 30 until no room left.
+        for (int i=weekdayint-2, j=prevlastday;  i >= 0 ; i--, j--) {
+            textViews[i].setText(String.valueOf(j));
+        }
+
+
+    }
+
 
     private void createFloatingActionButton() {
         // Floating_action_button views and animations
