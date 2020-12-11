@@ -17,12 +17,10 @@
         android:layout_marginStart="10dp"
         android:text="5 minutes before"
         android:textSize="20dp"
-<<<<<<< HEAD
-        android:textColor="#FFFFFF"
+        android:textColor="#80FFFFFF"
         />
-=======
-        android:textColor="#80FFFFFF" />
->>>>>>> 86745a3a9bfde45eb2bc5529c38cc5398a093f51
+
+
 
     <View
         style="@style/Divider"
@@ -38,12 +36,8 @@
         android:layout_marginStart="10dp"
         android:text="10 minutes before"
         android:textSize="20dp"
-<<<<<<< HEAD
-        android:textColor="#FFFFFF"
+        android:textColor="#80FFFFFF"
         />
-=======
-        android:textColor="#80FFFFFF" />
->>>>>>> 86745a3a9bfde45eb2bc5529c38cc5398a093f51
 
     <View
         style="@style/Divider"
@@ -59,11 +53,7 @@
         android:layout_marginStart="10dp"
         android:text="30 minutes before"
         android:textSize="20dp"
-<<<<<<< HEAD
-        android:textColor="#FFFFFF"/>
-=======
-        android:textColor="#80FFFFFF"/>
->>>>>>> 86745a3a9bfde45eb2bc5529c38cc5398a093f51
+        android:textColor="#80FFFFFF" />
 
     <View
         style="@style/Divider"
