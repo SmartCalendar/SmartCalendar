@@ -239,4 +239,5 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         currentPhotoPath = image.getAbsolutePath();
         return image;
     }
+
 }
