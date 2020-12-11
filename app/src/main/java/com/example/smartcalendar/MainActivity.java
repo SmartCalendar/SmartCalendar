@@ -21,6 +21,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
+    // TODO: Delete later
+
     SignInButton signInButton;
     private GoogleApiClient googleApiClient;
     private static final int SIGN_IN = 1;
