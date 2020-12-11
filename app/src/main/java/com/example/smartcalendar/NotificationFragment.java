@@ -5,35 +5,30 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class Notif_Fragment extends DialogFragment implements View.OnClickListener {
+public class NotificationFragment extends DialogFragment implements View.OnClickListener {
 
     public TextView min5;
     public TextView min10;
     public TextView min30;
-    public EditText mincustom;
-    public Button donebtn;
+    public EditText minCustom;
+    public Button doneBtn;
 
-    public Notif_Fragment() {
+    public NotificationFragment() {
         // Empty constructor is required for DialogFragment
         // Make sure not to add arguments to the constructor
         // Use `newInstance` instead as shown below
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,42 +38,40 @@ public class Notif_Fragment extends DialogFragment implements View.OnClickListen
         min5 =  v.findViewById(R.id.min5);
         min10 =  v.findViewById(R.id.min10);
         min30 =  v.findViewById(R.id.min30);
-        mincustom = v.findViewById(R.id.mincustom);
-        mincustom.setInputType(InputType.TYPE_CLASS_NUMBER);
-        donebtn = v.findViewById(R.id.donebtn);
+        minCustom = v.findViewById(R.id.minCustom);
+        minCustom.setInputType(InputType.TYPE_CLASS_NUMBER);
+        doneBtn = v.findViewById(R.id.doneBtn);
 
-        donebtn.setOnClickListener(this);
+        doneBtn.setOnClickListener(this);
         min5.setOnClickListener(this);
         min10.setOnClickListener(this);
         min30.setOnClickListener(this);
 
         return v;
-
     };
-
 
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.donebtn:
-                if (TextUtils.isEmpty(mincustom.getText().toString())) {
-                    Toast.makeText(getContext(), "You did not enter a number for custom minutes", Toast.LENGTH_SHORT).show();
+            case R.id.doneBtn:
+                if (TextUtils.isEmpty(minCustom.getText().toString())) {
+                    return;
                 }
                 else {
-                    NotifDialogPasser(mincustom.getText().toString());
+                    NotificationDialogPasser(minCustom.getText().toString());
                 }
                 break;
 
             case R.id.min5:
-                NotifDialogPasser("5");
+                NotificationDialogPasser("5");
                 break;
 
             case R.id.min10:
-                NotifDialogPasser("10");
+                NotificationDialogPasser("10");
                 break;
 
             case R.id.min30:
-                NotifDialogPasser("30");
+                NotificationDialogPasser("30");
                 break;
 
             default:
@@ -87,7 +80,7 @@ public class Notif_Fragment extends DialogFragment implements View.OnClickListen
     }
 
     // this passes data from the DialogFragment back to the EditActivity. In EditActivity, look for "onFinishedEditDialog" function as receiver.
-    public void NotifDialogPasser(String inputText) {
+    public void NotificationDialogPasser(String inputText) {
         DialogListener dialogListener = (DialogListener) getActivity();
         dialogListener.onFinishEditDialog(inputText);
         dismiss();
@@ -96,6 +89,4 @@ public class Notif_Fragment extends DialogFragment implements View.OnClickListen
     public interface DialogListener {
         void onFinishEditDialog(String inputText);
     }
-
-
 }

@@ -12,41 +12,41 @@ import com.example.smartcalendar.R;
 
 import java.util.List;
 
-public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder> {
+public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsViewHolder> {
 
-    private List<Item> itemList;
+    public List<Event> eventList;
 
-    public ItemsAdapter(List<Item> itemList) {
-        this.itemList = itemList;
+    public EventsAdapter(List<Event> eventList) {
+        this.eventList = eventList;
     }
 
     @NonNull
     @Override
-    public ItemsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EventsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        return new ItemsViewHolder(view);
+        return new EventsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemsViewHolder holder, int position) {
-        Item item = itemList.get(position);
-        holder.tvTitle.setText(item.getTitle());
-        holder.tvTime.setText(item.getTime());
-        holder.tvLocation.setText(item.getLocation());
+    public void onBindViewHolder(@NonNull EventsViewHolder holder, int position) {
+        Event event = eventList.get(position);
+        holder.tvTitle.setText(event.getTitle());
+        holder.tvTime.setText(event.getDate().getDate());
+        holder.tvLocation.setText(event.getLocation());
     }
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        return eventList.size();
     }
 
-    class ItemsViewHolder extends RecyclerView.ViewHolder {
+    class EventsViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvTitle;
         private TextView tvTime;
         private TextView tvLocation;
 
-        ItemsViewHolder(View itemView) {
+        EventsViewHolder(View itemView) {
             super(itemView);
 
             tvTitle = itemView.findViewById(R.id.tvTitle);

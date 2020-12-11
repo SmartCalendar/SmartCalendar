@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.Parse;
+import com.parse.ParseObject;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         if (ParseUser.getCurrentUser() != null) {
-            goDailyActivity();
+            launchDailyActivity();
         }
 
         etUsername = findViewById(R.id.etUsername);
@@ -38,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "onClick login button");
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 loginUser(username, password);
@@ -57,13 +58,13 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Issue with login!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                goDailyActivity();
+                launchDailyActivity();
                 Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void goDailyActivity(){
+    private void launchDailyActivity(){
         Intent i = new Intent(this, MonthlyViewActivity.class);
         startActivity(i);
         finish();

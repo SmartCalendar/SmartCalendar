@@ -11,7 +11,10 @@
     <string name="login_failed">"Login failed"</string>
     <string name="smart_calendar">Smart Calendar</string>
     <string name="login">Login</string>
+    <string name="register">Register</string>
     <string name="todo">TODO</string>
     <string name="sign_out">Sign Out</string>
+    <string name="username">userName</string>
+    <string name="password">password</string>
     <string name="sign_up">Sign up</string>
 </resources>

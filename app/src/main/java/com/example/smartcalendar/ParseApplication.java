@@ -2,6 +2,7 @@ package com.example.smartcalendar;
 
 import android.app.Application;
 
+import com.example.smartcalendar.models.Event;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -12,7 +13,7 @@ public class ParseApplication extends Application {
         super.onCreate();
 
         // Register your parse models
-        // ParseObject.registerSubclass(Post.class);
+        ParseObject.registerSubclass(Event.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("8XAZWDrRfeQrOLJj7CNYli0L7sJresnUHeVegGu3")

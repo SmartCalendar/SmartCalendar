@@ -29,10 +29,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/alef"
-        android:text="November"
+        android:text="December"
         android:textColor="#5A62AE"
-        android:textSize="36sp"
-        tools:text="November" />
+        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/tvDayOfWeek1"
@@ -126,7 +125,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/tvDay01"
+        android:id="@+id/tvDay1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_below="@+id/tvDayOfWeek1"
@@ -138,11 +137,11 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvDay02"
+        android:id="@+id/tvDay2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignStart="@+id/tvDayOfWeek2"
-        android:layout_alignTop="@+id/tvDay01"
+        android:layout_alignTop="@+id/tvDay1"
         android:text="2"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
@@ -150,24 +149,24 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvDay03"
+        android:id="@+id/tvDay3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:layout_alignStart="@+id/tvDayOfWeek3"
-        android:layout_alignTop="@+id/tvDay02"
+        android:layout_alignTop="@+id/tvDay1"
         android:text="3"
         android:textAlignment="center"
         android:textColor="#80FFFFFF"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvDay04"
+        android:id="@+id/tvDay4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignStart="@+id/tvDayOfWeek4"
-        android:layout_alignTop="@+id/tvDay01"
+        android:layout_alignTop="@+id/tvDay1"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:text="4"
@@ -176,49 +175,49 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvDay05"
+        android:id="@+id/tvDay5"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:layout_alignStart="@+id/tvDayOfWeek5"
-        android:layout_alignTop="@+id/tvDay01"
+        android:layout_alignTop="@+id/tvDay1"
         android:text="5"
         android:textAlignment="center"
         android:textColor="#80FFFFFF"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvDay06"
+        android:id="@+id/tvDay6"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:layout_alignStart="@+id/tvDayOfWeek6"
-        android:layout_alignTop="@+id/tvDay01"
+        android:layout_alignTop="@+id/tvDay1"
         android:text="6"
         android:textAlignment="center"
         android:textColor="#80FFFFFF"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvDay07"
+        android:id="@+id/tvDay7"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:layout_alignStart="@+id/tvDayOfWeek7"
-        android:layout_alignTop="@+id/tvDay01"
+        android:layout_alignTop="@+id/tvDay1"
         android:text="7"
         android:textAlignment="center"
         android:textColor="#80FFFFFF"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvDay08"
+        android:id="@+id/tvDay8"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/tvDay01"
+        android:layout_below="@+id/tvDay1"
         android:layout_alignStart="@+id/tvDayOfWeek1"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
@@ -228,13 +227,13 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvDay09"
+        android:id="@+id/tvDay9"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:layout_alignStart="@+id/tvDayOfWeek2"
-        android:layout_alignTop="@+id/tvDay08"
+        android:layout_alignTop="@+id/tvDay8"
         android:text="9"
         android:textAlignment="center"
         android:textColor="#80FFFFFF"
@@ -245,14 +244,12 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignStart="@+id/tvDayOfWeek3"
-        android:layout_alignTop="@+id/tvDay08"
-        android:background="@drawable/background_color_circle_selector"
-        android:backgroundTint="#5A62AE"
+        android:layout_alignTop="@+id/tvDay8"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:text="10"
         android:textAlignment="center"
-        android:textColor="#E6FFFFFF"
+        android:textColor="#80FFFFFF"
         android:textSize="18sp" />
 
     <TextView
@@ -261,14 +258,13 @@
         android:layout_height="50dp"
         android:layout_below="@+id/tvDayOfWeek4"
         android:layout_alignStart="@+id/tvDayOfWeek4"
-        android:layout_alignTop="@+id/tvDay08"
+        android:layout_alignTop="@+id/tvDay8"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:text="11"
         android:textAlignment="center"
         android:textColor="#80FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/tvDay12"
@@ -277,7 +273,7 @@
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:layout_alignStart="@+id/tvDayOfWeek5"
-        android:layout_alignTop="@+id/tvDay08"
+        android:layout_alignTop="@+id/tvDay8"
         android:text="12"
         android:textAlignment="center"
         android:textColor="#80FFFFFF"
@@ -290,7 +286,7 @@
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:layout_alignStart="@+id/tvDayOfWeek6"
-        android:layout_alignTop="@+id/tvDay08"
+        android:layout_alignTop="@+id/tvDay8"
         android:text="13"
         android:textAlignment="center"
         android:textColor="#80FFFFFF"
@@ -303,7 +299,7 @@
         android:gravity="center_vertical|center"
         android:onClick="onClick"
         android:layout_alignStart="@+id/tvDayOfWeek7"
-        android:layout_alignTop="@+id/tvDay08"
+        android:layout_alignTop="@+id/tvDay8"
         android:text="14"
         android:textAlignment="center"
         android:textColor="#80FFFFFF"
@@ -313,7 +309,7 @@
         android:id="@+id/tvDay15"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/tvDay08"
+        android:layout_below="@+id/tvDay8"
         android:layout_alignStart="@+id/tvDayOfWeek1"
         android:gravity="center_vertical|center"
         android:onClick="onClick"
@@ -679,53 +675,49 @@
         android:id="@+id/fab_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="@id/fab_main"
-        android:layout_alignParentEnd="true"
         android:layout_above="@id/fab_main"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="24dp"
+        android:layout_alignStart="@+id/fab_main"
+        android:layout_alignParentBottom="false"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:elevation="16dp"
+        android:elevation="15dp"
         android:focusable="true"
         android:visibility="invisible"
-        app:backgroundTint="#7850BF"
+        android:backgroundTint="#FFFFFF"
+        android:tint="#5A62AE"
         app:pressedTranslationZ="12dp"
-        app:srcCompat="@drawable/ic_baseline_event_24"
-        />
+        app:srcCompat="@drawable/ic_baseline_event_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/fab_event"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="166dp"
+        android:layout_above="@+id/fab_event"
+        android:layout_alignStart="@+id/fab_event"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:elevation="16dp"
+        android:elevation="15dp"
+        android:tint="#5A62AE"
         android:focusable="true"
-        app:backgroundTint="#7850BF"
-        app:pressedTranslationZ="12dp"
         android:visibility="invisible"
+        android:backgroundTint="#FFFFFF"
+        app:pressedTranslationZ="12dp"
         app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="50dp"
         android:background="?android:attr/selectableItemBackground"
-        android:backgroundTint="#7850BF"
         android:clickable="true"
         android:elevation="16dp"
         android:focusable="true"
-        app:backgroundTint="#7850BF"
+        android:backgroundTint="#FFFFFF"
+        android:tint="#5A62AE"
         app:pressedTranslationZ="12dp"
         app:srcCompat="@drawable/ic_baseline_add_24" />
 

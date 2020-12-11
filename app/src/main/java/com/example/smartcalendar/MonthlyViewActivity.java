@@ -3,73 +3,92 @@ package com.example.smartcalendar;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import com.example.smartcalendar.models.Event;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.w3c.dom.Text;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class MonthlyViewActivity  extends AppCompatActivity {
 
+    public static final String TAG = "MonthlyViewActivity";
+
     private FloatingActionButton fab_main, fab_camera, fab_event;
     private Animation fab_open, fab_close, fab_clock, fab_anti_clock;
     Boolean isOpen = false;
-    public static final String TAG = "DetailActivity";
 
-    TextView tvDay01, tvDay02, tvDay03, tvDay04, tvDay05, tvDay06, tvDay07,
-            tvDay08, tvDay09, tvDay10, tvDay11, tvDay12, tvDay13, tvDay14,
+    private ArrayList<String> id;
+    private TextView[] textViews = new TextView[42];
+
+    int month, date;
+
+    TextView tvDay1, tvDay2, tvDay3, tvDay4, tvDay5, tvDay6, tvDay7,
+            tvDay8, tvDay9, tvDay10, tvDay11, tvDay12, tvDay13, tvDay14,
             tvDay15, tvDay16, tvDay17, tvDay18, tvDay19, tvDay20, tvDay21,
             tvDay22, tvDay23, tvDay24, tvDay25, tvDay26, tvDay27, tvDay28,
             tvDay29, tvDay30, tvDay31, tvDay32, tvDay33, tvDay34, tvDay35,
             tvDay36, tvDay37, tvDay38, tvDay39, tvDay40, tvDay41, tvDay42;
 
-//    ArrayList<TextView> tvDayList = new ArrayList<TextView>();
-
+    TextView tvMonth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
 
-        // Set on click listener for each day on the calendar
-//        tvDayList.add(tvDay01); tvDayList.add(tvDay02); tvDayList.add(tvDay03); tvDayList.add(tvDay04); tvDayList.add(tvDay05); tvDayList.add(tvDay06); tvDayList.add(tvDay07);
-//        tvDayList.add(tvDay08); tvDayList.add(tvDay09); tvDayList.add(tvDay10); tvDayList.add(tvDay11); tvDayList.add(tvDay12); tvDayList.add(tvDay13); tvDayList.add(tvDay14);
-//        tvDayList.add(tvDay15); tvDayList.add(tvDay16); tvDayList.add(tvDay17); tvDayList.add(tvDay18); tvDayList.add(tvDay19); tvDayList.add(tvDay20); tvDayList.add(tvDay21);
-//        tvDayList.add(tvDay22); tvDayList.add(tvDay23); tvDayList.add(tvDay24); tvDayList.add(tvDay25); tvDayList.add(tvDay26); tvDayList.add(tvDay27); tvDayList.add(tvDay28);
-//        tvDayList.add(tvDay29); tvDayList.add(tvDay30); tvDayList.add(tvDay31); tvDayList.add(tvDay32); tvDayList.add(tvDay33); tvDayList.add(tvDay34); tvDayList.add(tvDay35);
-//        tvDayList.add(tvDay36); tvDayList.add(tvDay37); tvDayList.add(tvDay38); tvDayList.add(tvDay39); tvDayList.add(tvDay40); tvDayList.add(tvDay41); tvDayList.add(tvDay42);
+        initializeViews();
+        createFloatingActionButton();
+        queryEvents();
+        // code snippet to highlight date
+//        tvDay01.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5A62AE")));
+//        tvDay01.setBackgroundResource(R.drawable.background_color_circle_selector);
+//        tvDay01.setTextColor(Color.parseColor("#FFFFFF"));
+    }
 
-        tvDay01 = findViewById(R.id.tvDay01); tvDay02 = findViewById(R.id.tvDay02); tvDay03 = findViewById(R.id.tvDay03); tvDay04 = findViewById(R.id.tvDay04); tvDay05 = findViewById(R.id.tvDay05);
-        tvDay06 = findViewById(R.id.tvDay06); tvDay07 = findViewById(R.id.tvDay07); tvDay08 = findViewById(R.id.tvDay08); tvDay09 = findViewById(R.id.tvDay09); tvDay10 = findViewById(R.id.tvDay10);
-        tvDay11 = findViewById(R.id.tvDay11); tvDay12 = findViewById(R.id.tvDay12); tvDay13 = findViewById(R.id.tvDay13); tvDay14 = findViewById(R.id.tvDay14); tvDay15 = findViewById(R.id.tvDay15);
-        tvDay16 = findViewById(R.id.tvDay16); tvDay17 = findViewById(R.id.tvDay17); tvDay18 = findViewById(R.id.tvDay18); tvDay19 = findViewById(R.id.tvDay19); tvDay20 = findViewById(R.id.tvDay20);
-        tvDay21 = findViewById(R.id.tvDay21); tvDay22 = findViewById(R.id.tvDay22); tvDay23 = findViewById(R.id.tvDay23); tvDay24 = findViewById(R.id.tvDay24); tvDay25 = findViewById(R.id.tvDay25);
-        tvDay26 = findViewById(R.id.tvDay26); tvDay27 = findViewById(R.id.tvDay27); tvDay28 = findViewById(R.id.tvDay28); tvDay29 = findViewById(R.id.tvDay29); tvDay30 = findViewById(R.id.tvDay30);
-        tvDay31 = findViewById(R.id.tvDay31); tvDay32 = findViewById(R.id.tvDay32); tvDay33 = findViewById(R.id.tvDay33); tvDay34 = findViewById(R.id.tvDay34); tvDay35 = findViewById(R.id.tvDay35);
-        tvDay36 = findViewById(R.id.tvDay36); tvDay37 = findViewById(R.id.tvDay37); tvDay38 = findViewById(R.id.tvDay38); tvDay39 = findViewById(R.id.tvDay39); tvDay40 = findViewById(R.id.tvDay40);
-        tvDay41 = findViewById(R.id.tvDay41); tvDay42 = findViewById(R.id.tvDay42);
+    private void initializeViews() {
+        int temp;
+        id = new ArrayList<String>();
 
+        for(int i=0; i<42; i++){
+            id.add("tvDay" + String.valueOf(i+1));
+        }
+
+        for(int i=0; i<42; i++){
+            temp = getResources().getIdentifier(id.get(i), "id", getPackageName());
+            textViews[i] = (TextView)findViewById(temp);
+        }
+
+        tvMonth = findViewById(R.id.tvMonth);
+    }
+
+    private void createFloatingActionButton() {
         // Floating_action_button views and animations
         // layout_fab_submenu changed from RelativeLayout to FrameLayout, couldn't do <include with activity_daily so just manually copied over layout elements
         // TODO: Fix the color themes for the layouts and have it more polished.
@@ -119,8 +138,8 @@ public class MonthlyViewActivity  extends AppCompatActivity {
                     if (checkSelfPermission(Manifest.permission.CAMERA)
                             == PackageManager.PERMISSION_DENIED ||
                             checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                                    == PackageManager.PERMISSION_DENIED
-                    ) {
+                                    == PackageManager.PERMISSION_DENIED)
+                    {
                         // Permission was not granted
                         // Ask for runtime permission
                         String[] permissions = new String[2];
@@ -131,20 +150,16 @@ public class MonthlyViewActivity  extends AppCompatActivity {
                                 permissions,
                                 101
                         );
-
                     } else {
                         // Permission already granted
                         openCamera();
                     }
-
                 } else {
                     // System OS < Marshmallow
                     openCamera();
                 }
-
             }
         });
-
         // TODO: Link this to open up the EditActivity
         fab_event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,9 +169,35 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         });
     }
 
+    private void queryEvents() {
+        ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
+        query.include(Event.KEY_USER);
+        query.findInBackground(new FindCallback<Event>() {
+            @Override
+            public void done(List<Event> events, ParseException e) {
+                if (e != null) {
+                    return;
+                }
+                for (Event event: events) {
+                    Log.i("MonthlyViewActivity", "Event: " + event.getTitle() + ", date: " + event.getDate().getDate());
+                    int date = event.getDate().getDate();
+                    textViews[date-1].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5A62AE")));
+                    textViews[date-1].setBackgroundResource(R.drawable.background_color_circle_selector);
+                    textViews[date-1].setTextColor(Color.parseColor("#FFFFFF"));
+                }
+            }
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void onClick(View v) {
-        Toast.makeText(getApplicationContext(), "Tap", Toast.LENGTH_SHORT).show();
+        TextView t = (TextView) v;
+
+        date = Integer.parseInt(t.getText().toString()) ;
+        month = Month.valueOf(tvMonth.getText().toString().toUpperCase()).getValue();
         Intent i = new Intent(getApplicationContext(), DailyViewActivity.class);
+        i.putExtra("month", month);
+        i.putExtra("date", date);
         startActivity(i);
     }
 
@@ -183,7 +224,6 @@ public class MonthlyViewActivity  extends AppCompatActivity {
                 startActivityForResult(camintent, 101);
             }
         }
-
     }
 
     private File createImageFile() throws IOException {
@@ -203,29 +243,4 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         return image;
     }
 
-//    @Override
-//    public void onWindowFocusChanged(boolean hasFocus) {
-//        super.onWindowFocusChanged(hasFocus);
-//        if (hasFocus) {
-//            hideSystemUI();
-//        }
-//    }
-//
-//    // https://developer.android.com/training/system-ui/immersive -  reference
-//    private void hideSystemUI() {
-//        // Enables regular immersive mode.
-//        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
-//        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-//        View decorView = getWindow().getDecorView();
-//        decorView.setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_IMMERSIVE
-//                        // Set the content to appear under the system bars so that the
-//                        // content doesn't resize when the system bars hide and show.
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                        // Hide the nav bar and status bar
-//                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
-//    }
 }
