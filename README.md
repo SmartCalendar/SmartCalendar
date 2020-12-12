@@ -111,7 +111,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 </ol>
 
 <ol>
-<li> Login Activity </li>
+<li> Login </li>
      <ul><li>Image </li>
      <li>Login User Name </li>
      <li>Login Password </li></ul>
@@ -123,21 +123,21 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <li>Week Days </li>
      <li>Dates </li></ul>
 
-<li> Daily View Activity</li>
+<li> Daily View </li>
      <ul><li>Year</li>
      <li>Month</li>
-     <li>RecyclerView</li>
+     <li>Recycler View</li>
        <ol><li>Date</li>
        <li>Day</li>
        <ol><li>Post</li>
        <li>Time</li></ol></ol></ul>
 
-<li> ActivityDetails</li>
+<li> Details</li>
      <ul><li>Close X </li>
-     <li>Edit/PencilIcon</li>
-     <li>Delete/TrashIcon</li>
+     <li>Edit / Pencil Icon</li>
+     <li>Delete / Trash Icon</li>
      <li>Title</li>
-     <li>dateTime</li>
+     <li>Date Time</li>
        <ol><li>Month</li>
        <li>Date</li>
        <li>Day</li></ol>
@@ -146,27 +146,27 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
        <li>Location</li>
        <li>Address</li></ol>
      <li>Notification</li>
-       <ol><li>Reminder/BellIcon</li>
-       <li>ReminderOccurence</li></ol>
+       <ol><li>Reminder / Bell Icon</li>
+       <li>Reminder Occurence</li></ol>
      <li>Decription</li>
-       <ol><li>Notes/MenuIcon</li>
+       <ol><li>Notes / MenuIcon</li>
        <li>Notes</li></ol></ul>
 
-<li> ActivityEdit</li>
-     <ul><li>Close/XIcon</li>
-     <li>Done/CheckIcon</li>
+<li> Edit </li>
+     <ul><li>Close (X) Icon</li>
+     <li>Done (Check) Icon</li>
      <li>Divider</li>
-     <li>clockIcon</li>
-     <li>addStartDate</li>
-     <li>addStartTime</li>
-     <li>addEndDate</li>
-     <li>addEndTime</li>
+     <li>Clock Icon</li>
+     <li>Add Start Date</li>
+     <li>Add Start Time</li>
+     <li>Add End Date</li>
+     <li>Add End Time</li>
      <li>Divider</li>
-     <li>addLocation</li>
+     <li>Add Location</li>
      <li>Divider</li>
-     <li>addNotification</li>
+     <li>Add Notification</li>
      <li>Divider</li>
-     <li>addDescription</li></ul>
+     <li>Add Description</li></ul>
 
 <li> Notifications</li>
 	<ul><li>Extracted Text</li></ul>
