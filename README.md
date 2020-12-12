@@ -89,13 +89,13 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 <img src="https://github.com/SmartCalendar/SmartCalendar/blob/main/loginAPI.gif" width=350>
 
 ### Edit Activity, Date and Time Widgets, and Notification Dialog Fragment
-<img src="https://github.com/SmartCalendar/SmartCalendar/main/editbtn_notificationmenu.gif" width=350>
+<img src="https://github.com/SmartCalendar/SmartCalendar/blob/main/editbtn_notificationmenu.gif" width=350>
 
 ### High Priority Notifications with reminders before event time done with AlarmManager & BroadCast Receiver
-<img src= "https://github.com/SmartCalendar/SmartCalendar/main/notification_popup2.gif" width=350>
+<img src= "https://github.com/SmartCalendar/SmartCalendar/blob/main/notification_popup2.gif" width=350>
 
 ### Dynamic Monthly View generation algorithm+view
-<img src = "https://github.com/SmartCalendar/SmartCalendar/main/monthview_btns_test2.gif" width=350>
+<img src = "https://github.com/SmartCalendar/SmartCalendar/blob/main/monthview_btns_test2.gif" width=350>
 
 ## Smart Calendar - Scheme Design
 <ol>
