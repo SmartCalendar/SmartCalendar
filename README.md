@@ -4,6 +4,7 @@
 1. [Overview](#Overview)
 2. [Product Spec](#Product-Spec)
 3. [Wireframes](#Wireframes)
+3. [Schema](#Schema)
 
 ## Overview
 ### Description
@@ -51,12 +52,12 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
    * [ ] User can login
 * [x] Stream Screen (Monthly)
    * [x] User can view the calendar for the month
-* [ ] Stream Screen (Daily)
-   * [ ] User can view the agenda of a day
+* [x] Stream Screen (Daily)
+   * [x] User can view the agenda of a day
 * [x] Detail Screen
-   * [ ] User can view the details of an event on the calendar or delete it
+   * [x] User can view the details of an event on the calendar or delete it
 * [x] Creation Screen
-   * [ ] User can create or modify an event on the calendar
+   * [x] User can create or modify an event on the calendar
    
 ### 3. Navigation
 
@@ -66,7 +67,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
    => Calendar
 * [x] Stream Screen (Monthly)
    => Stream Screen (Daily) / Detail Screen / Creation Screen
-* [ ] Stream Screen (Daily)
+* [x] Stream Screen (Daily)
    => Stream Screen (Monthly) / Detail Screen / Creation Screen
 * [x] Detail Screen
    => Stream Screen (Monthly) / Stream Screen (Daily) / Creation Screen
@@ -97,7 +98,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 ### Dynamic Monthly View generation algorithm+view
 <img src = "https://github.com/SmartCalendar/SmartCalendar/blob/main/monthview_btns_test2.gif" width=350>
 
-## Smart Calendar - Scheme Design
+## Schema
 <ol>
 <li> Login Activity</li>
 <li> Calendar</li>
