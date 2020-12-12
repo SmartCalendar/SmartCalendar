@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,10 @@ public class MonthlyViewActivity  extends AppCompatActivity {
     int month, date;
     TextView tvMonth;
 
+    ImageButton nextmonth;
+    ImageButton lastmonth;
+    TextView tvYear;
+
     ArrayList<Event> eventsList;
 
     @Override
@@ -60,13 +65,56 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
         eventsList = new ArrayList<>();
+        nextmonth = findViewById(R.id.nextmonth);
+        lastmonth = findViewById(R.id.lastmonth);
+        tvYear = findViewById(R.id.tvYear);
 
         initializeViews();
         createFloatingActionButton();
         // 0 is January. 11 is December
-        initializemonthview(10);
+        initializemonthview(11, 2020);
         queryEvents();
+
+        nextmonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (checkmonth == 11) {
+                    initializemonthview(0, 2021);
+                    tvYear.setText("2021");
+                }
+
+                else {
+                    initializemonthview(checkmonth+1, 2020);
+                }
+
+            }
+
+        });
+
+        // in the future we have to fix this, it works because we first call the function with (2020) but it should grab current Time of year for the user
+        lastmonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (checkmonth == 0) {
+                    initializemonthview(11, 2020);
+                    tvYear.setText("2020");
+                }
+
+                else {
+                    initializemonthview(checkmonth-1, 2020);
+                }
+
+            }
+
+        });
+
+
     }
+
+
+
 
     private void initializeViews() {
         int temp;
@@ -87,17 +135,19 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         tvMonth = findViewById(R.id.tvMonth);
     }
 
+    int checkmonth;
     // 0 is January, 11 is December. int month input ranges from 0 to 11.
     String[] monthNames = {"January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"};
     String [] weekDays = {" ", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     // textviews {tvDayOfWeek1}=Sunday, {tvDayOfWeek2}=Monday, {tvDayOfWeek7}=Saturday
     // in the future, clicklistener will recall this initializemonthview function with old input +- 1 depending on the direction. also account for changing the year?
-    Calendar monthviewcal = Calendar.getInstance();
-    private void initializemonthview(int month) {
+    Calendar monthviewcal = Calendar.getInstance(); // TODO: Make sure this doesnt cause any problems
+    private void initializemonthview(int month, int year) {
         // What day of the week does the 1st of the month input start?
+        checkmonth = month;
         monthviewcal.set(Calendar.MONTH, month);
         monthviewcal.set(Calendar.DAY_OF_MONTH, 1);// Calendar has month input and 1st day.
-        monthviewcal.set(Calendar.YEAR, 2020);
+        monthviewcal.set(Calendar.YEAR, year);
         tvMonth.setText(monthNames[month]);
         int weekdayint = monthviewcal.get(Calendar.DAY_OF_WEEK); // values range from 1=Sunday to 7=Saturday. For December the weekdayint=3, so tvDayOfWeek3 is the start.
         int maxdays = monthviewcal.getActualMaximum(Calendar.DAY_OF_MONTH); // December this value would be 31
@@ -109,11 +159,13 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         Log.e(TAG, "Date " + monthviewcal.getTime());
         for (int i=weekdayint-1, j = 1; i<maxdays+weekdayint-1; i++, j++) {
             textViews[i].setText(String.valueOf(j));
+            textViews[i].setTextColor(Color.parseColor("#80FFFFFF"));
         }
 
         // forward loop after end of month. start from tvday34 to 42. this will break for leap years.
         for (int i=maxdays+weekdayint-1, j=1; i<=41; i++, j++) {
             textViews[i].setText(String.valueOf(j));
+            textViews[i].setTextColor(Color.parseColor("#4DFFFFFF"));
         }
 
         // backward loop before the month. probably will break when changing years.
@@ -122,6 +174,7 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         int prevlastday = previousmonth.getActualMaximum(Calendar.DAY_OF_MONTH); // December example -> It will check to see 30 days in november. iterate from 30 until no room left.
         for (int i=weekdayint-2, j=prevlastday;  i >= 0 ; i--, j--) {
             textViews[i].setText(String.valueOf(j));
+            textViews[i].setTextColor(Color.parseColor("#4DFFFFFF"));
         }
 
 
