@@ -233,7 +233,7 @@ public class DailyViewActivity extends AppCompatActivity {
         fab_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(DailyViewActivity.this, DetailActivity.class);
+                Intent i = new Intent(DailyViewActivity.this, EditActivity.class);
                 i.putExtra("sender", "DailyView and NoCamera");
                 startActivity(i);
             }

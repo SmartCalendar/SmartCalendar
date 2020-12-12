@@ -734,9 +734,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvMonth"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="59dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="125dp"
-        android:layout_toEndOf="@+id/tvMonth"
         android:backgroundTint="#333131"
         app:srcCompat="@drawable/ic_arrow_left" />
 

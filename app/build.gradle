@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.google.apis:google-api-services-calendar:v3-rev305-1.23.0'
 
     implementation "com.parse.bolts:bolts-android:1.4.0"  // line 30 from video instagram Ep 7 1:08
+
     implementation "com.github.parse-community.Parse-SDK-Android:parse:1.18.5"
 
     implementation 'com.google.android.gms:play-services-auth:19.0.0'

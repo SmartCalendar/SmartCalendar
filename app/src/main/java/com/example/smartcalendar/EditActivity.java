@@ -1,5 +1,6 @@
 package com.example.smartcalendar;
 
+import com.example.smartcalendar.models.Event;
 import com.parse.Parse;
 import android.app.Application;
 
@@ -37,6 +38,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 // todo: do we need to extend Application from the import android.app.Application?
@@ -80,6 +82,16 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_edit);
         createNotificationChannel();
+
+        Parse.initialize(new Parse.Configuration.Builder(this)
+                .applicationId("8XAZWDrRfeQrOLJj7CNYli0L7sJresnUHeVegGu3")
+                .clientKey("88mksybeflgBsMjgSrUK7xDp7FSucqKqPTdk0VH8")
+                .server("https://parseapi.back4app.com")
+                .build()
+        );
+
+
+        ParseObject.registerSubclass(Post.class);
 
         tvTitle = findViewById(R.id.etTitle);
         tvStartDate = findViewById(R.id.etStartDate);
@@ -133,12 +145,12 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             tvStartTime.setText(CustomTimeParser(detailcldr.get(Calendar.HOUR_OF_DAY), detailcldr.get(Calendar.MINUTE)));
 
             startcldr.setTime(detaildate);
-            set_custom_notification(notificationtime);
             chosenstart_year = startcldr.get(Calendar.YEAR);
             chosenstart_monthOfYear = startcldr.get(Calendar.MONTH);
             chosenstart_dayOfMonth = startcldr.get(Calendar.DAY_OF_MONTH);
             chosenstart_minute = startcldr.get(Calendar.MINUTE);
             chosenstart_hour = startcldr.get(Calendar.HOUR_OF_DAY);
+
 
         }
 
@@ -306,10 +318,14 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, "Custom notification set at MM:DD:YYYY " +
                                     chosenstart_monthOfYear + " " + chosenstart_dayOfMonth + " " + chosenstart_year + '\n' + " at Time HH:MM" + chosenstart_hour + " " + chosenstart_minute
                             ,Toast.LENGTH_SHORT).show();
-
                 }
 
                 // TODO: End Activity and go to dailyview to show added event. also send all relevant data back to parse backend
+
+//                Toast.makeText(this , "testing date objects: " + startcldr.getTime(), Toast.LENGTH_SHORT).show();
+                createObject(tvTitle.getText().toString(), startcldr.getTime(), tvLocation.getText().toString(), tvDescription.getText().toString(), endcldr.getTime(), currentUser);
+                Intent gotomonth = new Intent(this, MonthlyViewActivity.class);
+                startActivity(gotomonth);
 
 
                 break;
@@ -319,6 +335,47 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+    ParseUser currentUser = ParseUser.getCurrentUser();
+
+//    if(currentUser!=null){
+//        // user is already logged in, do what you want
+//    }
+//    else{
+//        showLoginUI();
+//    }
+
+    public void createObject(String title, Date startdate, String location, String description, Date enddate, ParseUser currentUser) {
+//        ParseObject entity = new ParseObject("Event");
+        Event event = new Event();
+
+        event.put("title", title);
+        event.put("date", startdate);
+        event.put("location", location);
+        event.put("description", description);
+        event.put("end_date", enddate);
+        event.put("user", currentUser);
+        event.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(com.parse.ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving" , e);
+                    Toast.makeText(getApplicationContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
+                }
+                Log.i(TAG, "Post saved successfully!");
+                Toast.makeText(getApplicationContext(), "Post saved successfully!", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        // Saves the new object.
+        // Notice that the SaveCallback is totally optional!
+//        entity.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                // Here you can handle errors, if thrown. Otherwise, "e" should be null
+//            }
+        }
 
 
     // method to parse Calendar INTs returned from the get methods into a more aesthetic time format {HH:MM AM/PM}
@@ -411,7 +468,6 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         long eventTime = customtimecal.getTimeInMillis();
 
         long oneMinute = (long) ((AlarmManager.INTERVAL_FIFTEEN_MINUTES)/15);
-        Toast.makeText(this, "testing out divisions: " + oneMinute, Toast.LENGTH_SHORT).show();
         long reminderTime = eventTime - (mins*oneMinute);
 
         Intent intentalarm2 = new Intent(this, ReminderBroadcast.class);
