@@ -250,10 +250,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
   	<tr><td> </td> <td>Date Time</td> <td>Date Time</td> <td>Day, Month, Date, to - from Time</td> </tr>
   	<tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
   	<tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
-  	<tr><td> </td> <td>Reminder Occurence</td> <td>String</td> <td>Event Reminder</td> </tr>
-  	<tr><td> </td> <td>Reminder</td> <td>String</td> <td>Notes</td> </tr>  
-	
-
+  	<tr><td> </td> <td>Reminder</td> <td>String</td> <td>Notes</td> </tr>
 </table>
 
 <table>
