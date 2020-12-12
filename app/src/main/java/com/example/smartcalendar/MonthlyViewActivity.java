@@ -262,7 +262,7 @@ public class MonthlyViewActivity  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MonthlyViewActivity.this, EditActivity.class);
-                i.putExtra("Sender is MonthlyView", "True");
+                i.putExtra("sender", "MonthlyViewActivity");
                 startActivity(i);
             }
         });

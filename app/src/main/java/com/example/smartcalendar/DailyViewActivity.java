@@ -234,7 +234,7 @@ public class DailyViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(DailyViewActivity.this, DetailActivity.class);
-//                i.putExtra("Sender is DailyView", "True");
+                i.putExtra("sender", "DailyView and NoCamera");
                 startActivity(i);
             }
         });
@@ -287,7 +287,7 @@ public class DailyViewActivity extends AppCompatActivity {
 
         autofill.putExtra("Complete Title", title);
         autofill.putExtra("Complete Date Object", rawdate);
-        autofill.putExtra("Sender is DailyView", "True");
+        autofill.putExtra("sender", "DailyView and Camera");
 
         startActivity(autofill);
     }

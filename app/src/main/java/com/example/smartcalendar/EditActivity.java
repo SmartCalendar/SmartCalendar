@@ -1,5 +1,8 @@
 package com.example.smartcalendar;
 
+import com.parse.Parse;
+import android.app.Application;
+
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.NotificationChannel;
@@ -28,8 +31,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.json.JSONArray;
+import javax.json.JSONObject;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseRelation;
+import com.parse.SaveCallback;
 
-
+// todo: do we need to extend Application from the import android.app.Application?
 public class EditActivity extends AppCompatActivity implements View.OnClickListener, NotificationFragment.DialogListener {
 
 
@@ -95,7 +105,19 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         // if this activity was launched from DailyViewActivity (specifically the launchEditActivity(titletex, rawdateobj) function)
         // later try to convert this into Enums so the other activities that launch into EditActivity can distinguish where it came from
 
-        if (getIntent().getStringExtra("Sender is DailyView").equals("True")) {
+        // Launch from DetailActivity to EditActivity, use methods from detailactivity to populate text and set relevant variables/objects.
+        // TODO: Wait for Yilika to finish sending from detail to edit with intent and data.
+        if (getIntent().getStringExtra("sender").equals("DetailActivity")) {
+            int detailnotiftime = getIntent().getIntExtra("notification", 0);
+            String detailobjectId = getIntent().getStringExtra("objectId");
+            String detailtitle = getIntent().getStringExtra("title");
+            Date detaildate = (Date) getIntent().getSerializableExtra("date");
+            String detaillocation = getIntent().getStringExtra("location");
+            String detaildescription = getIntent().getStringExtra("getText");
+
+        }
+
+        if (getIntent().getStringExtra("sender").equals("DailyView and Camera")) {
 
             String receivedmovie = getIntent().getStringExtra("Complete Title");
             receiveddate = (Date) getIntent().getSerializableExtra("Complete Date Object");
@@ -106,12 +128,8 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             tvTitle.setText(receivedmovie);
             tvStartTime.setText(CustomTimeParser(smartcal3.get(Calendar.HOUR_OF_DAY), smartcal3.get(Calendar.MINUTE)));
 
-//            Log.e(TAG, "Time of receiveddate: " + receiveddate.getTime());
-//            Log.e(TAG, "Time of startcldr before setTime: " + startcldr.getTime());
             startcldr.setTime(receiveddate);
 
-//            Log.e(TAG, "Time of startcldr after setTime: " + startcldr.getTime());
-//            Log.e(TAG, "int get day of month: " + startcldr.get(Calendar.DAY_OF_MONTH));
         }
 
         // Dates will open up Android Datepicker. Times will open up Android Timepicker
@@ -164,7 +182,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.etEndDate:
 
-                if (getIntent().getStringExtra("Sender is DailyView").equals("True")) {endcldr.setTime(receiveddate);}
+                if (getIntent().getStringExtra("sender").equals("DailyView and Camera")) {endcldr.setTime(receiveddate);}
 
                 day = endcldr.get(Calendar.DAY_OF_MONTH);
                 month = endcldr.get(Calendar.MONTH);
@@ -213,7 +231,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.etEndTime:
 
-                if (getIntent().getStringExtra("Sender is DailyView").equals("True")) {endcldr.setTime(receiveddate);}
+                if (getIntent().getStringExtra("sender").equals("DailyView and Camera")) {endcldr.setTime(receiveddate);}
                 // can we remember the time we selected when its clicked again? It resets the time to the current time
                 hour = endcldr.get(Calendar.HOUR_OF_DAY);
                 minute = endcldr.get(Calendar.MINUTE);
@@ -266,6 +284,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 // TODO: End Activity and go to dailyview to show added event. also send all relevant data back to parse backend
+
 
                 break;
 
