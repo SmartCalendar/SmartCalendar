@@ -17,6 +17,7 @@ import com.example.smartcalendar.DetailActivity;
 import com.example.smartcalendar.EditActivity;
 import com.example.smartcalendar.R;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsViewHolder> {
@@ -39,8 +40,23 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
     @Override
     public void onBindViewHolder(@NonNull final EventsViewHolder holder, int position) {
         final Event event = eventList.get(position);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(event.getDate());
+        int hour = cal.get(Calendar.HOUR);
+        String minute;
+        if (cal.get(Calendar.MINUTE) != 0) {
+            minute = String.valueOf(cal.get(Calendar.MINUTE));
+        } else {
+            minute = "00";
+        }
+        String AM_PM;
+        if (cal.get(Calendar.AM_PM) == 1) {
+            AM_PM = "PM";
+        } else {
+            AM_PM = "AM";
+        }
         holder.tvTitle.setText(event.getTitle());
-        holder.tvTime.setText(String.valueOf(event.getDate()));
+        holder.tvTime.setText(hour + ":" + minute + " " + AM_PM);
         holder.tvLocation.setText(event.getLocation());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
