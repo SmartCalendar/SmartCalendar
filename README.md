@@ -121,7 +121,8 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <li>Month </li>
      <li>Directional Arrows </li>
      <li>Week Days </li>
-     <li>Dates </li></ul>
+     <li>Dates </li>
+     <li>Events </li></ul>
 
 <li> Daily View </li>
      <ul><li>Year</li>
@@ -181,52 +182,60 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 	<tr><td> </td> <td>Property</td><td>Type</td><td>Description</td></tr>
 <tr><td>Login Activity</td> <td> </td> <td> </td> <td> </td> </tr>
 	<tr><td> </td> <td>objectId</td> <td>File</td> <td>pointer to calendar image</td> </tr>
-	<tr><td> </td> <td>Login Authentication</td> <td>API call</td> <td>authenticate user with Google</td> </tr>
-	<tr><td> </td> <td>Login Authorization/td> <td>API call</td> <td>user authorized app for use with Google</td> </tr>
-  <tr><td> </td> <td>Signed out</td> <td>File</td> <td>has the User signed out</td> </tr>
-	
-<tr><td>Day View</td> <td> </td> <td> </td> <td> </td> </tr>
-	<tr><td> </td> <td>Menu Back Arrow</td> <td>Menu Item</td> <td>sends user back to Calendar</td> </tr>
+	<tr><td> </td> <td>Login User Name</td> <td>API call</td> <td>authenticate user with Parse Server</td> </tr>
+	<tr><td> </td> <td>Login Password/td> <td>API call</td> <td>user authorized for use with Parse Server</td> </tr>
+
+<tr><td>Monthly View</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Year</td> <td>Date Time</td> <td>Call to Month</td> </tr>
 	<tr><td> </td> <td>Month</td> <td>DateTime</td> <td>Call to Event Month</td> </tr>
+	<tr><td> </td> <td>Directional Arrows</td> <td>Text</td> <td>Sends user to Previous or next Month</td> </tr>
+	<tr><td> </td> <td>Date</td> <td>DateTime</td> <td>Call to Event Day</td> </tr>
+	<tr><td> </td> <td>Week Days</td> <td>Text</td> <td>Sunday through Saturday</td> </tr>
+	<tr><td> </td> <td>Dates</td> <td>Text</td> <td>Call to days in month</td> </tr>
+  	<tr><td> </td> <td>Events</td> <td>Highlight</td> <td>Shading of Event</td> </tr>
+
+<tr><td>Day View</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Year</td> <td>Date Time</td> <td>Call to Month</td> </tr>
+	<tr><td> </td> <td>Month</td> <td>DateTime</td> <td>Call to Event Month</td> </tr>
+	<tr><td> </td> <td>recyclerView</td> <td>recyclerView</td> <td>Lists event for selected day in chronological order</td> </tr>
 	<tr><td> </td> <td>Date</td> <td>DateTime</td> <td>Call to Event Day</td> </tr>
 	<tr><td> </td> <td>Day</td> <td>DateTime</td> <td>Call to Event Day</td> </tr>
-  <tr><td> </td> <td>recyclerView</td> <td>recyclerView</td> <td>Lists event for selected day in chronological order</td> </tr>
-  <tr><td> </td> <td>Post</td> <td>Highlight</td> <td>Shading of Event</td> </tr>
-  <tr><td> </td> <td>Title</td> <td>Text</td> <td>Title of Event</td> </tr>
+  	<tr><td> </td> <td>Post</td> <td>Highlight</td> <td>Shading of Event</td> </tr>
+  	<tr><td> </td> <td>Title</td> <td>Text</td> <td>Title of Event</td> </tr>
 
-<tr><td>ActivityDetails</td> <td> </td> <td> </td> <td> </td> </tr>
-	<tr><td> </td> <td>Menu Back Arrow</td> <td>Menu Item</td> <td>sends user back to Calendar</td> </tr>
+<tr><td>Details</td> <td> </td> <td> </td> <td> </td> </tr>
+	<tr><td> </td> <td>Close X</td> <td>Text</td> <td>sends user back to Calendar</td> </tr>
 	<tr><td> </td> <td>Menu Edit</td> <td>Image</td> <td>Pencil Icon -leads to Activity Edit</td> </tr>
 	<tr><td> </td> <td>Menu Delete</td> <td>Image</td> <td>Pencil Icon -leads to Activity Delete</td> </tr>
-  <tr><td> </td> <td>Title</td> <td>String</td> <td>Event Title</td> </tr>
-  <tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, to - from Time</td> </tr>
-  <tr><td> </td> <td>Pin Icon</td> <td>Icon</td> <td>Pin Image</td> </tr>
-  <tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
-  <tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
-  <tr><td> </td> <td>Bell Icon</td> <td>Icon</td> <td>Bell Image</td> </tr>
-  <tr><td> </td> <td>ReminderOccurence</td> <td>String</td> <td>Event Reminder</td> </tr>
-  <tr><td> </td> <td>Menu Icon</td> <td>Icon</td> <td>Menu Image</td> </tr>
-  <tr><td> </td> <td>Reminder</td> <td>String</td> <td>Notes</td> </tr>  
+  	<tr><td> </td> <td>Title</td> <td>String</td> <td>Event Title</td> </tr>
+  	<tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, to - from Time</td> </tr>
+  	<tr><td> </td> <td>Pin Icon</td> <td>Icon</td> <td>Pin Image</td> </tr>
+  	<tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
+  	<tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
+  	<tr><td> </td> <td>Bell Icon</td> <td>Icon</td> <td>Bell Image</td> </tr>
+  	<tr><td> </td> <td>ReminderOccurence</td> <td>String</td> <td>Event Reminder</td> </tr>
+  	<tr><td> </td> <td>Menu Icon</td> <td>Icon</td> <td>Menu Image</td> </tr>
+  	<tr><td> </td> <td>Reminder</td> <td>String</td> <td>Notes</td> </tr>  
 	
-<tr><td>ActivityEdit</td> <td> </td> <td> </td> <td> </td> </tr>
+<tr><td>Edit</td> <td> </td> <td> </td> <td> </td> </tr>
 	<tr><td> </td> <td>Menu Close</td> <td>Icon</td> <td>Closes Edit Activity</td> </tr>
 	<tr><td> </td> <td>Title</td> <td>String</td> <td>Event Title</td> </tr>
 	<tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
-  <tr><td> </td> <td>Clock Icon</td> <td>Icon</td> <td>Clock Image</td> </tr>
-  <tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, from Time</td> </tr>
-  <tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, to Time</td> </tr>
-  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
-  <tr><td> </td> <td>Pin Icon</td> <td>Icon</td> <td>Pin Image</td> </tr>
-  <tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
-  <tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
-  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
-  <tr><td> </td> <td>Bell Icon</td> <td>Icon</td> <td>Bell Image</td> </tr>
-  <tr><td> </td> <td>ReminderOccurence</td> <td>String</td> <td>Event Reminder</td> </tr>
-  <tr><td> </td> <td>addNotification</td> <td>String</td> <td>add another Notification</td> </tr>
-  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
-  <tr><td> </td> <td>Menu Icon</td> <td>Icon</td> <td>Menu Image</td> </tr>
-  <tr><td> </td> <td>Note</td> <td>String</td> <td>Notes Text</td> </tr>
-  <tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>  
+  	<tr><td> </td> <td>Clock Icon</td> <td>Icon</td> <td>Clock Image</td> </tr>
+  	<tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, from Time</td> </tr>
+  	<tr><td> </td> <td>dateTime</td> <td>Date Time</td> <td>Day, Month, Date, to Time</td> </tr>
+  	<tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  	<tr><td> </td> <td>Pin Icon</td> <td>Icon</td> <td>Pin Image</td> </tr>
+  	<tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
+  	<tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
+  	<tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  	<tr><td> </td> <td>Bell Icon</td> <td>Icon</td> <td>Bell Image</td> </tr>
+  	<tr><td> </td> <td>ReminderOccurence</td> <td>String</td> <td>Event Reminder</td> </tr>
+  	<tr><td> </td> <td>addNotification</td> <td>String</td> <td>add another Notification</td> </tr>
+  	<tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>
+  	<tr><td> </td> <td>Menu Icon</td> <td>Icon</td> <td>Menu Image</td> </tr>
+  	<tr><td> </td> <td>Note</td> <td>String</td> <td>Notes Text</td> </tr>
+  	<tr><td> </td> <td>Divider</td> <td>Line</td> <td>Line Item</td> </tr>  
   
 <tr><td>ImageActivity</td> <td> </td> <td> </td> <td> </td> </tr>
 	<tr><td> </td> <td>Image</td> <td>Media Object</td> <td>Image taken by User</td> </tr>
