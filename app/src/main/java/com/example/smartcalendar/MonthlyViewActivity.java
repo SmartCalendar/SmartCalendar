@@ -82,10 +82,12 @@ public class MonthlyViewActivity  extends AppCompatActivity {
                 if (checkmonth == 11) {
                     initializemonthview(0, 2021);
                     tvYear.setText("2021");
+                    queryEvents();
                 }
 
                 else {
                     initializemonthview(checkmonth+1, 2020);
+                    queryEvents();
                 }
 
             }
@@ -100,10 +102,12 @@ public class MonthlyViewActivity  extends AppCompatActivity {
                 if (checkmonth == 0) {
                     initializemonthview(11, 2020);
                     tvYear.setText("2020");
+                    queryEvents();
                 }
 
                 else {
                     initializemonthview(checkmonth-1, 2020);
+                    queryEvents();
                 }
 
             }
