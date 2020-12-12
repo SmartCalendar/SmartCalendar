@@ -31,8 +31,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.json.JSONArray;
-import javax.json.JSONObject;
+//import javax.json.JSONArray;
+//import javax.json.JSONObject;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -67,7 +67,12 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
     Calendar endcldr = Calendar.getInstance();
     Calendar startcldr = Calendar.getInstance();
+    Calendar detailcldr = Calendar.getInstance();
     Date receiveddate;
+    Date detaildate;
+    String detailobjectId;
+    int detailnotiftime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,12 +113,32 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         // Launch from DetailActivity to EditActivity, use methods from detailactivity to populate text and set relevant variables/objects.
         // TODO: Wait for Yilika to finish sending from detail to edit with intent and data.
         if (getIntent().getStringExtra("sender").equals("DetailActivity")) {
-            int detailnotiftime = getIntent().getIntExtra("notification", 0);
-            String detailobjectId = getIntent().getStringExtra("objectId");
+            detailnotiftime = getIntent().getIntExtra("notification", 0);
+            tvNotification.setText(detailnotiftime + " minutes before");
+            notificationtime = detailnotiftime;
+
+            detailobjectId = getIntent().getStringExtra("objectId");
             String detailtitle = getIntent().getStringExtra("title");
-            Date detaildate = (Date) getIntent().getSerializableExtra("date");
+            tvTitle.setText(detailtitle);
+
+            detaildate = (Date) getIntent().getSerializableExtra("date");
             String detaillocation = getIntent().getStringExtra("location");
+            tvLocation.setText(detaillocation);
             String detaildescription = getIntent().getStringExtra("getText");
+            tvDescription.setText(detaildescription);
+
+            detailcldr.setTime(detaildate);
+            // if user changes the date, get back the new date object to be sent to parse
+            tvStartDate.setText(weekDays[detailcldr.get(Calendar.DAY_OF_WEEK)] + ", " + monthNames[detailcldr.get(Calendar.MONTH)] + " " + detailcldr.get(Calendar.DAY_OF_MONTH));
+            tvStartTime.setText(CustomTimeParser(detailcldr.get(Calendar.HOUR_OF_DAY), detailcldr.get(Calendar.MINUTE)));
+
+            startcldr.setTime(detaildate);
+            set_custom_notification(notificationtime);
+            chosenstart_year = startcldr.get(Calendar.YEAR);
+            chosenstart_monthOfYear = startcldr.get(Calendar.MONTH);
+            chosenstart_dayOfMonth = startcldr.get(Calendar.DAY_OF_MONTH);
+            chosenstart_minute = startcldr.get(Calendar.MINUTE);
+            chosenstart_hour = startcldr.get(Calendar.HOUR_OF_DAY);
 
         }
 
@@ -124,11 +149,12 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             Calendar smartcal3 = Calendar.getInstance();
             smartcal3.setTime(receiveddate);
 
-            tvStartDate.setText(weekDays[smartcal3.get(Calendar.DAY_OF_WEEK)] + "," + monthNames[smartcal3.get(Calendar.MONTH)] + " " + smartcal3.get(Calendar.DAY_OF_MONTH));
+            tvStartDate.setText(weekDays[smartcal3.get(Calendar.DAY_OF_WEEK)] + ", " + monthNames[smartcal3.get(Calendar.MONTH)] + " " + smartcal3.get(Calendar.DAY_OF_MONTH));
             tvTitle.setText(receivedmovie);
             tvStartTime.setText(CustomTimeParser(smartcal3.get(Calendar.HOUR_OF_DAY), smartcal3.get(Calendar.MINUTE)));
 
             startcldr.setTime(receiveddate);
+
 
         }
 

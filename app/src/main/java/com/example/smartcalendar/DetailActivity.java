@@ -130,5 +130,7 @@ public class DetailActivity extends AppCompatActivity {
         i.putExtra("location", tvLocation.getText());
         i.putExtra("notification", notification);
         i.putExtra("description", tvDescription.getText());
+        i.putExtra("sender", "DetailActivity");
+        startActivity(i);
     }
 }
