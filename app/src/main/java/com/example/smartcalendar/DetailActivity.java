@@ -123,6 +123,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         Intent i = new Intent(getApplicationContext(), EditActivity.class);
+        i.putExtra("sender", "DetailActivity");
         i.putExtra("objectId", objectId);
         i.putExtra("title", tvTitle.getText());
         i.putExtra("date", date);
