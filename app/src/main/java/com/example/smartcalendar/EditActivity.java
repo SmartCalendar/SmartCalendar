@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -51,6 +52,13 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
     Button btnClose;
     Button btnComplete;
 
+//    Calendar endcldr;
+//    Calendar startcldr;
+
+    Calendar endcldr = Calendar.getInstance();
+    Calendar startcldr = Calendar.getInstance();
+    Date receiveddate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,10 +94,11 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
         // if this activity was launched from DailyViewActivity (specifically the launchEditActivity(titletex, rawdateobj) function)
         // later try to convert this into Enums so the other activities that launch into EditActivity can distinguish where it came from
+
         if (getIntent().getStringExtra("Sender is DailyView").equals("True")) {
 
             String receivedmovie = getIntent().getStringExtra("Complete Title");
-            Date receiveddate = (Date) getIntent().getSerializableExtra("Complete Date Object");
+            receiveddate = (Date) getIntent().getSerializableExtra("Complete Date Object");
             Calendar smartcal3 = Calendar.getInstance();
             smartcal3.setTime(receiveddate);
 
@@ -97,6 +106,12 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             tvTitle.setText(receivedmovie);
             tvStartTime.setText(CustomTimeParser(smartcal3.get(Calendar.HOUR_OF_DAY), smartcal3.get(Calendar.MINUTE)));
 
+//            Log.e(TAG, "Time of receiveddate: " + receiveddate.getTime());
+//            Log.e(TAG, "Time of startcldr before setTime: " + startcldr.getTime());
+            startcldr.setTime(receiveddate);
+
+//            Log.e(TAG, "Time of startcldr after setTime: " + startcldr.getTime());
+//            Log.e(TAG, "int get day of month: " + startcldr.get(Calendar.DAY_OF_MONTH));
         }
 
         // Dates will open up Android Datepicker. Times will open up Android Timepicker
@@ -111,8 +126,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         // end of OnCreate
     }
 
-    final Calendar endcldr = Calendar.getInstance();
-    final Calendar startcldr = Calendar.getInstance();
+
     int chosenstart_dayOfMonth = 0;
     int chosenstart_monthOfYear = 0;
     int chosenstart_minute = 0;
@@ -149,6 +163,9 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.etEndDate:
+
+                if (getIntent().getStringExtra("Sender is DailyView").equals("True")) {endcldr.setTime(receiveddate);}
+
                 day = endcldr.get(Calendar.DAY_OF_MONTH);
                 month = endcldr.get(Calendar.MONTH);
                 year = endcldr.get(Calendar.YEAR);
@@ -195,6 +212,8 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.etEndTime:
+
+                if (getIntent().getStringExtra("Sender is DailyView").equals("True")) {endcldr.setTime(receiveddate);}
                 // can we remember the time we selected when its clicked again? It resets the time to the current time
                 hour = endcldr.get(Calendar.HOUR_OF_DAY);
                 minute = endcldr.get(Calendar.MINUTE);
