@@ -245,12 +245,15 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 	<tr><td> </td> <td>Image</td> <td>Media Object</td> <td>Image taken by User</td> </tr>
 	<tr><td> </td> <td>Extracted Test</td> <td>String</td> <td>Text extracted from image</td> </tr>
 	
-<tr><td>Events</td> <td> </td> <td> </td> <td> </td> </tr>
-  	<tr><td> </td> <td>Title</td> <td>String</td> <td>Event Title</td> </tr>
-  	<tr><td> </td> <td>Date Time</td> <td>Date Time</td> <td>Day, Month, Date, to - from Time</td> </tr>
-  	<tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
-  	<tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
-  	<tr><td> </td> <td>Reminder</td> <td>String</td> <td>Notes</td> </tr>
+<tr><td>Event</td> <td> </td> <td> </td> <td> </td> </tr>
+  	<tr><td> </td> <td>title</td> <td>String</td> <td>Event title</td> </tr>
+  	<tr><td> </td> <td>date</td> <td>Date</td> <td>Starting date/time of the event</td> </tr>
+  	<tr><td> </td> <td>end_date</td> <td>Date</td> <td>Ending date/time of the event</td> </tr>
+  	<tr><td> </td> <td>location</td> <td>String</td> <td>Event location</td> </tr>
+  	<tr><td> </td> <td>notification_minutes_before</td> <td>int</td> <td>Number of minutes before the event</td> </tr>
+  	<tr><td> </td> <td>description</td> <td>String</td> <td>Description of the event</td> </tr>
+  	<tr><td> </td> <td>objectId</td> <td>String</td> <td>Unique ID of the event object</td> </tr>
+  	<tr><td> </td> <td>user</td> <td>Pointer to User</td> <td>Unique ID of the user</td> </tr>
 </table>
 
 <table>
