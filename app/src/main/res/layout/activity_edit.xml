@@ -8,11 +8,12 @@
 
     <Button
         android:id="@+id/btnClose"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
         android:backgroundTint="#333131"
         android:drawableTop="@android:drawable/ic_menu_close_clear_cancel" />
 
@@ -181,11 +182,11 @@
         app:srcCompat="@drawable/ic_description"
         app:tint="#B6B3B3" />
 
-    <FrameLayout
-        android:id="@+id/notif_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+<!--    <FrameLayout-->
+<!--        android:id="@+id/notif_menu"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+<!--    </FrameLayout>-->
 
 
 </RelativeLayout>

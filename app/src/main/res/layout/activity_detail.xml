@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#333131">
 
-    <ImageView
+    <Button
         android:id="@+id/btnClose"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -14,7 +15,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        android:backgroundTint="#333131"
+        android:drawableTop="@android:drawable/ic_menu_close_clear_cancel" />
 
     <ImageView
         android:id="@+id/btnCreate"
@@ -45,9 +47,9 @@
         android:layout_below="@+id/btnClose"
         android:layout_marginTop="17.5dp"
         android:layout_toEndOf="@+id/btnClose"
-        android:text="Lunch with Bryan"
-        android:textColor="#CCFFFFFF"
-        android:textSize="32sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        tools:text="Lunch with Bryan" />
 
     <TextView
         android:id="@+id/tvDate"
@@ -55,20 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_alignStart="@+id/tvTitle"
-        android:text="Tuesday, Nov 10"
-        android:textColor="#CCFFFFFF"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/tvTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTitle"
-        android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/tvDate"
-        android:text="12 - 1 PM"
-        android:textColor="#CCFFFFFF"
-        android:textSize="20sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        tools:text="Tuesday, Nov 10  12-1 PM" />
 
     <TextView
         android:id="@+id/tvLocation"
@@ -77,9 +68,9 @@
         android:layout_below="@+id/tvDate"
         android:layout_alignStart="@+id/tvDate"
         android:layout_marginTop="25dp"
-        android:text="In-N-Out Burger"
-        android:textColor="#CCFFFFFF"
-        android:textSize="24sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        tools:text="In-N-Out Burger" />
 
     <TextView
         android:id="@+id/tvNotification"
@@ -88,9 +79,9 @@
         android:layout_below="@+id/tvLocation"
         android:layout_alignStart="@+id/tvLocation"
         android:layout_marginTop="25dp"
-        android:text="30 minutes before"
-        android:textColor="#CCFFFFFF"
-        android:textSize="24sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        tools:text="30 minutes before" />
 
     <TextView
         android:id="@+id/tvDescription"
@@ -99,9 +90,9 @@
         android:layout_below="@+id/tvNotification"
         android:layout_alignStart="@+id/tvNotification"
         android:layout_marginTop="25dp"
-        android:text="bring my notebook"
-        android:textColor="#CCFFFFFF"
-        android:textSize="24sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        tools:text="bring my notebook" />
 
     <ImageView
         android:id="@+id/icLocation"
@@ -109,7 +100,7 @@
         android:layout_height="35dp"
         android:layout_alignStart="@+id/btnClose"
         android:layout_alignTop="@+id/tvLocation"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="-5dp"
         android:foregroundTint="#673AB7"
         app:srcCompat="@drawable/ic_location"
         app:tint="#B6B3B3" />

@@ -257,7 +257,9 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         fab_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Add event", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(MonthlyViewActivity.this, EditActivity.class);
+                i.putExtra("Sender is MonthlyView", "True");
+                startActivity(i);
             }
         });
     }
