@@ -183,7 +183,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 <tr><td>Login Activity</td> <td> </td> <td> </td> <td> </td> </tr>
 	<tr><td> </td> <td>objectId</td> <td>File</td> <td>pointer to calendar image</td> </tr>
 	<tr><td> </td> <td>Login User Name</td> <td>API call</td> <td>authenticate user with Parse Server</td> </tr>
-	<tr><td> </td> <td>Login Password/td> <td>API call</td> <td>user authorized for use with Parse Server</td> </tr>
+	<tr><td> </td> <td>Login Password</td> <td>API call</td> <td>user authorized for use with Parse Server</td> </tr>
 
 <tr><td>Monthly View</td> <td> </td> <td> </td> <td> </td> </tr>
 	<tr><td> </td> <td>Year</td> <td>Date Time</td> <td>Call to Month</td> </tr>
