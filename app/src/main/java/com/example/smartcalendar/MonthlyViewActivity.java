@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -89,36 +90,25 @@ public class MonthlyViewActivity  extends AppCompatActivity {
                     initializemonthview(checkmonth+1, 2020);
                     queryEvents();
                 }
-
             }
-
         });
 
         // in the future we have to fix this, it works because we first call the function with (2020) but it should grab current Time of year for the user
         lastmonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (checkmonth == 0) {
                     initializemonthview(11, 2020);
                     tvYear.setText("2020");
                     queryEvents();
                 }
-
                 else {
                     initializemonthview(checkmonth-1, 2020);
                     queryEvents();
                 }
-
             }
-
         });
-
-
     }
-
-
-
 
     private void initializeViews() {
         int temp;
@@ -164,13 +154,18 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         for (int i=weekdayint-1, j = 1; i<maxdays+weekdayint-1; i++, j++) {
             textViews[i].setText(String.valueOf(j));
             textViews[i].setTextColor(Color.parseColor("#80FFFFFF"));
+            textViews[i].setTag("current_month");
+            textViews[i].setBackgroundTintList(null);
+            textViews[i].setBackgroundResource(0);
         }
 
-        // forward loop after end of month. start from tvday34 to 42. this will break for leap years.
+        // forward loop after end of month. start from tvDay34 to 42. this will break for leap years.
         for (int i=maxdays+weekdayint-1, j=1; i<=41; i++, j++) {
             textViews[i].setText(String.valueOf(j));
             textViews[i].setTextColor(Color.parseColor("#4DFFFFFF"));
-        }
+            textViews[i].setTag("next_month");
+            textViews[i].setBackgroundTintList(null);
+            textViews[i].setBackgroundResource(0);  }
 
         // backward loop before the month. probably will break when changing years.
         Calendar previousmonth = Calendar.getInstance();
@@ -179,11 +174,11 @@ public class MonthlyViewActivity  extends AppCompatActivity {
         for (int i=weekdayint-2, j=prevlastday;  i >= 0 ; i--, j--) {
             textViews[i].setText(String.valueOf(j));
             textViews[i].setTextColor(Color.parseColor("#4DFFFFFF"));
+            textViews[i].setTag("last_month");
+            textViews[i].setBackgroundTintList(null);
+            textViews[i].setBackgroundResource(0);
         }
-
-
     }
-
 
     private void createFloatingActionButton() {
         // Floating_action_button views and animations
@@ -230,7 +225,6 @@ public class MonthlyViewActivity  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (checkSelfPermission(Manifest.permission.CAMERA)
                             == PackageManager.PERMISSION_DENIED ||
@@ -269,6 +263,19 @@ public class MonthlyViewActivity  extends AppCompatActivity {
     }
 
     private void queryEvents() {
+
+        try {
+            Date date = new SimpleDateFormat("MMMM").parse(tvMonth.getText().toString());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            month = cal.get(Calendar.MONTH);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        eventsList = new ArrayList<>();
         ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
         query.include(Event.KEY_USER);
         query.findInBackground(new FindCallback<Event>() {
@@ -279,10 +286,16 @@ public class MonthlyViewActivity  extends AppCompatActivity {
                 }
                 for (Event event: events) {
                     Log.i("MonthlyViewActivity", "Adding Event: " + event.getTitle());
-                    int date = event.getDate().getDate();
-                    textViews[date-1].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5A62AE")));
-                    textViews[date-1].setBackgroundResource(R.drawable.background_color_circle_selector);
-                    textViews[date-1].setTextColor(Color.parseColor("#FFFFFF"));
+                    int eventMonth = event.getDate().getMonth();
+                    int eventDate = event.getDate().getDate();
+                    for (int i = 0; i < textViews.length; i++) {
+                        if (eventMonth == month && textViews[i].getTag() == "current_month" && textViews[i].getText().toString()==String.valueOf(eventDate)) {
+                            textViews[i].setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5A62AE")));
+                            textViews[i].setBackgroundResource(R.drawable.background_color_circle_selector);
+                            textViews[i].setTextColor(Color.parseColor("#FFFFFF"));
+                            textViews[i].setTypeface(null, Typeface.BOLD);
+                        }
+                    }
                 }
                 eventsList.addAll(events);
                 Log.i("MonthlyViewActivity", "First Event: " + eventsList.get(0).getTitle());
