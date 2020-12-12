@@ -167,14 +167,13 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
      <li>addNotification</li>
      <li>Divider</li>
      <li>addDescription</li></ul>
-</ol>
 
 <li> Notifications</li>
-	<ol><li>Extracted Text</li></ol>
+	<ul><li>Extracted Text</li></ul>
 
 <li> Camera</li>
 	<ul><li>Image</li>
-	<li>Extracted Text</li>
+	<li>Extracted Text</li></ol>
 
 ## Data Model 
 
