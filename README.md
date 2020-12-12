@@ -266,74 +266,68 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
         <td>(Read/GET)</td>
 	<td>Parse API</td></tr>
 	<tr><td> </td>	
-	<td>(Create/POST)</td>
+	<td>(Read/GET)</td>
 	<td>Parse User Authentication</td></tr>
 	<tr><td> </td>	
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Parse User Authorization</td></tr>
 	
   <tr><th>-Monthly View</th><th> </th><th> </th></tr>
    	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Year</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>((Read/GET)</td>
 	<td>Month</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Week Days</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Dates</td></tr>
 	<tr><td> </td>	
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Event Title</td></tr>
 	
   <tr><th>-Day View</th><th> </th><th> </th></tr>
   	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Year</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Month</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Date</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Day</td></tr>
 	<tr><td> </td>
 	<td>(Read/GET)</td>
 	<td>Event</td></tr>
 	<tr><td> </td>	
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Event Title</td></tr>
 	
   <tr><th>-Details</th><th> </th><th> </th></tr>
   	<tr><td> </td>
-	<td>(Read/GET)</td>
+	<td>(Update/PUT)</td>
 	<td>Event</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Title</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Date</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Location</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Reminder</td></tr>
 	<tr><td> </td>
-	<td>(Update/PUT)</td>
+	<td>(Read/GET)</td>
 	<td>Notes</td></tr>
-	<tr><td> </td>
-	<td>(Create/POST)</td>
-	<td>Create a new Event</td></tr>
-	<tr><td> </td>
-	<td>(Delete/DELETE)</td>
-	<td>Delete Event</td></tr>
 	
   <tr><th>-Edit</th><th> </th><th> </th></tr>
   	<tr><td> </td>
@@ -380,10 +374,10 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 <tr><th>-Camera</th><th> </th><th> </th></tr>
 	 <tr><td> </td>
-        <td>(Update/PUT)</td>
+        <td>(Create/POST)</td>
 	<td>Time</td></tr>
   	<tr><td> </td>
-        <td>(Update/PUT)</td>
+        <td>(Create/POST)</td>
 	<td>Text</td></tr>
 
 
