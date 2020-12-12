@@ -108,6 +108,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 <li> Notification </li>
 <li> Parse </li>
 <li> Camera </li>
+<li> Events </li>
 </ol>
 
 <ol>
@@ -243,6 +244,15 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 <tr><td>ImageActivity</td> <td> </td> <td> </td> <td> </td> </tr>
 	<tr><td> </td> <td>Image</td> <td>Media Object</td> <td>Image taken by User</td> </tr>
 	<tr><td> </td> <td>Extracted Test</td> <td>String</td> <td>Text extracted from image</td> </tr>
+	
+<tr><td>Events</td> <td> </td> <td> </td> <td> </td> </tr>
+  	<tr><td> </td> <td>Title</td> <td>String</td> <td>Event Title</td> </tr>
+  	<tr><td> </td> <td>Date Time</td> <td>Date Time</td> <td>Day, Month, Date, to - from Time</td> </tr>
+  	<tr><td> </td> <td>Location</td> <td>String</td> <td>Event Location</td> </tr>
+  	<tr><td> </td> <td>Address</td> <td>String</td> <td>Event Address</td> </tr>
+  	<tr><td> </td> <td>Reminder Occurence</td> <td>String</td> <td>Event Reminder</td> </tr>
+  	<tr><td> </td> <td>Reminder</td> <td>String</td> <td>Notes</td> </tr>  
+	
 
 </table>
 
