@@ -49,7 +49,7 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 ### 2. Screen Archetypes
 
 * [x] Login Screen
-   * [ ] User can login
+   * [X] User can login
 * [x] Stream Screen (Monthly)
    * [x] User can view the calendar for the month
 * [x] Stream Screen (Daily)
@@ -100,30 +100,37 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 
 ## Schema
 <ol>
-<li> Login Activity</li>
-<li> Calendar</li>
-<li> Day View</li>
-<li> ActivityDetails</li>
-<li> ActivityEdit</li>
-<li> ImageActivity</li>
+<li> Login </li>
+<li> Monthly View </li>
+<li> Daily View </li>
+<li> Detail </li>
+<li> Edit </li>
+<li> Notification </li>
+<li> Parse </li>
+<li> Camera </li>
 </ol>
 
 <ol>
-<li> Login Activity</li>
-     <ul><li>Image</li>
-     <li>Login Authorization</li>
-     <li>Login Authentication</li>
-       <ol><li>Signed out</li></ol></ul>
+<li> Login Activity </li>
+     <ul><li>Image </li>
+     <li>Login User Name </li>
+     <li>Login Password </li></ul>
+	
+<li> Monthly View </li>
+     <ul><li>Year</li>
+     <li>Month </li>
+     <li>Directional Arrows </li>
+     <li>Week Days </li>
+     <li>Dates </li></ul>
 
-
-<li> Day View</li>
-     <ul><li>MenuBackArrow</li>
-       <ol><li>Month</li>
-       <li>Date</li>
-       <li>Day</li></ol>
-     <li>recyclerView</li>
+<li> Daily View Activity</li>
+     <ul><li>Year</li>
+     <li>RecyclerView</li>
+       <li>Month</li>
+       <ol><li>Date</li>
+       <li>Day</li>
        <ol><li>Post</li>
-         <ol><li>Title</li></ol></ol></ul>
+       <li>Time</li></ol></ol></ul>
 
 <li> ActivityDetails</li>
      <ul><li>MenuBackArrow</li>
