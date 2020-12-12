@@ -29,13 +29,11 @@ public class DetailActivity extends AppCompatActivity {
     String objectId;
     TextView tvTitle;
     TextView tvDate;
-    TextView tvTime;
     TextView tvLocation;
     TextView tvNotification;
     TextView tvDescription;
-    ImageView icLocation;
-    ImageView icNotification;
-    ImageView icDescription;
+    Date date;
+    int notification;
 
 
     // TODO: Re-use a lot of the code from EditActivity for displaying the details in certain formats (Date, Time, Notification?)
@@ -66,6 +64,8 @@ public class DetailActivity extends AppCompatActivity {
                 }
                 for (Event event: events) {
                     Log.i("DetailActivity",  "Event: " + event.getTitle());
+                    date = event.getDate();
+                    notification = event.getNotification();
                     fillTitle(event.getTitle());
                     fillDate(event.getDate());
                     fillLocation(event.getLocation());
@@ -119,5 +119,16 @@ public class DetailActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void onClick(View v) {
+        Intent i = new Intent(getApplicationContext(), EditActivity.class);
+        i.putExtra("sender", "DetailActivity");
+        i.putExtra("objectId", objectId);
+        i.putExtra("title", tvTitle.getText());
+        i.putExtra("date", date);
+        i.putExtra("location", tvLocation.getText());
+        i.putExtra("notification", notification);
+        i.putExtra("description", tvDescription.getText());
     }
 }
