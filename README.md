@@ -261,13 +261,13 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 <tr><th>-Login Activity</th><th> </th><th> </th></tr>
   <tr><td> </td>
         <td>(Read/GET)</td>
-	<td>Google API</td></tr>
+	<td>Parse API</td></tr>
 	<tr><td> </td>	
 	<td>(Create/POST)</td>
-	<td>Google User Authentication</td></tr>
+	<td>Parse User Authentication</td></tr>
 	<tr><td> </td>	
 	<td>(Update/PUT)</td>
-	<td>Google User Authorization</td></tr>
+	<td>Parse User Authorization</td></tr>
 	<tr><td> </td>	
 	<td>(Delete/DELETE)</td>
 	<td>Signed out</td></tr>
