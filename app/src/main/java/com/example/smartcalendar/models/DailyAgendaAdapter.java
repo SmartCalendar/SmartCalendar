@@ -1,5 +1,6 @@
 package com.example.smartcalendar.models;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,10 @@ public class DailyAgendaAdapter extends RecyclerView.Adapter<DailyAgendaAdapter.
     private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
     EventsAdapter eventsAdapter;
     private List<DailyAgenda> agendaList;
+    Context context;
 
-    public DailyAgendaAdapter(List<DailyAgenda> agendaList) {
+    public DailyAgendaAdapter(Context context, List<DailyAgenda> agendaList) {
+        this.context = context;
         this.agendaList = agendaList;
     }
 
@@ -40,7 +43,7 @@ public class DailyAgendaAdapter extends RecyclerView.Adapter<DailyAgendaAdapter.
 
         layoutManager.setInitialPrefetchItemCount(dailyAgenda.getEventsList().size());
 
-        eventsAdapter = new EventsAdapter(dailyAgenda.getEventsList());
+        eventsAdapter = new EventsAdapter(context, dailyAgenda.getEventsList());
 
         ViewHolder.rvAgenda.setAdapter(eventsAdapter);
 

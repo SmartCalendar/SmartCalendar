@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".DetailActivity" ></activity>
         <activity android:name=".DailyViewActivity" ></activity>
         <activity android:name=".MonthlyViewActivity" >
             <intent-filter>

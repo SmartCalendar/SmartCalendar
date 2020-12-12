@@ -106,7 +106,7 @@ public class DailyViewActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
-        dailyAgendaAdapter = new DailyAgendaAdapter(getAgendaList());
+        dailyAgendaAdapter = new DailyAgendaAdapter(getApplicationContext(), getAgendaList());
 
         rvAgenda.setLayoutManager(layoutManager);
 
@@ -149,8 +149,6 @@ public class DailyViewActivity extends AppCompatActivity {
         ArrayList<Event> list = new ArrayList<>();
         for (int i = 0; i < eventsList.size(); i++) {
             if (eventsList.get(i).getDate().getDate() == date) {
-                Log.i("DailyViewActivity", "Event title: " + eventsList.get(i).getTitle() +  "date: " + eventsList.get(i).getDate().getDate());
-                Log.i("DailyViewActivity", "Date: " + date);
                 list.add(eventsList.get(i));
             }
         }
@@ -235,12 +233,9 @@ public class DailyViewActivity extends AppCompatActivity {
         fab_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Add event", Toast.LENGTH_SHORT).show();
-
-                Intent newactive = new Intent(DailyViewActivity.this, EditActivity.class);
-                newactive.putExtra("Sender is DailyView", "False");
-
-                startActivity(newactive);
+                Intent i = new Intent(DailyViewActivity.this, DetailActivity.class);
+//                i.putExtra("Sender is DailyView", "True");
+                startActivity(i);
             }
         });
     }
