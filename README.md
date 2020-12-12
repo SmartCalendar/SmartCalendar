@@ -30,11 +30,11 @@ Smart Calendar is an AI-powered calendar app that allows the user to simplify us
 **Required Must-have Stories**
 
 * [x] User can login
-* [ ] Push notification to remind user of events/tasks
-* [ ] User can see a daily calendar view
+* [x] Push notification to remind user of events/tasks
+* [x] User can see a daily calendar view
 * [x] User can see a monthly calendar view 
-* [ ] User can manually input, modify, and delete events on their calendar
-* [ ] User can use their camera to take a photo of texts to create events on thier calendar 
+* [x] User can manually input, modify, and delete events on their calendar
+* [x] User can use their camera to take a photo of texts to create events on thier calendar 
 
 **Optional Nice-to-have Stories**
 
