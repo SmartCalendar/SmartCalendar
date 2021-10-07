@@ -10,6 +10,11 @@
 ### Description
 Smart Calendar is an AI-powered calendar app that allows the user to simplify usage by simply taking a picture or a screenshot of a poster or any text to automatically input events, meetings, tasks, etc. into their calendar, providing the user with a new sense of convenience.
 
+### Demo
+
+<img src='https://github.com/SmartCalendar/SmartCalendar/blob/main/demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
 ### App Evaluation
 * **Category**: Productivity, Lifestyle, Calendar
 * **Mobile**: This app would be primarily developed for Android but would sync with the google calendar. Thus changes to the google calendar regardless of the device would be reflected in the app. Changes can be made within the app as well.
